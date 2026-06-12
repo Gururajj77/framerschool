@@ -1,0 +1,5 @@
+{
+  "name": "framerschool-website",
+  "compatibility_date": "2025-06-12",
+  "pages_build_output_dir": "./dist"
+}

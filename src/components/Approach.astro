@@ -1,0 +1,52 @@
+---
+const othersDo = [
+  'Copy templates blindly',
+  'Add random sections',
+  'Focus on visuals first',
+  'Build without context',
+];
+
+const weFocus = [
+  'Business stage',
+  'Client goals',
+  'Structure and flow',
+  'What actually matters',
+];
+---
+
+<section id="approach" class="pf-section">
+  <div class="pf-section-head pf-section-head--center">
+    <p class="pf-eyebrow">Why this approach</p>
+    <h2 class="pf-section-title">Most people build websites backwards.</h2>
+  </div>
+
+  <div class="pf-compare-grid">
+    <article class="pf-card pf-compare-card">
+      <div class="pf-card-header">
+        <h3 class="pf-card-title">What most people do</h3>
+      </div>
+      <ul class="pf-compare-list">
+        {othersDo.map((item) => (
+          <li>
+            <span class="pf-compare-marker pf-compare-marker--bad" aria-hidden="true">×</span>
+            {item}
+          </li>
+        ))}
+      </ul>
+    </article>
+
+    <article class="pf-card pf-compare-card pf-compare-card--focus">
+      <div class="pf-card-header">
+        <h3 class="pf-card-title">What I focus on</h3>
+      </div>
+      <ul class="pf-compare-list">
+        {weFocus.map((item) => (
+          <li>
+            <span class="pf-compare-marker pf-compare-marker--good" aria-hidden="true">✓</span>
+            {item}
+          </li>
+        ))}
+      </ul>
+    </article>
+  </div>
+</section>

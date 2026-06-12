@@ -1,0 +1,16 @@
+---
+import Logo from './Logo.astro';
+
+interface Props {
+  size?: 'sm' | 'md' | 'lg';
+  class?: string;
+}
+
+const { size = 'md', class: className = '' } = Astro.props;
+const logoSizes = { sm: 20, md: 24, lg: 28 };
+---
+
+<span class:list={['pf-wordmark', `pf-wordmark--${size}`, className]} aria-label="KnotCMS">
+  <Logo size={logoSizes[size]} class="pf-wordmark-logo" />
+  <span class="pf-wordmark-text">KnotCMS</span>
+</span>

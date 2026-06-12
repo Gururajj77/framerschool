@@ -1,0 +1,28 @@
+---
+import Wordmark from './Wordmark.astro';
+
+const links = [
+  { href: '#home', label: 'Home' },
+  { href: '#features', label: 'Features' },
+  { href: '#knotcms', label: 'KnotCMS' },
+  { href: '#faq', label: 'FAQ' },
+];
+---
+
+<footer class="pf-site-footer">
+  <div class="pf-site-footer-inner">
+    <div>
+      <Wordmark size="sm" />
+      <p class="pf-site-footer-tagline">Turn templates into websites you can actually sell.</p>
+    </div>
+
+    <nav class="pf-site-footer-nav" aria-label="Footer">
+      {links.map((link) => (
+        <a href={link.href}>{link.label}</a>
+      ))}
+      <a href="#home">Back To Top</a>
+    </nav>
+
+    <p class="pf-site-footer-copy">&copy; 2026 FramerSchool. All rights reserved.</p>
+  </div>
+</footer>

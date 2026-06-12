@@ -1,0 +1,44 @@
+---
+const faqs = [
+  {
+    question: 'Do I need to design from scratch?',
+    answer:
+      'No. Templates already solve most layout problems. The real skill is knowing what to change.',
+  },
+  {
+    question: 'Can I use templates for client work?',
+    answer:
+      'Yes. Templates are a starting point, not the final product. You adapt structure, copy, and sections to match each client\'s business and goals.',
+  },
+  {
+    question: 'What do you actually teach?',
+    answer:
+      'How to evaluate a business, pick the right site type, strip unnecessary sections, adjust hierarchy and flow, and deliver client-ready Framer websites you can confidently sell.',
+  },
+  {
+    question: 'Do I need to be good at design?',
+    answer:
+      'No advanced design skills required. You need judgment — knowing what to keep, what to remove, and how to shape a site around real business goals.',
+  },
+];
+---
+
+<section id="faq" class="pf-section">
+  <div class="pf-section-head pf-section-head--center">
+    <h2 class="pf-section-title">Frequently Asked Questions</h2>
+  </div>
+
+  <div class="pf-faq-list">
+    {faqs.map((faq) => (
+      <div class="pf-faq-item" data-faq-item>
+        <button class="pf-faq-question" data-faq-toggle type="button" aria-expanded="false">
+          <span>{faq.question}</span>
+          <span class="pf-faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="pf-faq-answer">
+          <p>{faq.answer}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,47 @@
+---
+const features = [
+  {
+    title: 'Pick the right type of site',
+    description:
+      'Different businesses need different structures. Start with what actually fits the client.',
+  },
+  {
+    title: 'Understand why it works',
+    description:
+      'Layout, hierarchy, and flow shape attention and action. Good structure builds trust and clarity.',
+  },
+  {
+    title: 'Modify and make it yours',
+    description:
+      'Use templates as a starting point, then remove and adapt based on the business.',
+  },
+];
+---
+
+<section id="features" class="pf-section">
+  <div class="pf-section-head pf-section-head--center">
+    <p class="pf-eyebrow">Programs</p>
+    <h2 class="pf-section-title">Build with clarity, not guesswork.</h2>
+    <p class="pf-section-lead">
+      Choose from expertly designed programs built around practical, real-world skills.
+    </p>
+  </div>
+
+  <div class="pf-pricing-grid pf-feature-grid">
+    {features.map((feature, index) => (
+      <article class:list={['pf-plan-card', index === 1 && 'pf-plan-card--featured']}>
+        <p class="pf-plan-name">{feature.title}</p>
+        <p class="pf-plan-tagline">{feature.description}</p>
+      </article>
+    ))}
+  </div>
+
+  <div class="pf-feature-showcase">
+    <div class="pf-feature-showcase-shot">
+      <img src="/images/hero-1.png" alt="Framer template marketplace preview" width="480" height="700" loading="lazy" />
+    </div>
+    <div class="pf-feature-showcase-shot">
+      <img src="/images/hero-2.png" alt="Framer website template preview" width="420" height="680" loading="lazy" />
+    </div>
+  </div>
+</section>
