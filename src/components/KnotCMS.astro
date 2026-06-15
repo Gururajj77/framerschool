@@ -1,22 +1,21 @@
 ---
-import { KNOTCMS_URL } from '../config';
-import KnotWordmark from './KnotWordmark.astro';
-import PipelineFlow from './PipelineFlow.astro';
+import { KNOTCMS_URL, KNOTCMS_DOCS_URL } from '../config';
+import HeroBridge from './HeroBridge.astro';
 
 const features = [
   {
-    title: 'Map once, sync forever',
-    description: 'Connect Notion, match fields to Framer CMS, and keep collections updated.',
+    title: 'Match fields once',
+    description: 'Connect Notion, line up each field with Framer CMS, and manage everything from one dashboard.',
     icon: 'workflow',
   },
   {
-    title: 'Auto-sync on changes',
-    description: 'Edits in Notion flow to Framer on Pro — no manual exports or copy-paste.',
+    title: 'Updates on their own',
+    description: 'On paid plans, changes in Notion show up in Framer automatically. No exports or copy-paste.',
     icon: 'refresh',
   },
   {
-    title: 'Optional auto-publish',
-    description: 'Push synced content live automatically with the Framer Server API.',
+    title: 'Publish when ready',
+    description: 'Push synced content to your live Framer site when you are ready to ship.',
     icon: 'sparkles',
   },
 ];
@@ -25,20 +24,15 @@ const features = [
 <section id="knotcms" class="pf-section pf-knot-section">
   <div class="pf-knot-grid">
     <div class="pf-knot-copy">
-      <p class="pf-eyebrow">Plugin spotlight</p>
-      <KnotWordmark size="lg" class="pf-knot-wordmark" />
+      <p class="pf-eyebrow">From FramerSchool</p>
       <h2 class="pf-knot-title">
-        Notion → Framer CMS,
+        Sync Notion to Framer CMS
         <span class="pf-knot-title-accent">without the busywork</span>
       </h2>
       <p class="pf-knot-lead">
-        KnotCMS is the Framer plugin I'm building — a calm publishing workflow for creators who
-        manage content in Notion and ship in Framer.
+        KnotCMS is our sync tool for Framer creators. It keeps your Framer CMS updated from Notion
+        — match fields once, and sync automatically on paid plans.
       </p>
-
-      <div class="pf-knot-pipeline-wrap">
-        <PipelineFlow />
-      </div>
 
       <ul class="pf-login-features pf-knot-features">
         {features.map((feature) => (
@@ -60,7 +54,6 @@ const features = [
               {feature.icon === 'sparkles' && (
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3z" />
-                  <path d="M5 19l1 3 1-3 3-1-3-1-1-3-1 3-3 1 3 1z" />
                 </svg>
               )}
             </span>
@@ -74,71 +67,19 @@ const features = [
 
       <div class="pf-knot-actions">
         <a href={KNOTCMS_URL} class="pf-btn pf-btn--primary" target="_blank" rel="noopener noreferrer">
-          Open KnotCMS
+          Get started free
         </a>
         <a href={`${KNOTCMS_URL}/setup`} class="pf-btn pf-btn--secondary" target="_blank" rel="noopener noreferrer">
-          Try the setup wizard
+          Start setup
+        </a>
+        <a href={KNOTCMS_DOCS_URL} class="pf-btn pf-btn--ghost" target="_blank" rel="noopener noreferrer">
+          Read docs
         </a>
       </div>
     </div>
 
-    <div class="pf-knot-preview" aria-hidden="false">
-      <div class="pf-card pf-knot-preview-card">
-        <div class="pf-card-header">
-          <p class="pf-eyebrow">Dashboard</p>
-          <h3 class="pf-card-title">Your sync projects</h3>
-          <p class="pf-card-desc">Open from the Framer canvas plugin, configure once in the web app.</p>
-        </div>
-
-        <div class="pf-data-panel pf-knot-data-panel">
-          <div class="pf-data-panel-header pf-knot-data-header">
-            <span>Project</span>
-            <span>Source</span>
-            <span>Status</span>
-          </div>
-          <div class="pf-resource-row pf-knot-resource-row">
-            <div class="pf-resource-row-leading">
-              <div class="pf-resource-icons">
-                <PipelineFlow />
-              </div>
-              <div>
-                <strong class="pf-knot-project-name">Client blog</strong>
-                <p class="pf-knot-project-meta">Blog Posts → Framer CMS</p>
-              </div>
-            </div>
-            <span class="pf-badge pf-badge--ok">Synced</span>
-          </div>
-          <div class="pf-resource-row pf-knot-resource-row">
-            <div class="pf-resource-row-leading">
-              <div class="pf-resource-icons">
-                <PipelineFlow />
-              </div>
-              <div>
-                <strong class="pf-knot-project-name">Portfolio case studies</strong>
-                <p class="pf-knot-project-meta">Case Studies → Framer CMS</p>
-              </div>
-            </div>
-            <span class="pf-badge pf-badge--neutral">Ready</span>
-          </div>
-        </div>
-
-        <div class="pf-stepper pf-knot-stepper">
-          <div class="pf-stepper-item">
-            <span class="pf-stepper-dot pf-stepper-dot--done">✓</span>
-            <span class="pf-stepper-label">Connect</span>
-            <span class="pf-stepper-line" aria-hidden="true"></span>
-          </div>
-          <div class="pf-stepper-item">
-            <span class="pf-stepper-dot pf-stepper-dot--done">✓</span>
-            <span class="pf-stepper-label">Map fields</span>
-            <span class="pf-stepper-line" aria-hidden="true"></span>
-          </div>
-          <div class="pf-stepper-item">
-            <span class="pf-stepper-dot pf-stepper-dot--active">3</span>
-            <span class="pf-stepper-label pf-stepper-label--active">Sync & publish</span>
-          </div>
-        </div>
-      </div>
+    <div class="pf-knot-visual">
+      <HeroBridge />
     </div>
   </div>
 </section>

@@ -7,8 +7,9 @@ interface Props {
 }
 
 const {
-  title = 'FramerSchool — Turn templates into websites you can actually sell',
-  description = 'Learn how to choose the right structure, remove unnecessary sections, and build websites that fit the client instead of blindly copying templates.',
+  title = 'FramerSchool — Build client-ready Framer sites from templates',
+  description =
+    'Learn how to pick the right structure, cut what does not fit, and deliver Framer sites clients will pay for.',
 } = Astro.props;
 ---
 
@@ -27,6 +28,7 @@ const {
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/images/logo.svg" />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/style.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-mono/style.css" />
@@ -34,18 +36,68 @@ const {
   <body>
     <slot />
     <script>
+      const setFaqOpen = (item, open) => {
+        item.classList.toggle('open', open);
+        item.querySelector('[data-faq-toggle]')?.setAttribute('aria-expanded', open ? 'true' : 'false');
+      };
+
       document.querySelectorAll('[data-faq-toggle]').forEach((button) => {
         button.addEventListener('click', () => {
           const item = button.closest('[data-faq-item]');
-          const isOpen = item?.classList.contains('open');
-          document.querySelectorAll('[data-faq-item]').forEach((el) => el.classList.remove('open'));
-          if (!isOpen) item?.classList.add('open');
+          if (!item) return;
+          const isOpen = item.classList.contains('open');
+
+          document.querySelectorAll('[data-faq-item]').forEach((el) => setFaqOpen(el, false));
+
+          if (!isOpen) setFaqOpen(item, true);
         });
       });
 
       const topbar = document.querySelector('[data-topbar]');
       const toggle = document.querySelector('[data-nav-toggle]');
-      toggle?.addEventListener('click', () => topbar?.classList.toggle('nav-open'));
+      toggle?.addEventListener('click', () => {
+        const open = topbar?.classList.toggle('nav-open') ?? false;
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      });
+
+      const navLinks = document.querySelectorAll('.pf-site-nav-link');
+      const sectionLinks = [...navLinks]
+        .map((link) => {
+          const href = link.getAttribute('href') ?? '';
+          const id = href.startsWith('#') ? href.slice(1) : null;
+          const section = id ? document.getElementById(id) : null;
+          return section ? { link, section } : null;
+        })
+        .filter(Boolean);
+
+      const setActiveNav = () => {
+        navLinks.forEach((link) => link.classList.remove('is-active'));
+
+        const offset = (topbar?.getBoundingClientRect().height ?? 64) + 24;
+        let active = sectionLinks[0];
+        for (const entry of sectionLinks) {
+          if (!entry) continue;
+          if (entry.section.getBoundingClientRect().top <= offset) active = entry;
+        }
+        active?.link.classList.add('is-active');
+      };
+
+      const onScroll = () => {
+        topbar?.classList.toggle('is-scrolled', window.scrollY > 8);
+        setActiveNav();
+      };
+
+      setActiveNav();
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      navLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+          topbar?.classList.remove('nav-open');
+          toggle?.setAttribute('aria-expanded', 'false');
+          toggle?.setAttribute('aria-label', 'Open menu');
+        });
+      });
     </script>
   </body>
 </html>

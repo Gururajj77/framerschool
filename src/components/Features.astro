@@ -1,19 +1,19 @@
 ---
 const features = [
   {
-    title: 'Pick the right type of site',
+    title: 'Pick the right site type',
     description:
       'Different businesses need different structures. Start with what actually fits the client.',
   },
   {
     title: 'Understand why it works',
     description:
-      'Layout, hierarchy, and flow shape attention and action. Good structure builds trust and clarity.',
+      'Layout, hierarchy, and flow shape attention and action. Good structure builds trust.',
   },
   {
-    title: 'Modify and make it yours',
+    title: 'Adapt and ship',
     description:
-      'Use templates as a starting point, then remove and adapt based on the business.',
+      'Use templates as a starting point, then remove and reshape based on the business.',
   },
 ];
 ---
@@ -21,15 +21,15 @@ const features = [
 <section id="features" class="pf-section">
   <div class="pf-section-head pf-section-head--center">
     <p class="pf-eyebrow">Programs</p>
-    <h2 class="pf-section-title">Build with clarity, not guesswork.</h2>
+    <h2 class="pf-section-title">Learn with a clear plan</h2>
     <p class="pf-section-lead">
-      Choose from expertly designed programs built around practical, real-world skills.
+      Practical programs focused on real client work — not abstract design theory.
     </p>
   </div>
 
   <div class="pf-pricing-grid pf-feature-grid">
-    {features.map((feature, index) => (
-      <article class:list={['pf-plan-card', index === 1 && 'pf-plan-card--featured']}>
+    {features.map((feature) => (
+      <article class="pf-plan-card">
         <p class="pf-plan-name">{feature.title}</p>
         <p class="pf-plan-tagline">{feature.description}</p>
       </article>

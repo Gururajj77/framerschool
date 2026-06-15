@@ -1,0 +1,52 @@
+---
+import KnotLogo from './KnotLogo.astro';
+---
+
+<div class="pf-hero-bridge" aria-label="KnotCMS ties your data source to Framer CMS">
+  <div class="pf-hero-bridge-visual">
+    <figure class="pf-hero-bridge-panel pf-hero-bridge-panel--source">
+      <div class="pf-hero-bridge-shot">
+        <span class="pf-hero-bridge-port pf-hero-bridge-port--out" aria-hidden="true"></span>
+        <img
+          src="/hero/source-notion.png"
+          alt="Notion database with blog posts and mapped fields"
+          width="640"
+          height="400"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    </figure>
+
+    <div class="pf-hero-bridge-hub" aria-hidden="true">
+      <span class="pf-hero-bridge-track">
+        <span class="pf-hero-bridge-flow pf-hero-bridge-flow--left"></span>
+        <span class="pf-hero-bridge-flow pf-hero-bridge-flow--right"></span>
+      </span>
+      <div class="pf-hero-bridge-knot">
+        <KnotLogo size={52} />
+      </div>
+    </div>
+
+    <figure class="pf-hero-bridge-panel pf-hero-bridge-panel--dest">
+      <div class="pf-hero-bridge-shot pf-hero-bridge-shot--dark">
+        <span class="pf-hero-bridge-port pf-hero-bridge-port--in" aria-hidden="true"></span>
+        <img
+          src="/hero/destination-framer.png"
+          alt="Framer CMS collection synced with live site content"
+          width="640"
+          height="400"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    </figure>
+  </div>
+
+  <div class="pf-hero-bridge-meta">
+    <div class="pf-hero-bridge-knot-copy">
+      <p class="pf-hero-bridge-knot-name">KnotCMS</p>
+      <p class="pf-hero-bridge-knot-tag">Connect · Sync · Go live</p>
+    </div>
+  </div>
+</div>

@@ -1,33 +1,53 @@
 ---
+import { KNOTCMS_URL } from '../config';
 import Wordmark from './Wordmark.astro';
 
 const links = [
   { href: '#home', label: 'Home' },
-  { href: '#features', label: 'Features' },
+  { href: '#features', label: 'Programs' },
+  { href: '#approach', label: 'Approach' },
   { href: '#knotcms', label: 'KnotCMS' },
   { href: '#faq', label: 'FAQ' },
-  { href: '#contact', label: 'Contact Us' },
+  { href: '#contact', label: 'Contact' },
 ];
 ---
 
 <header class="pf-topbar" data-topbar>
-  <a href="#home" class="pf-topbar-brand">
-    <Wordmark size="md" />
-  </a>
+  <div class="pf-topbar-shell">
+    <a href="#home" class="pf-topbar-brand" aria-label="FramerSchool home">
+      <Wordmark size="md" />
+    </a>
 
-  <nav class="pf-site-nav" aria-label="Main">
-    {links.map((link) => (
-      <a href={link.href} class="pf-site-nav-link">{link.label}</a>
-    ))}
-  </nav>
+    <nav id="site-nav" class="pf-site-nav" aria-label="Main" data-site-nav>
+      <div class="pf-site-nav-track">
+        {links.map((link) => (
+          <a href={link.href} class="pf-site-nav-link">{link.label}</a>
+        ))}
+        <div class="pf-site-nav-mobile-actions">
+          <a href={KNOTCMS_URL} class="pf-topbar-login pf-topbar-login--mobile" target="_blank" rel="noopener noreferrer">
+            KnotCMS
+          </a>
+          <a href="#contact" class="pf-btn pf-btn--primary pf-btn--sm">Get in touch</a>
+        </div>
+      </div>
+    </nav>
 
-  <div class="pf-topbar-spacer"></div>
-
-  <a href="#contact" class="pf-btn pf-btn--primary pf-topbar-cta">Explore Website</a>
-
-  <button class="pf-site-nav-toggle" data-nav-toggle type="button" aria-label="Toggle menu">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-      <path d="M4 7h16M4 12h16M4 17h16" />
-    </svg>
-  </button>
+    <div class="pf-topbar-actions">
+      <a href={KNOTCMS_URL} class="pf-topbar-login" target="_blank" rel="noopener noreferrer">KnotCMS</a>
+      <a href="#contact" class="pf-btn pf-btn--primary pf-btn--sm pf-topbar-cta">Get in touch</a>
+      <button
+        class="pf-site-nav-toggle"
+        data-nav-toggle
+        type="button"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="site-nav"
+      >
+        <span class="pf-site-nav-toggle-icon" aria-hidden="true">
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+    </div>
+  </div>
 </header>

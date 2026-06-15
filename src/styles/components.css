@@ -108,15 +108,23 @@
     height: var(--pf-topbar-height);
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    padding: 0 1.5rem;
-    border-bottom: 1px solid var(--pf-border-subtle);
-    background: rgba(9, 9, 11, 0.8);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid transparent;
+    background: rgba(9, 9, 11, 0.55);
+    backdrop-filter: blur(16px) saturate(1.2);
+    -webkit-backdrop-filter: blur(16px) saturate(1.2);
     position: sticky;
     top: 0;
-    z-index: 30;
+    z-index: 40;
+    transition:
+        border-color 0.2s var(--pf-ease),
+        background 0.2s var(--pf-ease),
+        box-shadow 0.2s var(--pf-ease);
+}
+
+.pf-topbar.is-scrolled {
+    border-bottom-color: var(--pf-border-subtle);
+    background: rgba(9, 9, 11, 0.88);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
 }
 
 .pf-topbar-brand {
@@ -1357,13 +1365,10 @@
     position: relative;
     text-align: center;
     padding: 4.5rem 2rem;
-    background:
-        radial-gradient(ellipse 60% 50% at 50% 0%, rgba(59, 158, 255, 0.06), transparent 70%),
-        var(--pf-surface);
+    background: var(--pf-surface);
     border: 1px solid var(--pf-border);
     border-radius: var(--pf-radius-md);
     box-shadow: var(--pf-shadow-ring);
-    overflow: hidden;
 }
 
 .pf-empty-icon {
@@ -2578,10 +2583,8 @@
 
 .pf-plan-card--featured {
     border-color: var(--pf-accent-subtle);
-    background:
-        linear-gradient(180deg, rgba(59, 158, 255, 0.06) 0%, var(--pf-surface) 40%),
-        var(--pf-surface);
-    box-shadow: var(--pf-shadow-ring), var(--pf-shadow-glow);
+    background: var(--pf-surface);
+    box-shadow: var(--pf-shadow-ring);
 }
 
 .pf-plan-card--current {
