@@ -685,10 +685,18 @@
     min-width: 0;
 }
 
-.pf-logo,
-.pf-knot-logo {
+.pf-logo {
     filter: none;
     opacity: 1;
+}
+
+.pf-knot-logo {
+    filter: brightness(0) invert(1);
+    opacity: 1;
+}
+
+[data-theme="light"] .pf-knot-logo {
+    filter: none;
 }
 
 /* Hero bridge */
