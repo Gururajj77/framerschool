@@ -7,20 +7,13 @@ interface Props {
 const { size = 24, class: className = '' } = Astro.props;
 ---
 
-<svg
+<img
+  src="/brand/knotcms-mark.svg"
+  alt=""
   width={size}
   height={size}
-  viewBox="0 0 64 64"
-  fill="none"
   aria-hidden="true"
-  class:list={['pf-knot-logo', className]}
->
-  <rect width="64" height="64" rx="18" fill="#3b9eff" />
-  <path
-    d="M18 34c0-8.837 7.163-16 16-16 4.2 0 8.02 1.61 10.88 4.25M46 30c0 8.837-7.163 16-16 16-4.2 0-8.02-1.61-10.88-4.25"
-    stroke="#fff"
-    stroke-width="3.25"
-    stroke-linecap="round"
-  ></path>
-  <circle cx="32" cy="32" r="3.5" fill="#fff"></circle>
-</svg>
+  class:list={['pf-logo', 'pf-knot-logo', className]}
+  loading="eager"
+  decoding="async"
+/>

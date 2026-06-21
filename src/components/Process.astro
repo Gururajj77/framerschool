@@ -1,0 +1,48 @@
+---
+const steps = [
+  {
+    number: '1',
+    title: 'Pick the right template',
+    description:
+      'Start with a structure that matches the business — not the flashiest layout in the marketplace.',
+  },
+  {
+    number: '2',
+    title: 'Adapt with intent',
+    description:
+      'Remove what does not serve the client. Reshape copy, hierarchy, and flow around real goals.',
+  },
+  {
+    number: '3',
+    title: 'Ship with confidence',
+    description:
+      'Deliver a client-ready Framer site you can explain, defend, and sell — not a page-for-page clone.',
+  },
+];
+---
+
+<section id="process" class="pf-band pf-band--muted">
+  <div class="pf-container pf-section-block">
+    <div class="pf-section-head pf-section-head--center">
+      <p class="pf-eyebrow">The process</p>
+      <h2 class="pf-section-title">3 steps to build sites clients pay for</h2>
+      <p class="pf-section-lead">
+        A clear system — not more tutorials. Structure first, polish second.
+      </p>
+    </div>
+
+    <ol class="pf-process-grid">
+      {steps.map((step) => (
+        <li class="pf-process-card">
+          <span class="pf-process-number">{step.number}</span>
+          <h3 class="pf-process-title">{step.title}</h3>
+          <p class="pf-process-desc">{step.description}</p>
+        </li>
+      ))}
+    </ol>
+
+    <div class="pf-section-cta">
+      <a href="#contact" class="pf-btn pf-btn--primary pf-btn--lg">Start learning</a>
+    </div>
+  </div>
+</section>

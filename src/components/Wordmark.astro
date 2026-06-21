@@ -8,10 +8,13 @@ interface Props {
 }
 
 const { size = 'md', showLogo = true, class: className = '' } = Astro.props;
-const logoSizes = { sm: 20, md: 24, lg: 28 };
+const logoSizes = { sm: 28, md: 34, lg: 40 };
 ---
 
 <span class:list={['pf-wordmark', `pf-wordmark--${size}`, className]} aria-label="FramerSchool">
   {showLogo && <Logo size={logoSizes[size]} class="pf-wordmark-logo" />}
-  <span class="pf-wordmark-text">FramerSchool</span>
+  <span class="pf-wordmark-text">
+    <span class="pf-wordmark-framer">framer</span>
+    <span class="pf-wordmark-school">school</span>
+  </span>
 </span>

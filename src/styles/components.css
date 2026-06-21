@@ -109,9 +109,9 @@
     display: flex;
     align-items: center;
     border-bottom: 1px solid transparent;
-    background: rgba(9, 9, 11, 0.55);
-    backdrop-filter: blur(16px) saturate(1.2);
-    -webkit-backdrop-filter: blur(16px) saturate(1.2);
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(12px) saturate(1.2);
+    -webkit-backdrop-filter: blur(12px) saturate(1.2);
     position: sticky;
     top: 0;
     z-index: 40;
@@ -122,9 +122,9 @@
 }
 
 .pf-topbar.is-scrolled {
-    border-bottom-color: var(--pf-border-subtle);
-    background: rgba(9, 9, 11, 0.88);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+    border-bottom-color: var(--pf-border);
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: var(--pf-shadow-xs);
 }
 
 .pf-topbar-brand {

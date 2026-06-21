@@ -1,80 +1,75 @@
 :root {
-    color-scheme: dark;
+    color-scheme: light;
+
+    /* Brand — FramerSchool red shield */
+    --pf-brand: #e01b24;
+    --pf-brand-hover: #c41820;
+    --pf-brand-muted: rgba(224, 27, 36, 0.08);
+    --pf-brand-subtle: rgba(224, 27, 36, 0.14);
 
     /* Canvas */
-    --pf-bg: #09090b;
-    --pf-bg-elevated: #0c0c0e;
-    --pf-bg-subtle: #111113;
-    --pf-surface: #141416;
-    --pf-surface-hover: #1c1c1f;
-    --pf-surface-active: #242428;
+    --pf-bg: #ffffff;
+    --pf-bg-elevated: #fafafa;
+    --pf-bg-subtle: #f9fafb;
+    --pf-bg-muted: #f3f4f6;
+    --pf-surface: #ffffff;
+    --pf-surface-hover: #f9fafb;
+    --pf-surface-active: #f3f4f6;
 
-    /* Sidebar */
-    --pf-sidebar-bg: #09090b;
-    --pf-sidebar-border: rgba(255, 255, 255, 0.06);
-    --pf-sidebar-text: #71717a;
-    --pf-sidebar-text-hover: #fafafa;
-    --pf-sidebar-active: rgba(255, 255, 255, 0.05);
-    --pf-sidebar-muted: #52525b;
-
-    /* Ink */
-    --pf-text: #fafafa;
-    --pf-text-secondary: #a1a1aa;
-    --pf-text-tertiary: #71717a;
+    /* Ink — Subscribr-style grays */
+    --pf-text: #111827;
+    --pf-text-secondary: #4b5563;
+    --pf-text-tertiary: #6b7280;
 
     /* Borders */
-    --pf-border: rgba(255, 255, 255, 0.09);
-    --pf-border-strong: rgba(255, 255, 255, 0.14);
-    --pf-border-subtle: rgba(255, 255, 255, 0.05);
+    --pf-border: #e5e7eb;
+    --pf-border-strong: #d1d5db;
+    --pf-border-subtle: #f3f4f6;
 
-    /* Brand */
-    --pf-accent: #3b9eff;
-    --pf-accent-hover: #5cadff;
-    --pf-accent-muted: rgba(59, 158, 255, 0.1);
-    --pf-accent-subtle: rgba(59, 158, 255, 0.22);
-    --pf-accent-ring: rgba(59, 158, 255, 0.18);
+    /* Accent */
+    --pf-accent: var(--pf-brand);
+    --pf-accent-hover: var(--pf-brand-hover);
+    --pf-accent-muted: var(--pf-brand-muted);
+    --pf-accent-subtle: var(--pf-brand-subtle);
+    --pf-accent-ring: rgba(224, 27, 36, 0.2);
 
     /* Buttons */
-    --pf-btn-primary-bg: #fafafa;
-    --pf-btn-primary-text: #09090b;
-    --pf-btn-primary-hover: #ffffff;
+    --pf-btn-primary-bg: var(--pf-brand);
+    --pf-btn-primary-text: #ffffff;
+    --pf-btn-primary-hover: var(--pf-brand-hover);
 
     /* Semantic */
-    --pf-ok: #34d399;
-    --pf-ok-bg: rgba(52, 211, 153, 0.08);
-    --pf-ok-border: rgba(52, 211, 153, 0.18);
-    --pf-warn: #fbbf24;
-    --pf-warn-bg: rgba(251, 191, 36, 0.08);
-    --pf-warn-border: rgba(251, 191, 36, 0.18);
-    --pf-err: #f87171;
-    --pf-err-bg: rgba(248, 113, 113, 0.08);
-    --pf-err-border: rgba(248, 113, 113, 0.18);
-    --pf-info-bg: rgba(255, 255, 255, 0.03);
-    --pf-info-border: rgba(255, 255, 255, 0.07);
+    --pf-ok: #059669;
+    --pf-ok-bg: rgba(5, 150, 105, 0.08);
+    --pf-ok-border: rgba(5, 150, 105, 0.18);
+    --pf-err: #dc2626;
+    --pf-err-bg: rgba(220, 38, 38, 0.08);
+    --pf-err-border: rgba(220, 38, 38, 0.18);
 
     /* Layout */
-    --pf-sidebar-width: 220px;
-    --pf-topbar-height: 64px;
-    --pf-shell-width: 1120px;
-    --pf-radius-xs: 6px;
-    --pf-radius-sm: 8px;
-    --pf-radius-md: 10px;
-    --pf-radius-lg: 12px;
+    --pf-topbar-height: 72px;
+    --pf-shell-width: 1180px;
+    --pf-gutter: clamp(1.25rem, 4vw, 2rem);
+    --pf-section-y: clamp(4rem, 8vw, 5.5rem);
+
+    --pf-radius-xs: 8px;
+    --pf-radius-sm: 10px;
+    --pf-radius-md: 14px;
+    --pf-radius-lg: 16px;
+    --pf-radius-xl: 20px;
 
     /* Elevation */
-    --pf-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
-    --pf-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
-    --pf-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
-    --pf-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.55), 0 0 0 1px var(--pf-border);
-    --pf-shadow-ring: 0 0 0 1px var(--pf-border);
-    --pf-shadow-glow: var(--pf-shadow-ring);
+    --pf-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --pf-shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.06);
+    --pf-shadow-md: 0 12px 32px rgba(0, 0, 0, 0.08);
 
     /* Motion */
     --pf-ease: cubic-bezier(0.4, 0, 0.2, 1);
     --pf-duration: 150ms;
 
-    /* Typography */
-    --pf-font: "Geist", "Geist Sans", -apple-system, BlinkMacSystemFont, sans-serif;
-    --pf-font-mono: "Geist Mono", "SF Mono", ui-monospace, Menlo, monospace;
+    /* Typography — Roboto + Roboto Mono (Subscribr) */
+    --pf-font: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --pf-font-mono: "Roboto Mono", ui-monospace, "SF Mono", Menlo, monospace;
     --pf-tracking-tight: -0.02em;
+    --pf-tracking-wide: 0.12em;
 }

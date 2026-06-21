@@ -3,17 +3,16 @@ import { KNOTCMS_URL } from '../config';
 import Wordmark from './Wordmark.astro';
 
 const links = [
-  { href: '#home', label: 'Home' },
+  { href: '#process', label: 'Process' },
   { href: '#features', label: 'Programs' },
   { href: '#approach', label: 'Approach' },
   { href: '#knotcms', label: 'KnotCMS' },
   { href: '#faq', label: 'FAQ' },
-  { href: '#contact', label: 'Contact' },
 ];
 ---
 
 <header class="pf-topbar" data-topbar>
-  <div class="pf-topbar-shell">
+  <div class="pf-container pf-topbar-shell">
     <a href="#home" class="pf-topbar-brand" aria-label="FramerSchool home">
       <Wordmark size="md" />
     </a>

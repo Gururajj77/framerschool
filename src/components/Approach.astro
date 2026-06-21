@@ -9,47 +9,53 @@ const othersDo = [
 const weFocus = [
   'Where the business is today',
   'What the site needs to do',
-  'Structure and page flow',
+  'Structure and page flow first',
   'What to keep and what to cut',
 ];
 ---
 
-<section id="approach" class="pf-section">
-  <div class="pf-section-head pf-section-head--center">
-    <p class="pf-eyebrow">Our approach</p>
-    <h2 class="pf-section-title">Most people build websites backwards</h2>
-    <p class="pf-section-lead">
-      Templates are a shortcut, not the answer. The skill is knowing what to change.
-    </p>
-  </div>
+<section id="approach" class="pf-band">
+  <div class="pf-container pf-section-block">
+    <div class="pf-section-head pf-section-head--center">
+      <p class="pf-eyebrow">We are different</p>
+      <h2 class="pf-section-title">Most people build Framer sites backwards</h2>
+      <p class="pf-section-lead">
+        Templates are a shortcut, not the answer. The skill is knowing what to change.
+      </p>
+    </div>
 
-  <div class="pf-compare-grid">
-    <article class="pf-card pf-compare-card">
-      <div class="pf-card-header">
-        <h3 class="pf-card-title">What most people do</h3>
-      </div>
-      <ul class="pf-compare-list">
-        {othersDo.map((item) => (
-          <li>
-            <span class="pf-compare-marker pf-compare-marker--bad" aria-hidden="true">×</span>
-            {item}
-          </li>
-        ))}
-      </ul>
-    </article>
+    <div class="pf-compare-grid">
+      <article class="pf-compare-card pf-compare-card--old">
+        <div class="pf-compare-card-head">
+          <h3 class="pf-compare-card-label">Old way</h3>
+          <p class="pf-compare-card-sub">Manual, inconsistent client delivery</p>
+        </div>
+        <ul class="pf-compare-list">
+          {othersDo.map((item) => (
+            <li>
+              <span class="pf-compare-marker pf-compare-marker--bad" aria-hidden="true">×</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <p class="pf-compare-outcome pf-compare-outcome--bad">Slow revisions · hard to justify pricing</p>
+      </article>
 
-    <article class="pf-card pf-compare-card pf-compare-card--focus">
-      <div class="pf-card-header">
-        <h3 class="pf-card-title">What we focus on</h3>
-      </div>
-      <ul class="pf-compare-list">
-        {weFocus.map((item) => (
-          <li>
-            <span class="pf-compare-marker pf-compare-marker--good" aria-hidden="true">✓</span>
-            {item}
-          </li>
-        ))}
-      </ul>
-    </article>
+      <article class="pf-compare-card pf-compare-card--new">
+        <div class="pf-compare-card-head">
+          <h3 class="pf-compare-card-label">FramerSchool way</h3>
+          <p class="pf-compare-card-sub">Structure-first, client-ready delivery</p>
+        </div>
+        <ul class="pf-compare-list">
+          {weFocus.map((item) => (
+            <li>
+              <span class="pf-compare-marker pf-compare-marker--good" aria-hidden="true">✓</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <p class="pf-compare-outcome pf-compare-outcome--good">Clear decisions · sites you can sell</p>
+      </article>
+    </div>
   </div>
 </section>

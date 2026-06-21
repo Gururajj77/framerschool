@@ -62,11 +62,12 @@ strong {
 
 .pf-eyebrow {
     margin: 0 0 0.5rem;
-    font-size: 0.8125rem;
-    font-weight: 500;
-    letter-spacing: 0.05em;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--pf-text-tertiary);
+    color: var(--pf-brand);
+    font-family: var(--pf-font-mono);
 }
 
 .pf-field--spaced {
