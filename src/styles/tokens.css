@@ -7,25 +7,25 @@
     --pf-brand-muted: rgba(224, 27, 36, 0.14);
     --pf-brand-subtle: rgba(224, 27, 36, 0.28);
 
-    /* Canvas */
-    --pf-bg: #09090b;
-    --pf-bg-elevated: #0f0f11;
-    --pf-bg-subtle: #0c0c0e;
-    --pf-bg-muted: #18181b;
-    --pf-surface: #111113;
-    --pf-surface-hover: #18181b;
-    --pf-surface-active: #1f1f23;
-    --pf-surface-raised: #1a1a1d;
+    /* Canvas — soft dark (Material #121212 / Apple elevated gray), not pure black */
+    --pf-bg: #121214;
+    --pf-bg-elevated: #18181b;
+    --pf-bg-subtle: #141417;
+    --pf-bg-muted: #1f1f23;
+    --pf-surface: #1c1c1f;
+    --pf-surface-hover: #26262a;
+    --pf-surface-active: #2c2c31;
+    --pf-surface-raised: #232327;
 
-    /* Ink */
-    --pf-text: #f4f4f5;
-    --pf-text-secondary: #a1a1aa;
-    --pf-text-tertiary: #71717a;
+    /* Ink — off-white primary, stepped secondary (reduces eye strain vs #fff on #000) */
+    --pf-text: #ececee;
+    --pf-text-secondary: #a0a0ab;
+    --pf-text-tertiary: #787882;
 
-    /* Borders */
-    --pf-border: #27272a;
-    --pf-border-strong: #3f3f46;
-    --pf-border-subtle: #1c1c1f;
+    /* Borders — low-contrast separation, not hard lines */
+    --pf-border: rgba(255, 255, 255, 0.1);
+    --pf-border-strong: rgba(255, 255, 255, 0.16);
+    --pf-border-subtle: rgba(255, 255, 255, 0.06);
 
     /* Accent */
     --pf-accent: var(--pf-brand);
@@ -35,22 +35,22 @@
     --pf-accent-ring: rgba(224, 27, 36, 0.32);
 
     /* Inverted surfaces (CTA band, stat cards) */
-    --pf-invert-bg: #f4f4f5;
-    --pf-invert-text: #111827;
-    --pf-invert-text-muted: rgba(17, 24, 39, 0.72);
-    --pf-invert-eyebrow: rgba(17, 24, 39, 0.55);
-    --pf-invert-border: rgba(17, 24, 39, 0.14);
-    --pf-invert-btn-bg: #111827;
-    --pf-invert-btn-text: #ffffff;
-    --pf-invert-btn-hover: #1f2937;
+    --pf-invert-bg: #e8e8ea;
+    --pf-invert-text: #18181b;
+    --pf-invert-text-muted: rgba(24, 24, 27, 0.68);
+    --pf-invert-eyebrow: rgba(24, 24, 27, 0.52);
+    --pf-invert-border: rgba(24, 24, 27, 0.14);
+    --pf-invert-btn-bg: #18181b;
+    --pf-invert-btn-text: #ececee;
+    --pf-invert-btn-hover: #26262a;
 
     /* Product screenshot frames */
     --pf-shot-bg: #ffffff;
-    --pf-shot-bg-dark: #111111;
+    --pf-shot-bg-dark: #1c1c1f;
 
     /* Topbar */
-    --pf-topbar-bg: rgba(9, 9, 11, 0.86);
-    --pf-topbar-bg-scrolled: rgba(9, 9, 11, 0.94);
+    --pf-topbar-bg: rgba(18, 18, 20, 0.82);
+    --pf-topbar-bg-scrolled: rgba(18, 18, 20, 0.92);
 
     /* Buttons */
     --pf-btn-primary-bg: var(--pf-brand);
@@ -91,12 +91,12 @@
     --pf-radius-lg: 16px;
     --pf-radius-xl: 20px;
 
-    /* Elevation */
-    --pf-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.35);
-    --pf-shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.4);
-    --pf-shadow-md: 0 12px 32px rgba(0, 0, 0, 0.45);
-    --pf-shadow-lg: 0 24px 48px rgba(0, 0, 0, 0.5);
-    --pf-shadow-ring: 0 0 0 1px rgba(255, 255, 255, 0.04);
+    /* Elevation — lighter shadows on charcoal, not heavy black drops */
+    --pf-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.2);
+    --pf-shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.24);
+    --pf-shadow-md: 0 12px 32px rgba(0, 0, 0, 0.28);
+    --pf-shadow-lg: 0 24px 48px rgba(0, 0, 0, 0.32);
+    --pf-shadow-ring: 0 0 0 1px rgba(255, 255, 255, 0.06);
 
     /* Motion */
     --pf-ease: cubic-bezier(0.4, 0, 0.2, 1);
