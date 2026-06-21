@@ -1,37 +1,56 @@
 :root {
-    color-scheme: light;
+    color-scheme: dark;
 
     /* Brand — FramerSchool red shield */
     --pf-brand: #e01b24;
-    --pf-brand-hover: #c41820;
-    --pf-brand-muted: rgba(224, 27, 36, 0.08);
-    --pf-brand-subtle: rgba(224, 27, 36, 0.14);
+    --pf-brand-hover: #f02830;
+    --pf-brand-muted: rgba(224, 27, 36, 0.14);
+    --pf-brand-subtle: rgba(224, 27, 36, 0.28);
 
     /* Canvas */
-    --pf-bg: #ffffff;
-    --pf-bg-elevated: #fafafa;
-    --pf-bg-subtle: #f9fafb;
-    --pf-bg-muted: #f3f4f6;
-    --pf-surface: #ffffff;
-    --pf-surface-hover: #f9fafb;
-    --pf-surface-active: #f3f4f6;
+    --pf-bg: #09090b;
+    --pf-bg-elevated: #0f0f11;
+    --pf-bg-subtle: #0c0c0e;
+    --pf-bg-muted: #18181b;
+    --pf-surface: #111113;
+    --pf-surface-hover: #18181b;
+    --pf-surface-active: #1f1f23;
+    --pf-surface-raised: #1a1a1d;
 
-    /* Ink — Subscribr-style grays */
-    --pf-text: #111827;
-    --pf-text-secondary: #4b5563;
-    --pf-text-tertiary: #6b7280;
+    /* Ink */
+    --pf-text: #f4f4f5;
+    --pf-text-secondary: #a1a1aa;
+    --pf-text-tertiary: #71717a;
 
     /* Borders */
-    --pf-border: #e5e7eb;
-    --pf-border-strong: #d1d5db;
-    --pf-border-subtle: #f3f4f6;
+    --pf-border: #27272a;
+    --pf-border-strong: #3f3f46;
+    --pf-border-subtle: #1c1c1f;
 
     /* Accent */
     --pf-accent: var(--pf-brand);
     --pf-accent-hover: var(--pf-brand-hover);
     --pf-accent-muted: var(--pf-brand-muted);
     --pf-accent-subtle: var(--pf-brand-subtle);
-    --pf-accent-ring: rgba(224, 27, 36, 0.2);
+    --pf-accent-ring: rgba(224, 27, 36, 0.32);
+
+    /* Inverted surfaces (CTA band, stat cards) */
+    --pf-invert-bg: #f4f4f5;
+    --pf-invert-text: #111827;
+    --pf-invert-text-muted: rgba(17, 24, 39, 0.72);
+    --pf-invert-eyebrow: rgba(17, 24, 39, 0.55);
+    --pf-invert-border: rgba(17, 24, 39, 0.14);
+    --pf-invert-btn-bg: #111827;
+    --pf-invert-btn-text: #ffffff;
+    --pf-invert-btn-hover: #1f2937;
+
+    /* Product screenshot frames */
+    --pf-shot-bg: #ffffff;
+    --pf-shot-bg-dark: #111111;
+
+    /* Topbar */
+    --pf-topbar-bg: rgba(9, 9, 11, 0.86);
+    --pf-topbar-bg-scrolled: rgba(9, 9, 11, 0.94);
 
     /* Buttons */
     --pf-btn-primary-bg: var(--pf-brand);
@@ -39,12 +58,26 @@
     --pf-btn-primary-hover: var(--pf-brand-hover);
 
     /* Semantic */
-    --pf-ok: #059669;
-    --pf-ok-bg: rgba(5, 150, 105, 0.08);
-    --pf-ok-border: rgba(5, 150, 105, 0.18);
-    --pf-err: #dc2626;
-    --pf-err-bg: rgba(220, 38, 38, 0.08);
-    --pf-err-border: rgba(220, 38, 38, 0.18);
+    --pf-ok: #34d399;
+    --pf-ok-bg: rgba(52, 211, 153, 0.1);
+    --pf-ok-border: rgba(52, 211, 153, 0.22);
+    --pf-err: #f87171;
+    --pf-err-bg: rgba(248, 113, 113, 0.1);
+    --pf-err-border: rgba(248, 113, 113, 0.22);
+    --pf-warn: #fbbf24;
+    --pf-warn-bg: rgba(251, 191, 36, 0.1);
+    --pf-warn-border: rgba(251, 191, 36, 0.22);
+    --pf-warn-text: #fcd34d;
+    --pf-info-bg: rgba(96, 165, 250, 0.08);
+    --pf-info-border: rgba(96, 165, 250, 0.18);
+
+    /* App shell (shared components) */
+    --pf-sidebar-width: 15rem;
+    --pf-sidebar-bg: var(--pf-bg-elevated);
+    --pf-sidebar-muted: var(--pf-text-tertiary);
+    --pf-sidebar-text: var(--pf-text-secondary);
+    --pf-sidebar-text-hover: var(--pf-text);
+    --pf-sidebar-active: var(--pf-bg-muted);
 
     /* Layout */
     --pf-topbar-height: 72px;
@@ -59,17 +92,75 @@
     --pf-radius-xl: 20px;
 
     /* Elevation */
-    --pf-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
-    --pf-shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.06);
-    --pf-shadow-md: 0 12px 32px rgba(0, 0, 0, 0.08);
+    --pf-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.35);
+    --pf-shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.4);
+    --pf-shadow-md: 0 12px 32px rgba(0, 0, 0, 0.45);
+    --pf-shadow-lg: 0 24px 48px rgba(0, 0, 0, 0.5);
+    --pf-shadow-ring: 0 0 0 1px rgba(255, 255, 255, 0.04);
 
     /* Motion */
     --pf-ease: cubic-bezier(0.4, 0, 0.2, 1);
     --pf-duration: 150ms;
 
-    /* Typography — Roboto + Roboto Mono (Subscribr) */
+    /* Typography — Roboto + Roboto Mono */
     --pf-font: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     --pf-font-mono: "Roboto Mono", ui-monospace, "SF Mono", Menlo, monospace;
     --pf-tracking-tight: -0.02em;
     --pf-tracking-wide: 0.12em;
+}
+
+[data-theme="light"] {
+    color-scheme: light;
+
+    --pf-brand-muted: rgba(224, 27, 36, 0.08);
+    --pf-brand-subtle: rgba(224, 27, 36, 0.14);
+    --pf-accent-ring: rgba(224, 27, 36, 0.2);
+
+    --pf-bg: #ffffff;
+    --pf-bg-elevated: #fafafa;
+    --pf-bg-subtle: #f9fafb;
+    --pf-bg-muted: #f3f4f6;
+    --pf-surface: #ffffff;
+    --pf-surface-hover: #f9fafb;
+    --pf-surface-active: #f3f4f6;
+    --pf-surface-raised: #f4f4f5;
+
+    --pf-text: #111827;
+    --pf-text-secondary: #4b5563;
+    --pf-text-tertiary: #6b7280;
+
+    --pf-border: #e5e7eb;
+    --pf-border-strong: #d1d5db;
+    --pf-border-subtle: #f3f4f6;
+
+    --pf-invert-bg: #111827;
+    --pf-invert-text: #ffffff;
+    --pf-invert-text-muted: rgba(255, 255, 255, 0.72);
+    --pf-invert-eyebrow: rgba(255, 255, 255, 0.6);
+    --pf-invert-border: rgba(255, 255, 255, 0.24);
+    --pf-invert-btn-bg: #ffffff;
+    --pf-invert-btn-text: #111827;
+    --pf-invert-btn-hover: #f5f5f5;
+
+    --pf-topbar-bg: rgba(255, 255, 255, 0.88);
+    --pf-topbar-bg-scrolled: rgba(255, 255, 255, 0.96);
+
+    --pf-ok: #059669;
+    --pf-ok-bg: rgba(5, 150, 105, 0.08);
+    --pf-ok-border: rgba(5, 150, 105, 0.18);
+    --pf-err: #dc2626;
+    --pf-err-bg: rgba(220, 38, 38, 0.08);
+    --pf-err-border: rgba(220, 38, 38, 0.18);
+    --pf-warn: #d97706;
+    --pf-warn-bg: rgba(217, 119, 6, 0.08);
+    --pf-warn-border: rgba(217, 119, 6, 0.18);
+    --pf-warn-text: #b45309;
+    --pf-info-bg: rgba(59, 130, 246, 0.06);
+    --pf-info-border: rgba(59, 130, 246, 0.14);
+
+    --pf-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --pf-shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.06);
+    --pf-shadow-md: 0 12px 32px rgba(0, 0, 0, 0.08);
+    --pf-shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.1);
+    --pf-shadow-ring: 0 0 0 1px rgba(0, 0, 0, 0.04);
 }
