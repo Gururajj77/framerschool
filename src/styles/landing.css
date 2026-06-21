@@ -20,6 +20,11 @@
     padding-block: var(--pf-section-y);
 }
 
+.pf-band[id],
+.pf-hero[id] {
+    scroll-margin-top: calc(var(--pf-topbar-height) + 1rem);
+}
+
 .pf-band--muted {
     background: var(--pf-bg-subtle);
     border-block: 1px solid var(--pf-border-subtle);
@@ -148,23 +153,44 @@
 .pf-site-nav-link {
     padding: 0.5rem 0.75rem;
     border-radius: var(--pf-radius-xs);
+    border: 1px solid transparent;
     font-size: 0.8125rem;
     font-weight: 500;
     color: var(--pf-text-secondary);
     white-space: nowrap;
     transition:
         color var(--pf-duration) var(--pf-ease),
-        background var(--pf-duration) var(--pf-ease);
+        background var(--pf-duration) var(--pf-ease),
+        border-color var(--pf-duration) var(--pf-ease);
 }
 
 .pf-site-nav-link:hover {
     color: var(--pf-text);
-    background: var(--pf-bg-muted);
+    background: var(--pf-surface-hover);
+}
+
+.pf-site-nav-link:focus {
+    outline: none;
+}
+
+.pf-site-nav-link:focus-visible {
+    color: var(--pf-text);
+    background: var(--pf-surface-hover);
+    outline: 2px solid var(--pf-accent);
+    outline-offset: 2px;
 }
 
 .pf-site-nav-link.is-active {
-    color: var(--pf-text);
-    background: var(--pf-bg-muted);
+    color: var(--pf-brand);
+    background: var(--pf-brand-muted);
+    border-color: var(--pf-brand-subtle);
+    font-weight: 600;
+}
+
+.pf-site-nav-link.is-active:hover,
+.pf-site-nav-link.is-active:focus-visible {
+    color: var(--pf-brand-hover);
+    background: var(--pf-brand-muted);
 }
 
 .pf-topbar-actions {

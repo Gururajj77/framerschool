@@ -72,18 +72,40 @@ const {
           const section = id ? document.getElementById(id) : null;
           return section ? { link, section } : null;
         })
-        .filter(Boolean);
+        .filter(Boolean)
+        .sort((a, b) => a.section.offsetTop - b.section.offsetTop);
+
+      const setActiveLink = (link) => {
+        navLinks.forEach((navLink) => {
+          navLink.classList.remove('is-active');
+          navLink.removeAttribute('aria-current');
+        });
+        if (!link) return;
+        link.classList.add('is-active');
+        link.setAttribute('aria-current', 'page');
+      };
 
       const setActiveNav = () => {
-        navLinks.forEach((link) => link.classList.remove('is-active'));
-
         const offset = (topbar?.getBoundingClientRect().height ?? 72) + 24;
-        let active = sectionLinks[0];
+        let active = null;
+
         for (const entry of sectionLinks) {
           if (!entry) continue;
-          if (entry.section.getBoundingClientRect().top <= offset) active = entry;
+          const rect = entry.section.getBoundingClientRect();
+          if (rect.top <= offset && rect.bottom > offset) {
+            active = entry;
+            break;
+          }
         }
-        active?.link.classList.add('is-active');
+
+        if (!active) {
+          for (const entry of sectionLinks) {
+            if (!entry) continue;
+            if (entry.section.getBoundingClientRect().top <= offset) active = entry;
+          }
+        }
+
+        setActiveLink(active?.link ?? sectionLinks[0]?.link ?? null);
       };
 
       const onScroll = () => {
@@ -99,6 +121,9 @@ const {
           topbar?.classList.remove('nav-open');
           toggle?.setAttribute('aria-expanded', 'false');
           toggle?.setAttribute('aria-label', 'Open menu');
+
+          const href = link.getAttribute('href') ?? '';
+          if (href.startsWith('#')) setActiveLink(link);
         });
       });
     </script>
