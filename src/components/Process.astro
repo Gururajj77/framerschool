@@ -1,48 +1,56 @@
 ---
+import SectionTitle from './SectionTitle.astro';
+
 const steps = [
   {
-    number: '1',
+    number: '01',
     title: 'Pick the right template',
+    focus: 'Structure',
     description:
-      'Start with a structure that matches the business — not the flashiest layout in the marketplace.',
+      'Start with a layout that matches the business — not the flashiest template in the marketplace.',
   },
   {
-    number: '2',
+    number: '02',
     title: 'Adapt with intent',
+    focus: 'Judgment',
     description:
       'Remove what does not serve the client. Reshape copy, hierarchy, and flow around real goals.',
   },
   {
-    number: '3',
+    number: '03',
     title: 'Ship with confidence',
+    focus: 'Delivery',
     description:
       'Deliver a client-ready Framer site you can explain, defend, and sell — not a page-for-page clone.',
   },
 ];
 ---
 
-<section id="process" class="pf-band pf-band--muted">
-  <div class="pf-container pf-section-block">
-    <div class="pf-section-head pf-section-head--center">
-      <p class="pf-eyebrow">The process</p>
-      <h2 class="pf-section-title">3 steps to build sites clients pay for</h2>
-      <p class="pf-section-lead">
-        A clear system — not more tutorials. Structure first, polish second.
-      </p>
-    </div>
+<section id="process" class="pf-section pf-section--process">
+  <div class="pf-container">
+    <SectionTitle lines={['The', 'process']} count="(3)" />
 
-    <ol class="pf-process-grid">
+    <div class="pf-project-list">
       {steps.map((step) => (
-        <li class="pf-process-card">
-          <span class="pf-process-number">{step.number}</span>
-          <h3 class="pf-process-title">{step.title}</h3>
-          <p class="pf-process-desc">{step.description}</p>
-        </li>
+        <article class="pf-project-card" data-process-card>
+          <div class="pf-project-card-inner">
+            <span class="pf-project-num">{step.number}</span>
+            <div class="pf-project-body">
+              <h3 class="pf-project-title">{step.title}</h3>
+              <div class="pf-project-meta">
+                <div class="pf-project-meta-block">
+                  <p class="pf-project-meta-label">Focus</p>
+                  <p class="pf-project-meta-value">{step.focus}</p>
+                </div>
+                <div class="pf-project-meta-block pf-project-meta-block--wide">
+                  <p class="pf-project-meta-label">About</p>
+                  <p class="pf-project-meta-value">{step.description}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
       ))}
-    </ol>
-
-    <div class="pf-section-cta">
-      <a href="#contact" class="pf-btn pf-btn--primary pf-btn--lg">Start learning</a>
     </div>
   </div>
 </section>

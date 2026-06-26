@@ -1,0 +1,17 @@
+---
+interface Props {
+  text: string;
+  separator?: string;
+  class?: string;
+}
+
+const { text, separator = ' · ', class: className = '' } = Astro.props;
+const track = Array.from({ length: 8 }, () => text).join(separator);
+---
+
+<div class:list={['pf-marquee', className]} aria-hidden="true">
+  <div class="pf-marquee-track" data-marquee-track>
+    <span>{track}</span>
+    <span>{track}</span>
+  </div>
+</div>

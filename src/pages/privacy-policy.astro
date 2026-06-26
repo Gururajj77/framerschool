@@ -1,0 +1,58 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { CONTACT_EMAIL } from '../config';
+
+const lastUpdated = '27 June 2026';
+---
+
+<LegalLayout
+  title="Privacy Policy"
+  description="How FramerSchool collects, uses, and protects your personal data."
+>
+  <p class="pf-legal-meta">Last updated: {lastUpdated}</p>
+
+  <p>
+    FramerSchool ("we", "us", "our") respects your privacy. This policy explains what information we
+    collect when you visit our website, contact us, or use our programs and tools, and how we use it.
+  </p>
+
+  <h2>Information we collect</h2>
+  <ul>
+    <li>Contact details you provide (such as name and email) when you reach out or sign up</li>
+    <li>Usage data such as pages visited, referral source, and device/browser type</li>
+    <li>Communications you send us, including support requests</li>
+  </ul>
+
+  <h2>How we use information</h2>
+  <ul>
+    <li>To respond to inquiries and provide programs or services you request</li>
+    <li>To improve our website, content, and offerings</li>
+    <li>To send updates you have opted into; you may unsubscribe at any time</li>
+    <li>To comply with legal obligations and protect our rights</li>
+  </ul>
+
+  <h2>Sharing</h2>
+  <p>
+    We do not sell your personal data. We may share information with service providers who help us
+    operate the site (hosting, email, analytics) under appropriate confidentiality obligations, or
+    when required by law.
+  </p>
+
+  <h2>Retention and security</h2>
+  <p>
+    We retain data only as long as needed for the purposes above. We use reasonable technical and
+    organizational measures to protect information, but no method of transmission over the internet
+    is completely secure.
+  </p>
+
+  <h2>Your rights</h2>
+  <p>
+    Depending on your location, you may have rights to access, correct, delete, or restrict processing
+    of your personal data. Contact us to make a request.
+  </p>
+
+  <h2>Contact</h2>
+  <p>
+    Privacy questions: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+  </p>
+</LegalLayout>

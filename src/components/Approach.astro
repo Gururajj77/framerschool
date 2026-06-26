@@ -1,61 +1,86 @@
 ---
-const othersDo = [
-  'Copy templates page for page',
-  'Add sections without a reason',
-  'Focus on visuals before structure',
-  'Build without understanding the business',
+import Marquee from './Marquee.astro';
+
+const principles = [
+  {
+    index: '.01',
+    label: 'Structure before polish',
+    items: ['Pick layout that fits the business', 'Hierarchy before decoration', 'Every section earns its place'],
+  },
+  {
+    index: '.02',
+    label: 'Judgment over copying',
+    items: ['Templates are a starting point', 'Cut what does not serve the client', 'Adapt with intent, not guesswork'],
+  },
 ];
 
-const weFocus = [
-  'Where the business is today',
-  'What the site needs to do',
-  'Structure and page flow first',
-  'What to keep and what to cut',
+const contrasts = [
+  {
+    index: '.03',
+    label: 'The old way',
+    items: ['Copy templates page for page', 'Add sections without a reason', 'Focus on visuals before structure'],
+    variant: 'old',
+  },
+  {
+    index: '.04',
+    label: 'The FramerSchool way',
+    items: ['Pick structure that fits the business', 'Cut what does not serve the client', 'Ship sites you can sell with confidence'],
+    variant: 'new',
+  },
 ];
 ---
 
-<section id="approach" class="pf-band">
-  <div class="pf-container pf-section-block">
-    <div class="pf-section-head pf-section-head--center">
-      <p class="pf-eyebrow">We are different</p>
-      <h2 class="pf-section-title">Most people build Framer sites backwards</h2>
-      <p class="pf-section-lead">
-        Templates are a shortcut, not the answer. The skill is knowing what to change.
+<section id="approach" class="pf-section pf-approach-oberon">
+  <div class="pf-approach-accent" aria-hidden="true"></div>
+
+  <div class="pf-container pf-approach-oberon-inner">
+    <aside class="pf-approach-sidebar" data-approach-sidebar>
+      <span class="pf-approach-tag">04 Approach</span>
+      <h2 class="pf-approach-oberon-title">Why structure first</h2>
+      <p class="pf-approach-sidebar-lead">
+        Templates are a shortcut, not the answer. The skill is knowing what to change —
+        structure first, polish second, delivery with confidence.
       </p>
-    </div>
+      <div class="pf-approach-sidebar-foot">
+        <span class="pf-approach-foot-label">FramerSchool</span>
+        <p class="pf-approach-foot-copy">We teach judgment — not page-for-page cloning.</p>
+      </div>
+    </aside>
 
-    <div class="pf-compare-grid">
-      <article class="pf-compare-card pf-compare-card--old">
-        <div class="pf-compare-card-head">
-          <h3 class="pf-compare-card-label">Old way</h3>
-          <p class="pf-compare-card-sub">Manual, inconsistent client delivery</p>
-        </div>
-        <ul class="pf-compare-list">
-          {othersDo.map((item) => (
-            <li>
-              <span class="pf-compare-marker pf-compare-marker--bad" aria-hidden="true">×</span>
-              {item}
-            </li>
-          ))}
-        </ul>
-        <p class="pf-compare-outcome pf-compare-outcome--bad">Slow revisions · hard to justify pricing</p>
-      </article>
+    <div class="pf-approach-bento" data-approach-grid>
+      {principles.map((block) => (
+        <article class="pf-approach-cell" data-approach-cell>
+          <span class="pf-approach-cell-index">{block.index}</span>
+          <h3 class="pf-approach-cell-label">{block.label}</h3>
+          <ul class="pf-approach-cell-list">
+            {block.items.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </article>
+      ))}
 
-      <article class="pf-compare-card pf-compare-card--new">
-        <div class="pf-compare-card-head">
-          <h3 class="pf-compare-card-label">FramerSchool way</h3>
-          <p class="pf-compare-card-sub">Structure-first, client-ready delivery</p>
-        </div>
-        <ul class="pf-compare-list">
-          {weFocus.map((item) => (
-            <li>
-              <span class="pf-compare-marker pf-compare-marker--good" aria-hidden="true">✓</span>
-              {item}
-            </li>
-          ))}
-        </ul>
-        <p class="pf-compare-outcome pf-compare-outcome--good">Clear decisions · sites you can sell</p>
+      {contrasts.map((block) => (
+        <article class:list={['pf-approach-cell', `pf-approach-cell--${block.variant}`]} data-approach-cell>
+          <span class="pf-approach-cell-index">{block.index}</span>
+          <h3 class="pf-approach-cell-label">{block.label}</h3>
+          <ul class="pf-approach-cell-list">
+            {block.items.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </article>
+      ))}
+
+      <article class="pf-approach-cell pf-approach-cell--quote" data-approach-cell>
+        <span class="pf-approach-cell-index">+</span>
+        <p class="pf-approach-quote">
+          Most people build Framer sites backwards. We fix that.
+        </p>
+        <span class="pf-approach-quote-tag">+ much more</span>
       </article>
     </div>
   </div>
+
+  <Marquee text="Structure first" separator=" · " class="pf-marquee--statement" />
 </section>

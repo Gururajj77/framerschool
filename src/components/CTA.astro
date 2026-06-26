@@ -1,22 +1,23 @@
 ---
 import { CONTACT_EMAIL } from '../config';
+import Marquee from './Marquee.astro';
 ---
 
-<section id="contact" class="pf-band pf-band--cta">
-  <div class="pf-container">
-    <div class="pf-cta-panel">
-      <div class="pf-cta-copy">
-        <p class="pf-eyebrow">Get in touch</p>
-        <h2 class="pf-cta-title">Ready to build better client sites?</h2>
-        <p class="pf-cta-desc">
-          Reach out to learn about programs, coaching, or how FramerSchool can help you ship
-          client-ready Framer websites.
-        </p>
-      </div>
-      <div class="pf-cta-actions">
-        <a href={`mailto:${CONTACT_EMAIL}`} class="pf-btn pf-btn--primary pf-btn--lg">Email us</a>
-        <a href="#features" class="pf-btn pf-btn--secondary pf-btn--lg">See programs</a>
-      </div>
+<section id="contact" class="pf-section pf-section--contact">
+  <div class="pf-container pf-contact-inner">
+    <p class="pf-contact-kicker">Want to</p>
+    <h2 class="pf-contact-title">
+      <span>reach</span>
+      <span>out?</span>
+    </h2>
+    <a href={`mailto:${CONTACT_EMAIL}`} class="pf-contact-email" data-cta-panel>
+      {CONTACT_EMAIL}
+    </a>
+    <div class="pf-contact-actions">
+      <a href={`mailto:${CONTACT_EMAIL}`} class="pf-btn pf-btn--primary pf-btn--lg">Email us</a>
+      <a href="#features" class="pf-btn pf-btn--ghost pf-btn--lg">See programs</a>
     </div>
   </div>
+
+  <Marquee text="Get in touch" class="pf-marquee--contact" />
 </section>

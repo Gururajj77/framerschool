@@ -1,39 +1,48 @@
-<section id="home" class="pf-hero">
-  <div class="pf-container pf-hero-inner">
-    <div class="pf-hero-copy">
-      <p class="pf-hero-trust">
-        <span class="pf-hero-trust-dot" aria-hidden="true"></span>
-        Built for Framer freelancers and agencies
-      </p>
-      <h1 class="pf-hero-title">
-        Ship client-ready Framer sites
-        <span class="pf-hero-title-accent">without copying templates page for page</span>
-      </h1>
-      <p class="pf-hero-lead">
-        FramerSchool teaches you how to pick the right structure, cut what does not fit, and deliver
-        sites clients will pay for — with judgment, not guesswork.
-      </p>
-      <div class="pf-hero-actions">
-        <a href="#contact" class="pf-btn pf-btn--primary pf-btn--lg">Get in touch</a>
-        <a href="#process" class="pf-btn pf-btn--secondary pf-btn--lg">See how it works</a>
-      </div>
-      <p class="pf-hero-note">Programs, coaching, and tools for serious Framer builders.</p>
+---
+import Marquee from './Marquee.astro';
+
+const stats = [
+  { value: 'Structure before polish', detail: 'Pick the right layout first' },
+  { value: '3-step delivery', detail: 'From template to client-ready' },
+  { value: 'Ship with confidence', detail: 'Judgment, not guesswork' },
+];
+---
+
+<section id="home" class="pf-hero pf-hero--portfolio">
+  <div class="pf-container pf-hero-oberon">
+    <div class="pf-hero-intro-row" data-animate="trust">
+      <span class="pf-hero-intro-tag">01 Intro</span>
+      <p class="pf-hero-kicker">Built for Framer freelancers and agencies</p>
     </div>
 
-    <div class="pf-hero-visual" aria-hidden="true">
-      <div class="pf-hero-card pf-hero-card--primary">
-        <p class="pf-hero-card-label">Client brief</p>
-        <p class="pf-hero-card-title">Local studio needs a site that converts</p>
-        <ul class="pf-hero-card-list">
-          <li>Pick site type that fits the business</li>
-          <li>Strip sections that add noise</li>
-          <li>Shape hierarchy around one goal</li>
-        </ul>
-      </div>
-      <div class="pf-hero-card pf-hero-card--secondary">
-        <p class="pf-hero-card-stat">3×</p>
-        <p class="pf-hero-card-caption">faster delivery when structure comes first</p>
-      </div>
+    <h1 class="pf-hero-stack" aria-label="Ship Framer sites clients pay for">
+      <span class="pf-hero-stack-line" data-animate="line">Ship</span>
+      <span class="pf-hero-stack-line pf-hero-stack-line--accent" data-animate="line">Framer</span>
+      <span class="pf-hero-stack-line" data-animate="line">Sites</span>
+    </h1>
+
+    <p class="pf-hero-sub" data-animate="lead">
+      Senior-level structure and delivery — pick the right template, cut what does not fit,
+      and ship client-ready Framer websites with judgment, not guesswork.
+    </p>
+
+    <div class="pf-hero-actions" data-animate="actions">
+      <a href="#contact" class="pf-btn pf-btn--primary pf-btn--lg">Get in touch</a>
+      <a href="#process" class="pf-btn pf-btn--ghost pf-btn--lg">See the process</a>
+    </div>
+
+    <div class="pf-hero-stats" data-animate="stats" aria-label="Highlights">
+      {stats.map((stat, index) => (
+        <>
+          {index > 0 && <span class="pf-hero-stats-arrow" aria-hidden="true">→</span>}
+          <div class="pf-hero-stat">
+            <p class="pf-hero-stat-value">{stat.value}</p>
+            <p class="pf-hero-stat-detail">{stat.detail}</p>
+          </div>
+        </>
+      ))}
     </div>
   </div>
+
+  <Marquee text="Get in touch" class="pf-marquee--hero" />
 </section>

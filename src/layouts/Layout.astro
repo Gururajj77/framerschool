@@ -32,100 +32,34 @@ const {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500;600&family=Syne:wght@500;600;700;800&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
+    <div class="pf-ambient" aria-hidden="true">
+      <div class="pf-ambient-orb pf-ambient-orb--brand"></div>
+      <div class="pf-ambient-orb pf-ambient-orb--cool"></div>
+    </div>
+
+    <div class="pf-structure-grid" data-structure-grid aria-hidden="true"></div>
+
+    <div class="pf-cursor" data-cursor aria-hidden="true">
+      <div class="pf-cursor-frame" data-cursor-frame>
+        <span class="pf-cursor-line pf-cursor-line--h"></span>
+        <span class="pf-cursor-line pf-cursor-line--v"></span>
+        <span class="pf-cursor-corner pf-cursor-corner--tl"></span>
+        <span class="pf-cursor-corner pf-cursor-corner--tr"></span>
+        <span class="pf-cursor-corner pf-cursor-corner--bl"></span>
+        <span class="pf-cursor-corner pf-cursor-corner--br"></span>
+      </div>
+      <span class="pf-cursor-dot"></span>
+    </div>
+
     <slot />
+
     <script>
-      const setFaqOpen = (item, open) => {
-        item.classList.toggle('open', open);
-        item.querySelector('[data-faq-toggle]')?.setAttribute('aria-expanded', open ? 'true' : 'false');
-      };
-
-      document.querySelectorAll('[data-faq-toggle]').forEach((button) => {
-        button.addEventListener('click', () => {
-          const item = button.closest('[data-faq-item]');
-          if (!item) return;
-          const isOpen = item.classList.contains('open');
-
-          document.querySelectorAll('[data-faq-item]').forEach((el) => setFaqOpen(el, false));
-
-          if (!isOpen) setFaqOpen(item, true);
-        });
-      });
-
-      const topbar = document.querySelector('[data-topbar]');
-      const toggle = document.querySelector('[data-nav-toggle]');
-      toggle?.addEventListener('click', () => {
-        const open = topbar?.classList.toggle('nav-open') ?? false;
-        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-      });
-
-      const navLinks = document.querySelectorAll('.pf-site-nav-link');
-      const sectionLinks = [...navLinks]
-        .map((link) => {
-          const href = link.getAttribute('href') ?? '';
-          const id = href.startsWith('#') ? href.slice(1) : null;
-          const section = id ? document.getElementById(id) : null;
-          return section ? { link, section } : null;
-        })
-        .filter(Boolean)
-        .sort((a, b) => a.section.offsetTop - b.section.offsetTop);
-
-      const setActiveLink = (link) => {
-        navLinks.forEach((navLink) => {
-          navLink.classList.remove('is-active');
-          navLink.removeAttribute('aria-current');
-        });
-        if (!link) return;
-        link.classList.add('is-active');
-        link.setAttribute('aria-current', 'page');
-      };
-
-      const setActiveNav = () => {
-        const offset = (topbar?.getBoundingClientRect().height ?? 72) + 24;
-        let active = null;
-
-        for (const entry of sectionLinks) {
-          if (!entry) continue;
-          const rect = entry.section.getBoundingClientRect();
-          if (rect.top <= offset && rect.bottom > offset) {
-            active = entry;
-            break;
-          }
-        }
-
-        if (!active) {
-          for (const entry of sectionLinks) {
-            if (!entry) continue;
-            if (entry.section.getBoundingClientRect().top <= offset) active = entry;
-          }
-        }
-
-        setActiveLink(active?.link ?? sectionLinks[0]?.link ?? null);
-      };
-
-      const onScroll = () => {
-        topbar?.classList.toggle('is-scrolled', window.scrollY > 8);
-        setActiveNav();
-      };
-
-      setActiveNav();
-      window.addEventListener('scroll', onScroll, { passive: true });
-
-      navLinks.forEach((link) => {
-        link.addEventListener('click', () => {
-          topbar?.classList.remove('nav-open');
-          toggle?.setAttribute('aria-expanded', 'false');
-          toggle?.setAttribute('aria-label', 'Open menu');
-
-          const href = link.getAttribute('href') ?? '';
-          if (href.startsWith('#')) setActiveLink(link);
-        });
-      });
+      import '../scripts/motion/init.ts';
     </script>
   </body>
 </html>

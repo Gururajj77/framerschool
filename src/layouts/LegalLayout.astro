@@ -1,0 +1,24 @@
+---
+import Layout from './Layout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<Layout title={`${title} — FramerSchool`} description={description}>
+  <div class="pf-site">
+    <main class="pf-legal-page">
+      <div class="pf-container pf-legal-page-inner">
+        <a href="/" class="pf-legal-back">&larr; Back to home</a>
+        <h1 class="pf-legal-title">{title}</h1>
+        <div class="pf-legal-content">
+          <slot />
+        </div>
+      </div>
+    </main>
+  </div>
+</Layout>

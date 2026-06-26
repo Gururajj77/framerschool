@@ -1,0 +1,540 @@
+/* FramerSchool — fluid Framer-style visual layer */
+
+/* ——— Ambient background ——— */
+
+.pf-ambient {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.pf-ambient-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.55;
+    animation: pf-orb-drift 18s ease-in-out infinite alternate;
+}
+
+.pf-ambient-orb--brand {
+    width: min(55vw, 520px);
+    height: min(55vw, 520px);
+    top: -12%;
+    right: -8%;
+    background: radial-gradient(circle, rgba(224, 27, 36, 0.35), transparent 68%);
+}
+
+.pf-ambient-orb--cool {
+    width: min(45vw, 420px);
+    height: min(45vw, 420px);
+    bottom: 10%;
+    left: -10%;
+    background: radial-gradient(circle, rgba(96, 165, 250, 0.12), transparent 70%);
+    animation-delay: -6s;
+}
+
+@keyframes pf-orb-drift {
+    from { transform: translate3d(0, 0, 0) scale(1); }
+    to { transform: translate3d(2%, 3%, 0) scale(1.08); }
+}
+
+/* ——— Layout fluidity ——— */
+
+.pf-container {
+    max-width: var(--pf-shell-width);
+}
+
+.pf-band {
+    padding-block: clamp(5rem, 12vw, 8rem);
+    position: relative;
+}
+
+.pf-band--flow {
+    background: transparent;
+    border: none;
+}
+
+.pf-band--split {
+    padding-inline: 0;
+}
+
+.pf-section-head--wide,
+.pf-section-title--wide {
+    max-width: none;
+}
+
+.pf-section-title--wide {
+    font-size: clamp(2.25rem, 5.5vw, 3.75rem);
+    letter-spacing: -0.045em;
+    line-height: 1.05;
+}
+
+.pf-section-head {
+    max-width: 42rem;
+}
+
+.pf-section-head--center {
+    text-align: center;
+    align-items: center;
+    margin-inline: auto;
+}
+
+.pf-section-head--center .pf-section-lead {
+    margin-inline: auto;
+}
+
+/* ——— Floating nav ——— */
+
+.pf-topbar--float {
+    position: fixed;
+    top: 1rem;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    height: auto;
+    border: none;
+    background: transparent;
+    backdrop-filter: none;
+    pointer-events: none;
+}
+
+.pf-topbar-pill {
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    width: min(calc(100% - 2rem), 920px);
+    margin-inline: auto;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    border: 1px solid var(--pf-glass-border);
+    border-radius: 999px;
+    background: var(--pf-glass-bg);
+    backdrop-filter: blur(20px) saturate(1.4);
+    -webkit-backdrop-filter: blur(20px) saturate(1.4);
+    box-shadow: var(--pf-glass-shadow);
+}
+
+.pf-topbar--float.is-scrolled .pf-topbar-pill {
+    border-color: var(--pf-border-strong);
+    box-shadow: var(--pf-shadow-md);
+}
+
+.pf-topbar--float .pf-site-nav-link {
+    border-radius: 999px;
+    padding: 0.45rem 0.7rem;
+    font-size: 0.8125rem;
+}
+
+.pf-topbar--float .pf-site-nav-link.is-active {
+    background: var(--pf-brand-muted);
+}
+
+/* ——— Hero stage ——— */
+
+.pf-hero--stage {
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    padding-block: calc(var(--pf-topbar-height) + 3rem) clamp(3rem, 8vw, 5rem);
+    border: none;
+    overflow: hidden;
+}
+
+.pf-hero-stage {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+    width: 100%;
+}
+
+.pf-hero-title {
+    font-size: clamp(2.75rem, 6.5vw, 4.75rem);
+    letter-spacing: -0.05em;
+    line-height: 1.02;
+}
+
+.pf-hero-title-line {
+    display: block;
+}
+
+.pf-hero-title-gradient {
+    background: linear-gradient(135deg, #ffffff 0%, #ffc4c7 45%, var(--pf-brand) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.pf-hero-title-muted {
+    margin-top: 0.35rem;
+    font-size: 0.42em;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    color: var(--pf-text-secondary);
+    background: none;
+}
+
+.pf-hero-lead {
+    margin-top: 1.5rem;
+    font-size: clamp(1.0625rem, 1.8vw, 1.1875rem);
+    max-width: 38ch;
+    line-height: 1.65;
+}
+
+.pf-hero-actions {
+    margin-top: 2rem;
+}
+
+.pf-hero-float {
+    position: relative;
+    min-height: 26rem;
+    perspective: 1200px;
+    transform-style: preserve-3d;
+}
+
+.pf-hero-glass {
+    position: absolute;
+    border: 1px solid var(--pf-glass-border);
+    border-radius: var(--pf-radius-2xl);
+    background: var(--pf-glass-bg);
+    backdrop-filter: blur(24px) saturate(1.35);
+    -webkit-backdrop-filter: blur(24px) saturate(1.35);
+    box-shadow: var(--pf-glass-shadow);
+}
+
+.pf-hero-glass--main {
+    inset: 8% 0 12% 12%;
+    padding: 1.5rem 1.5rem 1.75rem;
+    transform: rotateY(-8deg) rotateX(4deg);
+}
+
+.pf-hero-glass--stat {
+    left: 0;
+    bottom: 0;
+    width: min(14rem, 46%);
+    padding: 1.25rem 1.35rem;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
+    transform: rotateY(-4deg) rotateX(2deg) translateZ(40px);
+}
+
+.pf-hero-glass-chrome {
+    display: flex;
+    gap: 0.35rem;
+    margin-bottom: 1rem;
+}
+
+.pf-hero-glass-chrome span {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 999px;
+    background: var(--pf-border-strong);
+}
+
+.pf-hero-glass-chrome span:first-child {
+    background: var(--pf-brand);
+}
+
+/* ——— Process horizontal cards ——— */
+
+.pf-process-scroll {
+    display: flex;
+    gap: 1.25rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--pf-gutter);
+    padding-block: 0.5rem 1rem;
+    margin-inline: calc(var(--pf-gutter) * -1);
+    padding-inline: var(--pf-gutter);
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.pf-process-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.pf-process-card {
+    flex: 0 0 min(340px, 82vw);
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-height: 16rem;
+    padding: clamp(1.5rem, 3vw, 2rem);
+    border: 1px solid var(--pf-glass-border);
+    border-radius: var(--pf-radius-2xl);
+    background: var(--pf-glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    transition:
+        transform 0.4s var(--pf-motion-ease),
+        border-color 0.4s var(--pf-motion-ease),
+        box-shadow 0.4s var(--pf-motion-ease);
+}
+
+.pf-process-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--pf-brand-subtle);
+    box-shadow: var(--pf-shadow-lg);
+}
+
+.pf-process-card-num {
+    font-family: var(--pf-font-display);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--pf-brand);
+}
+
+.pf-process-title {
+    margin: 0;
+    font-size: clamp(1.375rem, 2.5vw, 1.75rem);
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+}
+
+.pf-process-desc {
+    margin: 0;
+    font-size: 1.0625rem;
+    color: var(--pf-text-secondary);
+    line-height: 1.6;
+}
+
+/* ——— Approach split ——— */
+
+.pf-approach-split {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    min-height: min(70vh, 640px);
+    margin-top: clamp(2rem, 5vw, 3.5rem);
+}
+
+.pf-approach-half {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: clamp(2.5rem, 6vw, 4.5rem) clamp(2rem, 5vw, 4rem);
+}
+
+.pf-approach-half--old {
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.03), transparent 55%), var(--pf-bg-subtle);
+    border-top: 1px solid var(--pf-border-subtle);
+    border-bottom: 1px solid var(--pf-border-subtle);
+}
+
+.pf-approach-half--new {
+    background:
+        radial-gradient(ellipse 80% 80% at 100% 0%, var(--pf-brand-muted), transparent 55%),
+        var(--pf-bg-elevated);
+    border-top: 1px solid var(--pf-brand-subtle);
+    border-bottom: 1px solid var(--pf-brand-subtle);
+}
+
+.pf-approach-half-title {
+    margin: 0;
+    font-family: var(--pf-font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+}
+
+.pf-approach-half--old .pf-approach-half-title {
+    color: var(--pf-text-tertiary);
+}
+
+.pf-approach-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 1rem;
+}
+
+.pf-approach-list li {
+    font-size: clamp(1.0625rem, 1.8vw, 1.25rem);
+    line-height: 1.5;
+    color: var(--pf-text-secondary);
+    padding-left: 1.25rem;
+    position: relative;
+}
+
+.pf-approach-half--old .pf-approach-list li::before {
+    content: "×";
+    position: absolute;
+    left: 0;
+    color: var(--pf-text-tertiary);
+    font-weight: 600;
+}
+
+.pf-approach-half--new .pf-approach-list li {
+    color: var(--pf-text);
+}
+
+.pf-approach-half--new .pf-approach-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--pf-brand);
+    font-weight: 600;
+}
+
+.pf-approach-tag {
+    display: inline-block;
+    font-family: var(--pf-font-display);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.pf-approach-tag--old {
+    color: var(--pf-text-tertiary);
+}
+
+.pf-approach-tag--new {
+    color: var(--pf-brand);
+}
+
+/* ——— Bento programs ——— */
+
+.pf-bento {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto auto;
+    gap: 1.25rem;
+}
+
+.pf-bento-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: clamp(1.5rem, 3vw, 2rem);
+    border: 1px solid var(--pf-glass-border);
+    border-radius: var(--pf-radius-2xl);
+    background: var(--pf-glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    transition:
+        transform 0.45s var(--pf-motion-ease),
+        border-color 0.45s var(--pf-motion-ease),
+        box-shadow 0.45s var(--pf-motion-ease);
+}
+
+.pf-bento-card:hover {
+    transform: translateY(-4px) scale(1.01);
+    border-color: var(--pf-brand-subtle);
+    box-shadow: var(--pf-shadow-lg);
+}
+
+.pf-bento-card--featured {
+    grid-row: span 2;
+    justify-content: flex-end;
+    min-height: 100%;
+    background:
+        radial-gradient(ellipse 90% 70% at 0% 0%, var(--pf-brand-muted), transparent 60%),
+        var(--pf-glass-bg);
+}
+
+.pf-bento-card--featured .pf-program-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+/* ——— Glass buttons ——— */
+
+.pf-btn--ghost {
+    border: 1px solid var(--pf-glass-border);
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(8px);
+}
+
+.pf-btn--ghost:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--pf-border-strong);
+}
+
+/* ——— Main offset for fixed nav ——— */
+
+.pf-site main {
+    padding-top: 0;
+}
+
+/* ——— Responsive ——— */
+
+@media (max-width: 960px) {
+    .pf-hero-stage {
+        grid-template-columns: 1fr;
+    }
+
+    .pf-hero-float {
+        min-height: 20rem;
+    }
+
+    .pf-hero-glass--main {
+        inset: 0 0 18% 0;
+        transform: none;
+    }
+
+    .pf-hero-glass--stat {
+        width: 11rem;
+        transform: none;
+    }
+
+    .pf-approach-split {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .pf-bento {
+        grid-template-columns: 1fr;
+    }
+
+    .pf-bento-card--featured {
+        grid-row: auto;
+    }
+
+    .pf-topbar-pill {
+        width: calc(100% - 1.5rem);
+    }
+}
+
+@media (max-width: 960px) {
+    .pf-topbar--float .pf-site-nav {
+        display: none;
+        position: absolute;
+        top: calc(100% + 0.5rem);
+        left: 0;
+        right: 0;
+    }
+
+    .pf-topbar--float.nav-open .pf-site-nav {
+        display: block;
+    }
+
+    .pf-topbar--float .pf-site-nav-track {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0.5rem;
+        border: 1px solid var(--pf-glass-border);
+        border-radius: var(--pf-radius-lg);
+        background: var(--pf-glass-bg);
+        backdrop-filter: blur(20px);
+    }
+
+    .pf-topbar--float {
+        position: sticky;
+        top: 0;
+        padding: 0.75rem;
+        background: var(--pf-topbar-bg);
+        backdrop-filter: blur(16px);
+    }
+
+    .pf-topbar-pill {
+        position: relative;
+    }
+}

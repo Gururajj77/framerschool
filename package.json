@@ -13,7 +13,8 @@
     "deploy": "npm run build && wrangler pages deploy dist --project-name=framerschool --branch=main"
   },
   "dependencies": {
-    "astro": "^6.4.6"
+    "astro": "^6.4.6",
+    "gsap": "^3.15.0"
   },
   "devDependencies": {
     "wrangler": "^4.100.0"

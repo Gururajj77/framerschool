@@ -2,9 +2,9 @@
 import KnotLogo from './KnotLogo.astro';
 ---
 
-<div class="pf-hero-bridge" aria-label="KnotCMS ties your data source to Framer CMS">
+<div class="pf-hero-bridge" data-knot-bridge aria-label="KnotCMS ties your data source to Framer CMS">
   <div class="pf-hero-bridge-visual">
-    <figure class="pf-hero-bridge-panel pf-hero-bridge-panel--source">
+    <figure class="pf-hero-bridge-panel pf-hero-bridge-panel--source" data-knot-source>
       <div class="pf-hero-bridge-shot">
         <span class="pf-hero-bridge-port pf-hero-bridge-port--out" aria-hidden="true"></span>
         <img
@@ -18,17 +18,19 @@ import KnotLogo from './KnotLogo.astro';
       </div>
     </figure>
 
-    <div class="pf-hero-bridge-hub" aria-hidden="true">
+    <div class="pf-hero-bridge-hub" data-knot-hub aria-hidden="true">
       <span class="pf-hero-bridge-track">
         <span class="pf-hero-bridge-flow pf-hero-bridge-flow--left"></span>
         <span class="pf-hero-bridge-flow pf-hero-bridge-flow--right"></span>
+        <span class="pf-flow-particle" data-flow-particle data-flow-left></span>
+        <span class="pf-flow-particle" data-flow-particle data-flow-right></span>
       </span>
       <div class="pf-hero-bridge-knot">
         <KnotLogo size={64} />
       </div>
     </div>
 
-    <figure class="pf-hero-bridge-panel pf-hero-bridge-panel--dest">
+    <figure class="pf-hero-bridge-panel pf-hero-bridge-panel--dest" data-knot-dest>
       <div class="pf-hero-bridge-shot pf-hero-bridge-shot--dark">
         <span class="pf-hero-bridge-port pf-hero-bridge-port--in" aria-hidden="true"></span>
         <img

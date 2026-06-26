@@ -1,52 +1,68 @@
 ---
-import { KNOTCMS_URL } from '../config';
 import Wordmark from './Wordmark.astro';
+import { CONTACT_EMAIL } from '../config';
 
 const links = [
   { href: '#process', label: 'Process' },
   { href: '#features', label: 'Programs' },
   { href: '#approach', label: 'Approach' },
   { href: '#knotcms', label: 'KnotCMS' },
-  { href: '#faq', label: 'FAQ' },
+  { href: '#contact', label: 'Contact' },
 ];
 ---
 
-<header class="pf-topbar" data-topbar>
-  <div class="pf-container pf-topbar-shell">
-    <a href="#home" class="pf-topbar-brand" aria-label="FramerSchool home">
-      <Wordmark size="md" />
+<header class="pf-nav pf-nav--oberon" data-topbar>
+  <div class="pf-nav-rail">
+    <a href="#home" class="pf-nav-brand" aria-label="FramerSchool home">
+      <Wordmark size="sm" />
     </a>
 
-    <nav id="site-nav" class="pf-site-nav" aria-label="Main" data-site-nav>
-      <div class="pf-site-nav-track">
-        {links.map((link) => (
-          <a href={link.href} class="pf-site-nav-link">{link.label}</a>
-        ))}
-        <div class="pf-site-nav-mobile-actions">
-          <a href={KNOTCMS_URL} class="pf-topbar-login pf-topbar-login--mobile" target="_blank" rel="noopener noreferrer">
-            KnotCMS
-          </a>
-          <a href="#contact" class="pf-btn pf-btn--primary pf-btn--sm">Get in touch</a>
-        </div>
-      </div>
+    <p class="pf-nav-mobile-section" data-nav-mobile-label aria-live="polite">Process</p>
+
+    <nav class="pf-nav-index" id="site-nav" aria-label="Main" data-site-nav>
+      {links.map((link, index) => (
+        <a href={link.href} class="pf-nav-index-link" data-nav-label={link.label}>
+          <span class="pf-nav-index-num">{String(index + 1).padStart(2, '0')}</span>
+          <span class="pf-nav-index-label">{link.label}</span>
+        </a>
+      ))}
     </nav>
 
-    <div class="pf-topbar-actions">
-      <a href={KNOTCMS_URL} class="pf-topbar-login" target="_blank" rel="noopener noreferrer">KnotCMS</a>
-      <a href="#contact" class="pf-btn pf-btn--primary pf-btn--sm pf-topbar-cta">Get in touch</a>
+    <div class="pf-nav-end">
+      <a href={`mailto:${CONTACT_EMAIL}`} class="pf-nav-mail" data-cursor-interactive>
+        Email
+      </a>
+      <a href="#contact" class="pf-nav-cta" data-cursor-interactive>
+        Get in touch
+      </a>
       <button
-        class="pf-site-nav-toggle"
+        class="pf-nav-tab"
         data-nav-toggle
         type="button"
         aria-label="Open menu"
         aria-expanded="false"
-        aria-controls="site-nav"
+        aria-controls="nav-overlay"
       >
-        <span class="pf-site-nav-toggle-icon" aria-hidden="true">
-          <span></span>
-          <span></span>
-        </span>
+        <span class="pf-nav-tab-bar pf-nav-tab-bar--a" aria-hidden="true"></span>
+        <span class="pf-nav-tab-bar pf-nav-tab-bar--b" aria-hidden="true"></span>
       </button>
     </div>
   </div>
 </header>
+
+<div class="pf-nav-overlay" id="nav-overlay" data-nav-overlay aria-hidden="true">
+  <div class="pf-nav-overlay-inner">
+    <div class="pf-nav-overlay-grid">
+      {links.map((link, index) => (
+        <a href={link.href} class="pf-nav-overlay-link" data-nav-overlay-link>
+          <span class="pf-nav-overlay-num">{String(index + 1).padStart(2, '0')}</span>
+          <span class="pf-nav-overlay-label">{link.label}</span>
+        </a>
+      ))}
+      <a href="#home" class="pf-nav-overlay-link pf-nav-overlay-link--home" data-nav-overlay-link>
+        <span class="pf-nav-overlay-num">↗</span>
+        <span class="pf-nav-overlay-label">Back to top</span>
+      </a>
+    </div>
+  </div>
+</div>

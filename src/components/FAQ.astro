@@ -23,25 +23,25 @@ const faqs = [
 ];
 ---
 
-<section id="faq" class="pf-band pf-band--muted">
-  <div class="pf-container pf-faq-layout">
-    <div class="pf-faq-intro">
-      <p class="pf-eyebrow">FAQ</p>
-      <h2 class="pf-section-title">Common questions</h2>
-      <p class="pf-section-lead">
+<section id="faq" class="pf-section pf-section--faq">
+  <div class="pf-container">
+    <header class="pf-faq-header" data-faq-header>
+      <p class="pf-faq-kicker">FAQ</p>
+      <h2 class="pf-faq-title">Common questions</h2>
+      <p class="pf-faq-lead">
         Quick answers about programs and how FramerSchool works.
       </p>
-    </div>
+    </header>
 
     <div class="pf-faq-list" role="list">
-      {faqs.map((faq, index) => (
-        <div class:list={['pf-faq-item', index === 0 && 'open']} data-faq-item role="listitem">
+      {faqs.map((faq) => (
+        <div class="pf-faq-item" data-faq-item role="listitem">
           <h3 class="pf-faq-heading">
             <button
               class="pf-faq-trigger"
               data-faq-toggle
               type="button"
-              aria-expanded={index === 0 ? 'true' : 'false'}
+              aria-expanded="false"
             >
               <span class="pf-faq-question-text">{faq.question}</span>
               <span class="pf-faq-toggle" aria-hidden="true">

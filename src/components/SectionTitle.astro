@@ -1,0 +1,16 @@
+---
+interface Props {
+  lines: string[];
+  count?: string;
+  id?: string;
+}
+
+const { lines, count, id } = Astro.props;
+---
+
+<div class="pf-display-title" id={id}>
+  {lines.map((line) => (
+    <span class="pf-display-title-line">{line}</span>
+  ))}
+  {count && <span class="pf-display-title-count">{count}</span>}
+</div>

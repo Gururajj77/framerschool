@@ -1,0 +1,55 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { CONTACT_EMAIL } from '../config';
+
+const lastUpdated = '27 June 2026';
+---
+
+<LegalLayout
+  title="Terms & Conditions"
+  description="Terms governing use of the FramerSchool website and programs."
+>
+  <p class="pf-legal-meta">Last updated: {lastUpdated}</p>
+
+  <p>
+    By accessing or using the FramerSchool website and related programs (the "Service"), you agree to
+    these Terms & Conditions. If you do not agree, please do not use the Service.
+  </p>
+
+  <h2>Use of the Service</h2>
+  <ul>
+    <li>You must provide accurate information when contacting us or enrolling in programs</li>
+    <li>You may not misuse the site, attempt unauthorized access, or interfere with its operation</li>
+    <li>Content on the site is for general information and education; outcomes are not guaranteed</li>
+  </ul>
+
+  <h2>Intellectual property</h2>
+  <p>
+    FramerSchool materials, branding, and site content are owned by us or our licensors. You may not
+    copy, redistribute, or resell program materials except as expressly permitted.
+  </p>
+
+  <h2>Third-party tools</h2>
+  <p>
+    We may reference or link to third-party products such as Framer, Notion, or KnotCMS. Your use of
+    those products is subject to their own terms and policies.
+  </p>
+
+  <h2>Disclaimer</h2>
+  <p>
+    The Service is provided "as is" without warranties of any kind. We are not liable for indirect,
+    incidental, or consequential damages arising from your use of the Service to the fullest extent
+    permitted by law.
+  </p>
+
+  <h2>Changes</h2>
+  <p>
+    We may update these terms from time to time. Continued use after changes constitutes acceptance of
+    the revised terms.
+  </p>
+
+  <h2>Contact</h2>
+  <p>
+    Questions about these terms: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+  </p>
+</LegalLayout>
