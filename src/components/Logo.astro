@@ -5,12 +5,13 @@ interface Props {
 }
 
 const { size = 32, class: className = '' } = Astro.props;
+const height = Math.round(size * (673 / 624));
 ---
 
 <img
-  src="/images/framerschool-icon.png"
+  src="/brand/fs-logo.svg"
   width={size}
-  height={size}
+  height={height}
   alt=""
   class:list={['pf-logo', className]}
   decoding="async"
