@@ -1,15 +1,16 @@
 ---
 import SectionHead from './SectionHead.astro';
+import FrameCard from './FrameCard.astro';
 
 const programs = [
-  { index: '01', title: 'Site structure' },
-  { index: '02', title: 'Template judgment' },
-  { index: '03', title: 'Client delivery' },
-  { index: '04', title: 'Framer CMS' },
+  { index: '01', title: 'Site structure', icon: 'structure' as const },
+  { index: '02', title: 'Template judgment', icon: 'judgment' as const },
+  { index: '03', title: 'Client delivery', icon: 'delivery' as const },
+  { index: '04', title: 'Framer CMS', icon: 'cms' as const },
 ];
 ---
 
-<section id="features" class="pf-section">
+<section id="features" class="pf-section pf-section--grid">
   <div class="pf-container">
     <SectionHead
       tag="PROGRAMS"
@@ -17,16 +18,15 @@ const programs = [
       lead="We do not teach page-for-page cloning. We teach the judgment to pick structure, cut noise, and ship work clients pay for."
     />
 
-    <div class="pf-services">
+    <div class="pf-frame-grid pf-frame-grid--4">
       {programs.map((program) => (
-        <article class="pf-service" data-program-card>
-          <p class="pf-service-index" aria-hidden="true">
-            <span>/</span>
-            <span>{program.index}</span>
-            <span>.</span>
-          </p>
-          <h3 class="pf-service-title">{program.title}</h3>
-        </article>
+        <FrameCard
+          number={program.index}
+          title={program.title}
+          icon={program.icon}
+          class="pf-frame-card--compact"
+          programCard
+        />
       ))}
     </div>
 

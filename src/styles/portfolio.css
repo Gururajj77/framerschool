@@ -6,7 +6,37 @@ html {
 
 .pf-site {
     position: relative;
+    z-index: 1;
     overflow-x: clip;
+}
+
+.pf-site-grid {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(to right, rgba(224, 27, 36, 0.07) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: min(5rem, 12vw) min(5rem, 12vw);
+    mask-image: radial-gradient(ellipse 120% 90% at 50% 0%, black 15%, transparent 72%);
+}
+
+.pf-section--grid {
+    position: relative;
+}
+
+.pf-section--grid::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(to right, rgba(224, 27, 36, 0.1) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: min(5rem, 12vw) min(5rem, 12vw);
+    opacity: 0.55;
+    mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
 }
 
 /* ——— Topbar ——— */
@@ -294,48 +324,137 @@ body.nav-locked {
     margin-top: 2.5rem;
 }
 
-/* ——— Process steps ——— */
+/* ——— Frame cards (Optivora-style) ——— */
 
-.pf-steps {
+.pf-frame-grid {
     display: grid;
+    gap: clamp(0.75rem, 2vw, 1rem);
+}
+
+.pf-frame-grid--4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: clamp(1rem, 2.5vw, 2rem);
 }
 
-.pf-step {
-    padding-top: 1.25rem;
-    border-top: 1px solid var(--pf-border);
+.pf-frame-grid--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.pf-step-index {
+.pf-frame-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2.5rem;
+    min-height: clamp(12rem, 22vw, 16rem);
+    padding: clamp(1.25rem, 2.5vw, 1.75rem);
+    background: rgba(18, 18, 20, 0.72);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: background 0.3s var(--pf-ease);
+}
+
+.pf-frame-card:hover {
+    background: rgba(24, 24, 27, 0.88);
+}
+
+.pf-frame-card--compact {
+    min-height: clamp(9rem, 16vw, 11rem);
+    gap: 1.5rem;
+}
+
+.pf-frame-corner {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-color: rgba(224, 27, 36, 0.55);
+    border-style: solid;
+    pointer-events: none;
+    transition: border-color 0.3s var(--pf-ease);
+}
+
+.pf-frame-card:hover .pf-frame-corner {
+    border-color: var(--pf-brand);
+}
+
+.pf-frame-corner--tl {
+    top: 0;
+    left: 0;
+    border-width: 1px 0 0 1px;
+}
+
+.pf-frame-corner--tr {
+    top: 0;
+    right: 0;
+    border-width: 1px 1px 0 0;
+}
+
+.pf-frame-corner--bl {
+    bottom: 0;
+    left: 0;
+    border-width: 0 0 1px 1px;
+}
+
+.pf-frame-corner--br {
+    bottom: 0;
+    right: 0;
+    border-width: 0 1px 1px 0;
+}
+
+.pf-frame-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.pf-frame-card-num {
     display: flex;
     align-items: baseline;
-    gap: 0.1rem;
-    margin-bottom: 1rem;
+    margin: 0;
     font-family: var(--pf-font-mono);
-    font-size: 0.875rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    color: var(--pf-text-secondary);
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--pf-text);
 }
 
-.pf-step-dot {
+.pf-frame-card-dot {
     color: var(--pf-brand);
 }
 
-.pf-step-title {
-    margin: 0 0 0.75rem;
+.pf-frame-card-icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 2.25rem;
+    height: 2.25rem;
+    color: var(--pf-brand);
+    opacity: 0.9;
+}
+
+.pf-frame-card-body {
+    margin-top: auto;
+}
+
+.pf-frame-card-title {
+    margin: 0 0 0.65rem;
     font-family: var(--pf-font-display);
-    font-size: 1rem;
+    font-size: clamp(0.875rem, 1.6vw, 1rem);
     font-weight: 700;
     line-height: 1.25;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.02em;
     text-transform: uppercase;
 }
 
-.pf-step-text {
+.pf-frame-card--compact .pf-frame-card-title {
+    margin-bottom: 0;
+}
+
+.pf-frame-card-text {
     margin: 0;
-    font-size: 0.9375rem;
+    font-family: var(--pf-font-mono);
+    font-size: 0.75rem;
     line-height: 1.55;
     color: var(--pf-text-secondary);
 }
@@ -656,7 +775,8 @@ body.nav-locked {
 /* ——— Responsive ——— */
 
 @media (max-width: 1024px) {
-    .pf-steps {
+    .pf-frame-grid--4,
+    .pf-frame-grid--3 {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
@@ -715,7 +835,8 @@ body.nav-locked {
 }
 
 @media (max-width: 640px) {
-    .pf-steps,
+    .pf-frame-grid--4,
+    .pf-frame-grid--3,
     .pf-services {
         grid-template-columns: 1fr;
     }

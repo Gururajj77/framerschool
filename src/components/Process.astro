@@ -1,5 +1,6 @@
 ---
 import SectionHead from './SectionHead.astro';
+import FrameCard from './FrameCard.astro';
 
 const steps = [
   {
@@ -7,29 +8,33 @@ const steps = [
     title: 'Pick the right template',
     description:
       'Start with a layout that matches the business — not the flashiest template in the marketplace.',
+    icon: 'layout' as const,
   },
   {
     number: '02',
     title: 'Adapt with intent',
     description:
       'Remove what does not serve the client. Reshape copy, hierarchy, and flow around real goals.',
+    icon: 'edit' as const,
   },
   {
     number: '03',
     title: 'Ship with confidence',
     description:
       'Deliver a client-ready Framer site you can explain, defend, and sell — not a page-for-page clone.',
+    icon: 'ship' as const,
   },
   {
     number: '04',
     title: 'Hand off cleanly',
     description:
       'Document structure decisions, CMS setup, and delivery so clients trust what you built.',
+    icon: 'handoff' as const,
   },
 ];
 ---
 
-<section id="process" class="pf-section">
+<section id="process" class="pf-section pf-section--grid">
   <div class="pf-container">
     <SectionHead
       tag="PROCESS"
@@ -37,16 +42,15 @@ const steps = [
       lead="Four straightforward steps that turn a template into a site you can sell, ship, and stand behind."
     />
 
-    <div class="pf-steps">
+    <div class="pf-frame-grid pf-frame-grid--4">
       {steps.map((step) => (
-        <article class="pf-step" data-process-card>
-          <div class="pf-step-index" aria-hidden="true">
-            <span>{step.number}</span>
-            <span class="pf-step-dot">.</span>
-          </div>
-          <h3 class="pf-step-title">{step.title}</h3>
-          <p class="pf-step-text">{step.description}</p>
-        </article>
+        <FrameCard
+          number={step.number}
+          title={step.title}
+          description={step.description}
+          icon={step.icon}
+          reveal
+        />
       ))}
     </div>
   </div>
