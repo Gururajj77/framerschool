@@ -1,23 +1,23 @@
 ---
 import { CONTACT_EMAIL } from '../config';
-import Marquee from './Marquee.astro';
+import SectionHead from './SectionHead.astro';
 ---
 
-<section id="contact" class="pf-section pf-section--contact">
-  <div class="pf-container pf-contact-inner">
-    <p class="pf-contact-kicker">Want to</p>
-    <h2 class="pf-contact-title">
-      <span>reach</span>
-      <span>out?</span>
-    </h2>
-    <a href={`mailto:${CONTACT_EMAIL}`} class="pf-contact-email" data-cta-panel>
-      {CONTACT_EMAIL}
-    </a>
+<section id="contact" class="pf-section">
+  <div class="pf-container pf-contact">
+    <SectionHead
+      tag="CONTACT"
+      title="Start a conversation with us"
+      lead="Tell us about your Framer work and goals — we will help you ship sites clients pay for."
+    />
+
+    <div class="pf-contact-details" data-cta-panel>
+      <a href={`mailto:${CONTACT_EMAIL}`} class="pf-contact-email">{CONTACT_EMAIL}</a>
+    </div>
+
     <div class="pf-contact-actions">
       <a href={`mailto:${CONTACT_EMAIL}`} class="pf-btn pf-btn--primary pf-btn--lg">Email us</a>
-      <a href="#features" class="pf-btn pf-btn--ghost pf-btn--lg">See programs</a>
+      <a href="#features" class="pf-btn pf-btn--outline pf-btn--lg">See programs</a>
     </div>
   </div>
-
-  <Marquee text="Get in touch" class="pf-marquee--contact" />
 </section>

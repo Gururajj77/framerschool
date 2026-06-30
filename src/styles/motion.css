@@ -1,158 +1,12 @@
-/* Motion layer — cursor + hooks */
+/* Motion hooks */
 
-.pf-structure-grid {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    opacity: 0.04;
-    background-image:
-        linear-gradient(to right, var(--pf-grid-line) 1px, transparent 1px),
-        linear-gradient(to bottom, var(--pf-grid-line) 1px, transparent 1px);
-    background-size: 80px 80px;
-    mask-image: radial-gradient(ellipse 90% 80% at 50% 20%, black 15%, transparent 70%);
+html.lenis,
+html.lenis body {
+    height: auto;
 }
 
-.pf-site {
-    position: relative;
-    z-index: 1;
-}
-
-/* ——— Oberon blueprint cursor ——— */
-
-.has-custom-cursor .pf-site--custom-cursor,
-.has-custom-cursor .pf-site--custom-cursor a,
-.has-custom-cursor .pf-site--custom-cursor button {
-    cursor: none;
-}
-
-.pf-cursor {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.25s ease;
-    will-change: transform;
-}
-
-.pf-cursor.is-visible {
-    opacity: 1;
-}
-
-.pf-cursor-dot {
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--pf-brand);
-    border: 2px solid rgba(255, 255, 255, 0.9);
-    box-shadow: 0 0 0 1px rgba(224, 27, 36, 0.35);
-    transition:
-        transform 0.35s var(--pf-motion-ease),
-        background 0.3s ease;
-}
-
-.pf-cursor-frame {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 36px;
-    height: 36px;
-    margin: -18px 0 0 -18px;
-    transition:
-        width 0.4s var(--pf-motion-ease),
-        height 0.4s var(--pf-motion-ease),
-        margin 0.4s var(--pf-motion-ease);
-}
-
-.pf-cursor-line {
-    position: absolute;
-    background: rgba(236, 236, 238, 0.45);
-    transition:
-        background 0.3s ease,
-        transform 0.35s var(--pf-motion-ease);
-}
-
-.pf-cursor-line--h {
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    margin-top: -1px;
-}
-
-.pf-cursor-line--v {
-    top: 0;
-    left: 50%;
-    width: 2px;
-    height: 100%;
-    margin-left: -1px;
-}
-
-.pf-cursor-corner {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    border-color: rgba(236, 236, 238, 0.85);
-    border-style: solid;
-    transition:
-        width 0.4s var(--pf-motion-ease),
-        height 0.4s var(--pf-motion-ease),
-        border-color 0.3s ease;
-}
-
-.pf-cursor-corner--tl {
-    top: 0;
-    left: 0;
-    border-width: 2px 0 0 2px;
-}
-
-.pf-cursor-corner--tr {
-    top: 0;
-    right: 0;
-    border-width: 2px 2px 0 0;
-}
-
-.pf-cursor-corner--bl {
-    bottom: 0;
-    left: 0;
-    border-width: 0 0 2px 2px;
-}
-
-.pf-cursor-corner--br {
-    bottom: 0;
-    right: 0;
-    border-width: 0 2px 2px 0;
-}
-
-.pf-cursor.is-hover .pf-cursor-line {
-    background: rgba(224, 27, 36, 0.75);
-}
-
-.pf-cursor.is-hover .pf-cursor-corner {
-    width: 14px;
-    height: 14px;
-    border-color: var(--pf-brand);
-}
-
-.pf-cursor.is-hover .pf-cursor-frame {
-    width: 52px;
-    height: 52px;
-    margin: -26px 0 0 -26px;
-}
-
-.pf-cursor.is-hover .pf-cursor-dot {
-    transform: scale(0.85);
-    background: #fff;
-    border-color: var(--pf-brand);
-}
-
-.pf-cta-panel {
-    will-change: clip-path, opacity;
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
 }
 
 .pf-faq-panel {
@@ -161,20 +15,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .pf-cursor,
-    .pf-ambient-orb {
-        display: none !important;
-        animation: none !important;
-    }
-
-    .pf-cta-panel {
-        clip-path: none !important;
-        opacity: 1 !important;
-    }
-}
-
-@media (max-width: 960px), (pointer: coarse) {
-    .pf-cursor {
-        display: none !important;
+    html {
+        scroll-behavior: auto;
     }
 }

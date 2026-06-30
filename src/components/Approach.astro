@@ -1,86 +1,42 @@
 ---
-import Marquee from './Marquee.astro';
+import SectionHead from './SectionHead.astro';
 
-const principles = [
+const points = [
   {
-    index: '.01',
-    label: 'Structure before polish',
-    items: ['Pick layout that fits the business', 'Hierarchy before decoration', 'Every section earns its place'],
+    title: 'Structure before polish',
+    text: 'Pick layout that fits the business. Hierarchy before decoration. Every section earns its place.',
   },
   {
-    index: '.02',
-    label: 'Judgment over copying',
-    items: ['Templates are a starting point', 'Cut what does not serve the client', 'Adapt with intent, not guesswork'],
-  },
-];
-
-const contrasts = [
-  {
-    index: '.03',
-    label: 'The old way',
-    items: ['Copy templates page for page', 'Add sections without a reason', 'Focus on visuals before structure'],
-    variant: 'old',
+    title: 'Judgment over copying',
+    text: 'Templates are a starting point. Cut what does not serve the client. Adapt with intent, not guesswork.',
   },
   {
-    index: '.04',
-    label: 'The FramerSchool way',
-    items: ['Pick structure that fits the business', 'Cut what does not serve the client', 'Ship sites you can sell with confidence'],
-    variant: 'new',
+    title: 'Delivery you can defend',
+    text: 'Ship sites you can explain to clients — with clear structure, trimmed sections, and confident handoff.',
   },
 ];
 ---
 
-<section id="approach" class="pf-section pf-approach-oberon">
-  <div class="pf-approach-accent" aria-hidden="true"></div>
+<section id="approach" class="pf-section pf-section--muted">
+  <div class="pf-container">
+    <SectionHead
+      tag="APPROACH"
+      title="Why structure comes first"
+      lead="Most people build Framer sites backwards. We teach the opposite — structure, judgment, then polish."
+    />
 
-  <div class="pf-container pf-approach-oberon-inner">
-    <aside class="pf-approach-sidebar" data-approach-sidebar>
-      <span class="pf-approach-tag">04 Approach</span>
-      <h2 class="pf-approach-oberon-title">Why structure first</h2>
-      <p class="pf-approach-sidebar-lead">
-        Templates are a shortcut, not the answer. The skill is knowing what to change —
-        structure first, polish second, delivery with confidence.
-      </p>
-      <div class="pf-approach-sidebar-foot">
-        <span class="pf-approach-foot-label">FramerSchool</span>
-        <p class="pf-approach-foot-copy">We teach judgment — not page-for-page cloning.</p>
-      </div>
-    </aside>
-
-    <div class="pf-approach-bento" data-approach-grid>
-      {principles.map((block) => (
-        <article class="pf-approach-cell" data-approach-cell>
-          <span class="pf-approach-cell-index">{block.index}</span>
-          <h3 class="pf-approach-cell-label">{block.label}</h3>
-          <ul class="pf-approach-cell-list">
-            {block.items.map((item) => (
-              <li>{item}</li>
-            ))}
-          </ul>
+    <div class="pf-points" data-approach-grid>
+      {points.map((point, index) => (
+        <article class="pf-point" data-approach-cell>
+          <p class="pf-point-index" aria-hidden="true">
+            <span>/</span>
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <span>.</span>
+          </p>
+          <h3 class="pf-point-title">{point.title}</h3>
+          <p class="pf-point-text">{point.text}</p>
         </article>
       ))}
-
-      {contrasts.map((block) => (
-        <article class:list={['pf-approach-cell', `pf-approach-cell--${block.variant}`]} data-approach-cell>
-          <span class="pf-approach-cell-index">{block.index}</span>
-          <h3 class="pf-approach-cell-label">{block.label}</h3>
-          <ul class="pf-approach-cell-list">
-            {block.items.map((item) => (
-              <li>{item}</li>
-            ))}
-          </ul>
-        </article>
-      ))}
-
-      <article class="pf-approach-cell pf-approach-cell--quote" data-approach-cell>
-        <span class="pf-approach-cell-index">+</span>
-        <p class="pf-approach-quote">
-          Most people build Framer sites backwards. We fix that.
-        </p>
-        <span class="pf-approach-quote-tag">+ much more</span>
-      </article>
     </div>
   </div>
-
-  <Marquee text="Structure first" separator=" · " class="pf-marquee--statement" />
 </section>

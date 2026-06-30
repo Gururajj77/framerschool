@@ -1,4 +1,6 @@
 ---
+import SectionHead from './SectionHead.astro';
+
 const faqs = [
   {
     question: 'Do I need to design from scratch?',
@@ -23,28 +25,22 @@ const faqs = [
 ];
 ---
 
-<section id="faq" class="pf-section pf-section--faq">
+<section id="faq" class="pf-section pf-section--muted">
   <div class="pf-container">
-    <header class="pf-faq-header" data-faq-header>
-      <p class="pf-faq-kicker">FAQ</p>
-      <h2 class="pf-faq-title">Common questions</h2>
-      <p class="pf-faq-lead">
-        Quick answers about programs and how FramerSchool works.
-      </p>
-    </header>
+    <SectionHead
+      tag="FAQS"
+      title="Things to know before working with us"
+      lead="Quick answers about programs, templates, and how FramerSchool works."
+    />
 
     <div class="pf-faq-list" role="list">
       {faqs.map((faq) => (
         <div class="pf-faq-item" data-faq-item role="listitem">
           <h3 class="pf-faq-heading">
-            <button
-              class="pf-faq-trigger"
-              data-faq-toggle
-              type="button"
-              aria-expanded="false"
-            >
+            <button class="pf-faq-trigger" data-faq-toggle type="button" aria-expanded="false">
+              <span class="pf-faq-qmark" aria-hidden="true">/</span>
               <span class="pf-faq-question-text">{faq.question}</span>
-              <span class="pf-faq-toggle" aria-hidden="true">
+              <span class="pf-faq-icon" aria-hidden="true">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                   <path d="M12 5v14M5 12h14" />
                 </svg>

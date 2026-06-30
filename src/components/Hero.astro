@@ -1,48 +1,18 @@
 ---
-import Marquee from './Marquee.astro';
-
-const stats = [
-  { value: 'Structure before polish', detail: 'Pick the right layout first' },
-  { value: '3-step delivery', detail: 'From template to client-ready' },
-  { value: 'Ship with confidence', detail: 'Judgment, not guesswork' },
-];
 ---
 
-<section id="home" class="pf-hero pf-hero--portfolio">
-  <div class="pf-container pf-hero-oberon">
-    <div class="pf-hero-intro-row" data-animate="trust">
-      <span class="pf-hero-intro-tag">01 Intro</span>
-      <p class="pf-hero-kicker">Built for Framer freelancers and agencies</p>
-    </div>
-
-    <h1 class="pf-hero-stack" aria-label="Ship Framer sites clients pay for">
-      <span class="pf-hero-stack-line" data-animate="line">Ship</span>
-      <span class="pf-hero-stack-line pf-hero-stack-line--accent" data-animate="line">Framer</span>
-      <span class="pf-hero-stack-line" data-animate="line">Sites</span>
-    </h1>
-
-    <p class="pf-hero-sub" data-animate="lead">
-      Senior-level structure and delivery — pick the right template, cut what does not fit,
-      and ship client-ready Framer websites with judgment, not guesswork.
+<section id="home" class="pf-hero">
+  <div class="pf-container pf-hero-inner">
+    <p class="pf-hero-mark" aria-hidden="true">/</p>
+    <p class="pf-hero-eyebrow">Framer delivery experts</p>
+    <h1 class="pf-hero-title">Ship Framer sites clients pay for</h1>
+    <p class="pf-hero-lead">
+      We teach freelancers and agencies how to pick the right template, cut what does not fit,
+      and deliver client-ready Framer websites with judgment — not guesswork.
     </p>
-
-    <div class="pf-hero-actions" data-animate="actions">
+    <div class="pf-hero-actions">
       <a href="#contact" class="pf-btn pf-btn--primary pf-btn--lg">Get in touch</a>
-      <a href="#process" class="pf-btn pf-btn--ghost pf-btn--lg">See the process</a>
-    </div>
-
-    <div class="pf-hero-stats" data-animate="stats" aria-label="Highlights">
-      {stats.map((stat, index) => (
-        <>
-          {index > 0 && <span class="pf-hero-stats-arrow" aria-hidden="true">→</span>}
-          <div class="pf-hero-stat">
-            <p class="pf-hero-stat-value">{stat.value}</p>
-            <p class="pf-hero-stat-detail">{stat.detail}</p>
-          </div>
-        </>
-      ))}
+      <a href="#process" class="pf-btn pf-btn--outline pf-btn--lg">See the process</a>
     </div>
   </div>
-
-  <Marquee text="Get in touch" class="pf-marquee--hero" />
 </section>

@@ -1,88 +1,60 @@
 ---
 import { KNOTCMS_URL, KNOTCMS_DOCS_URL } from '../config';
 import HeroBridge from './HeroBridge.astro';
+import SectionHead from './SectionHead.astro';
 
 const capabilities = [
-  {
-    index: '.01',
-    title: 'Match fields once',
-    items: [
-      'Connect Notion in minutes',
-      'Map each field to Framer CMS',
-      'Manage sync from one dashboard',
-    ],
-  },
-  {
-    index: '.02',
-    title: 'Updates on their own',
-    items: [
-      'Notion changes flow to Framer',
-      'No exports or copy-paste',
-      'Automatic sync on paid plans',
-    ],
-  },
-  {
-    index: '.03',
-    title: 'Publish when ready',
-    items: [
-      'Review synced content first',
-      'Push live when you are ready',
-      'Ship client sites with confidence',
-    ],
-  },
+  { index: '01', title: 'Match fields once' },
+  { index: '02', title: 'Updates on their own' },
+  { index: '03', title: 'Publish when ready' },
 ];
 ---
 
-<section id="knotcms" class="pf-section pf-section--knotcms">
-  <div class="pf-container pf-knotcms-oberon">
-    <aside class="pf-knotcms-sidebar" data-knotcms-sidebar>
-      <span class="pf-knotcms-tag">07 KnotCMS</span>
-      <p class="pf-eyebrow">From FramerSchool</p>
-      <h2 class="pf-knot-title">
-        Sync Notion to Framer CMS
-        <span class="pf-knot-title-accent">without the busywork</span>
-      </h2>
-      <p class="pf-knot-lead">
-        KnotCMS is our sync tool for Framer creators. It keeps your Framer CMS updated from Notion
-        — match fields once, and sync automatically on paid plans.
-      </p>
+<section id="knotcms" class="pf-section">
+  <div class="pf-container">
+    <SectionHead
+      tag="KNOTCMS"
+      title="Sync Notion to Framer CMS without the busywork"
+      lead="KnotCMS keeps your Framer CMS updated from Notion — match fields once, and sync automatically on paid plans."
+    />
 
-      <div class="pf-knotcms-foot">
-        <span class="pf-knotcms-foot-label">FramerSchool</span>
-        <p class="pf-knotcms-foot-copy">Built for Framer freelancers shipping client-ready sites.</p>
+    <div class="pf-knot-layout">
+      <div class="pf-knot-copy">
+        <p class="pf-knot-eyebrow">From FramerSchool</p>
+        <ul class="pf-knot-list">
+          <li>Connect Notion and map each field to Framer CMS from one dashboard.</li>
+          <li>On paid plans, changes in Notion show up in Framer automatically.</li>
+          <li>Push synced content live when you are ready to ship.</li>
+        </ul>
+        <div class="pf-knot-actions">
+          <a href={KNOTCMS_URL} class="pf-btn pf-btn--primary" target="_blank" rel="noopener noreferrer">
+            Get started free
+          </a>
+          <a href={`${KNOTCMS_URL}/setup`} class="pf-btn pf-btn--outline" target="_blank" rel="noopener noreferrer">
+            Start setup
+          </a>
+          <a href={KNOTCMS_DOCS_URL} class="pf-btn pf-btn--ghost" target="_blank" rel="noopener noreferrer">
+            Read docs
+          </a>
+        </div>
       </div>
-    </aside>
 
-    <div class="pf-knotcms-main">
       <div class="pf-knot-visual" data-knot-bridge-wrap>
         <HeroBridge />
       </div>
+    </div>
 
-      <div class="pf-knotcms-grid" data-knotcms-grid>
-        {capabilities.map((capability) => (
-          <article class="pf-knotcms-cell" data-knot-feature>
-            <span class="pf-knotcms-cell-index">{capability.index}</span>
-            <h3 class="pf-knotcms-cell-title">{capability.title}</h3>
-            <ul class="pf-knotcms-cell-list">
-              {capability.items.map((item) => (
-                <li>{item}</li>
-              ))}
-            </ul>
-          </article>
-        ))}
-      </div>
-
-      <div class="pf-knot-actions">
-        <a href={KNOTCMS_URL} class="pf-btn pf-btn--primary" target="_blank" rel="noopener noreferrer">
-          Get started free
-        </a>
-        <a href={`${KNOTCMS_URL}/setup`} class="pf-btn pf-btn--secondary" target="_blank" rel="noopener noreferrer">
-          Start setup
-        </a>
-        <a href={KNOTCMS_DOCS_URL} class="pf-btn pf-btn--ghost" target="_blank" rel="noopener noreferrer">
-          Read docs
-        </a>
-      </div>
+    <div class="pf-services pf-services--compact">
+      {capabilities.map((item) => (
+        <article class="pf-service" data-knot-feature>
+          <p class="pf-service-index" aria-hidden="true">
+            <span>/</span>
+            <span>{item.index}</span>
+            <span>.</span>
+          </p>
+          <h3 class="pf-service-title">{item.title}</h3>
+        </article>
+      ))}
     </div>
   </div>
 </section>

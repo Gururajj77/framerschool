@@ -7,44 +7,38 @@ const links = [
   { href: '#features', label: 'Programs' },
   { href: '#approach', label: 'Approach' },
   { href: '#knotcms', label: 'KnotCMS' },
+  { href: '#faq', label: 'FAQ' },
   { href: '#contact', label: 'Contact' },
 ];
 ---
 
-<header class="pf-nav pf-nav--oberon" data-topbar>
-  <div class="pf-nav-rail">
-    <a href="#home" class="pf-nav-brand" aria-label="FramerSchool home">
+<header class="pf-topbar" data-topbar>
+  <div class="pf-container pf-topbar-inner">
+    <a href="#home" class="pf-topbar-brand" aria-label="FramerSchool home">
       <Wordmark size="sm" />
     </a>
 
-    <p class="pf-nav-mobile-section" data-nav-mobile-label aria-live="polite">Process</p>
-
-    <nav class="pf-nav-index" id="site-nav" aria-label="Main" data-site-nav>
-      {links.map((link, index) => (
-        <a href={link.href} class="pf-nav-index-link" data-nav-label={link.label}>
-          <span class="pf-nav-index-num">{String(index + 1).padStart(2, '0')}</span>
-          <span class="pf-nav-index-label">{link.label}</span>
+    <nav class="pf-topbar-nav" id="site-nav" aria-label="Main" data-site-nav>
+      {links.map((link) => (
+        <a href={link.href} class="pf-topbar-link" data-nav-label={link.label}>
+          {link.label}
         </a>
       ))}
     </nav>
 
-    <div class="pf-nav-end">
-      <a href={`mailto:${CONTACT_EMAIL}`} class="pf-nav-mail" data-cursor-interactive>
-        Email
-      </a>
-      <a href="#contact" class="pf-nav-cta" data-cursor-interactive>
-        Get in touch
-      </a>
+    <div class="pf-topbar-actions">
+      <a href={`mailto:${CONTACT_EMAIL}`} class="pf-topbar-mail">Email</a>
+      <a href="#contact" class="pf-btn pf-btn--primary pf-btn--sm">Get in touch</a>
       <button
-        class="pf-nav-tab"
+        class="pf-topbar-toggle"
         data-nav-toggle
         type="button"
         aria-label="Open menu"
         aria-expanded="false"
         aria-controls="nav-overlay"
       >
-        <span class="pf-nav-tab-bar pf-nav-tab-bar--a" aria-hidden="true"></span>
-        <span class="pf-nav-tab-bar pf-nav-tab-bar--b" aria-hidden="true"></span>
+        <span></span>
+        <span></span>
       </button>
     </div>
   </div>
@@ -52,17 +46,13 @@ const links = [
 
 <div class="pf-nav-overlay" id="nav-overlay" data-nav-overlay aria-hidden="true">
   <div class="pf-nav-overlay-inner">
-    <div class="pf-nav-overlay-grid">
-      {links.map((link, index) => (
+    <nav class="pf-nav-overlay-nav" aria-label="Mobile">
+      {links.map((link) => (
         <a href={link.href} class="pf-nav-overlay-link" data-nav-overlay-link>
-          <span class="pf-nav-overlay-num">{String(index + 1).padStart(2, '0')}</span>
-          <span class="pf-nav-overlay-label">{link.label}</span>
+          {link.label}
         </a>
       ))}
-      <a href="#home" class="pf-nav-overlay-link pf-nav-overlay-link--home" data-nav-overlay-link>
-        <span class="pf-nav-overlay-num">↗</span>
-        <span class="pf-nav-overlay-label">Back to top</span>
-      </a>
-    </div>
+      <a href="#home" class="pf-nav-overlay-link" data-nav-overlay-link>Home</a>
+    </nav>
   </div>
 </div>

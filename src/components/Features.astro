@@ -1,56 +1,37 @@
 ---
-import SectionTitle from './SectionTitle.astro';
+import SectionHead from './SectionHead.astro';
 
-const features = [
-  {
-    index: '01',
-    title: 'Pick the right site type',
-    focus: 'Structure',
-    description:
-      'Different businesses need different structures. Start with what actually fits the client — not what looks coolest.',
-  },
-  {
-    index: '02',
-    title: 'Understand why it works',
-    focus: 'Hierarchy',
-    description:
-      'Layout, hierarchy, and flow shape attention and action. Good structure builds trust before polish does.',
-  },
-  {
-    index: '03',
-    title: 'Adapt and ship',
-    focus: 'Delivery',
-    description:
-      'Use templates as a starting point, then remove and reshape based on the business — with confidence.',
-  },
+const programs = [
+  { index: '01', title: 'Site structure' },
+  { index: '02', title: 'Template judgment' },
+  { index: '03', title: 'Client delivery' },
+  { index: '04', title: 'Framer CMS' },
 ];
 ---
 
-<section id="features" class="pf-section pf-section--programs">
+<section id="features" class="pf-section">
   <div class="pf-container">
-    <SectionTitle lines={['Selected', 'programs']} count="(3)" />
+    <SectionHead
+      tag="PROGRAMS"
+      title="What we help Framer freelancers master"
+      lead="We do not teach page-for-page cloning. We teach the judgment to pick structure, cut noise, and ship work clients pay for."
+    />
 
-    <div class="pf-project-list">
-      {features.map((feature) => (
-        <article class="pf-project-card" data-program-card>
-          <div class="pf-project-card-inner">
-            <span class="pf-project-num">{feature.index}</span>
-            <div class="pf-project-body">
-              <h3 class="pf-project-title">{feature.title}</h3>
-              <div class="pf-project-meta">
-                <div class="pf-project-meta-block">
-                  <p class="pf-project-meta-label">Focus</p>
-                  <p class="pf-project-meta-value">{feature.focus}</p>
-                </div>
-                <div class="pf-project-meta-block pf-project-meta-block--wide">
-                  <p class="pf-project-meta-label">About</p>
-                  <p class="pf-project-meta-value">{feature.description}</p>
-                </div>
-              </div>
-            </div>
-          </div>
+    <div class="pf-services">
+      {programs.map((program) => (
+        <article class="pf-service" data-program-card>
+          <p class="pf-service-index" aria-hidden="true">
+            <span>/</span>
+            <span>{program.index}</span>
+            <span>.</span>
+          </p>
+          <h3 class="pf-service-title">{program.title}</h3>
         </article>
       ))}
+    </div>
+
+    <div class="pf-section-cta">
+      <a href="#contact" class="pf-btn pf-btn--primary">Get started</a>
     </div>
   </div>
 </section>

@@ -1,54 +1,51 @@
 ---
-import SectionTitle from './SectionTitle.astro';
+import SectionHead from './SectionHead.astro';
 
 const steps = [
   {
     number: '01',
     title: 'Pick the right template',
-    focus: 'Structure',
     description:
       'Start with a layout that matches the business — not the flashiest template in the marketplace.',
   },
   {
     number: '02',
     title: 'Adapt with intent',
-    focus: 'Judgment',
     description:
       'Remove what does not serve the client. Reshape copy, hierarchy, and flow around real goals.',
   },
   {
     number: '03',
     title: 'Ship with confidence',
-    focus: 'Delivery',
     description:
       'Deliver a client-ready Framer site you can explain, defend, and sell — not a page-for-page clone.',
+  },
+  {
+    number: '04',
+    title: 'Hand off cleanly',
+    description:
+      'Document structure decisions, CMS setup, and delivery so clients trust what you built.',
   },
 ];
 ---
 
-<section id="process" class="pf-section pf-section--process">
+<section id="process" class="pf-section">
   <div class="pf-container">
-    <SectionTitle lines={['The', 'process']} count="(3)" />
+    <SectionHead
+      tag="PROCESS"
+      title="Our four-step delivery framework"
+      lead="Four straightforward steps that turn a template into a site you can sell, ship, and stand behind."
+    />
 
-    <div class="pf-project-list">
+    <div class="pf-steps">
       {steps.map((step) => (
-        <article class="pf-project-card" data-process-card>
-          <div class="pf-project-card-inner">
-            <span class="pf-project-num">{step.number}</span>
-            <div class="pf-project-body">
-              <h3 class="pf-project-title">{step.title}</h3>
-              <div class="pf-project-meta">
-                <div class="pf-project-meta-block">
-                  <p class="pf-project-meta-label">Focus</p>
-                  <p class="pf-project-meta-value">{step.focus}</p>
-                </div>
-                <div class="pf-project-meta-block pf-project-meta-block--wide">
-                  <p class="pf-project-meta-label">About</p>
-                  <p class="pf-project-meta-value">{step.description}</p>
-                </div>
-              </div>
-            </div>
+        <article class="pf-step" data-process-card>
+          <div class="pf-step-index" aria-hidden="true">
+            <span>{step.number}</span>
+            <span class="pf-step-dot">.</span>
           </div>
+          <h3 class="pf-step-title">{step.title}</h3>
+          <p class="pf-step-text">{step.description}</p>
         </article>
       ))}
     </div>

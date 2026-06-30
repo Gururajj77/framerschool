@@ -3,18 +3,17 @@ import { batchReveal } from './shared';
 
 export function initFaq(reduced: boolean): (() => void) | void {
   const items = gsap.utils.toArray<HTMLElement>('[data-faq-item]');
-  const header = document.querySelector('[data-faq-header]');
+  const header = document.querySelector('#faq .pf-section-head');
 
   if (header && !reduced) {
-    gsap.from(header.children, {
-      y: 20,
+    gsap.from(header, {
+      y: 10,
       opacity: 0,
-      duration: 0.6,
-      stagger: 0.08,
-      ease: 'power3.out',
+      duration: 0.45,
+      ease: 'power2.out',
       scrollTrigger: {
         trigger: header,
-        start: 'top 85%',
+        start: 'top 88%',
         once: true,
       },
     });
@@ -28,7 +27,7 @@ export function initFaq(reduced: boolean): (() => void) | void {
     const panel = item.querySelector<HTMLElement>('[data-faq-panel]');
     const inner = item.querySelector<HTMLElement>('.pf-faq-panel-inner');
     const toggle = item.querySelector('[data-faq-toggle]');
-    const icon = item.querySelector('.pf-faq-toggle svg');
+    const icon = item.querySelector('.pf-faq-icon svg');
 
     if (!panel || !inner) return;
 
@@ -48,7 +47,7 @@ export function initFaq(reduced: boolean): (() => void) | void {
     const panel = item.querySelector<HTMLElement>('[data-faq-panel]');
     const inner = item.querySelector<HTMLElement>('.pf-faq-panel-inner');
     const toggle = item.querySelector('[data-faq-toggle]');
-    const icon = item.querySelector('.pf-faq-toggle svg');
+    const icon = item.querySelector('.pf-faq-icon svg');
 
     if (!panel || !inner) return;
 
@@ -78,7 +77,7 @@ export function initFaq(reduced: boolean): (() => void) | void {
 
     if (item.classList.contains('open')) {
       gsap.set(panel, { height: inner.offsetHeight });
-      const icon = item.querySelector('.pf-faq-toggle svg');
+      const icon = item.querySelector('.pf-faq-icon svg');
       if (icon) gsap.set(icon, { rotation: 45 });
     } else {
       gsap.set(panel, { height: 0 });
@@ -100,7 +99,6 @@ export function initFaq(reduced: boolean): (() => void) | void {
 
 export function initCta(reduced: boolean): (() => void) | void {
   const email = document.querySelector('[data-cta-panel]');
-  const contactSection = document.querySelector('.pf-contact-title');
 
   if (!email) return;
 
@@ -109,36 +107,22 @@ export function initCta(reduced: boolean): (() => void) | void {
     return;
   }
 
-  gsap.set(email, { y: 20, opacity: 0 });
+  gsap.set(email, { y: 10, opacity: 0 });
 
   const st = gsap.to(email, {
     y: 0,
     opacity: 1,
-    duration: 0.7,
-    ease: 'power3.out',
+    duration: 0.45,
+    ease: 'power2.out',
     scrollTrigger: {
-      trigger: email,
+      trigger: email.closest('#contact') ?? email,
       start: 'top 88%',
       once: true,
     },
   });
 
-  if (contactSection) {
-    gsap.from(contactSection.querySelectorAll('span'), {
-      y: 40,
-      opacity: 0,
-      duration: 0.75,
-      stagger: 0.08,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: contactSection,
-        start: 'top 85%',
-        once: true,
-      },
-    });
-  }
-
   return () => {
+    st.scrollTrigger?.kill();
     st.kill();
   };
 }

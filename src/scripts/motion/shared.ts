@@ -22,10 +22,10 @@ export function revealUp(
   vars: gsap.TweenVars = {},
 ): gsap.core.Tween {
   return gsap.from(targets, {
-    y: 32,
+    y: 12,
     opacity: 0,
-    duration: 0.7,
-    ease: 'power3.out',
+    duration: 0.5,
+    ease: 'power2.out',
     ...vars,
   });
 }
@@ -35,15 +35,15 @@ export function batchReveal(
   options: Omit<ScrollTrigger.BatchVars, 'onEnter'> = {},
 ): ScrollTrigger[] {
   return ScrollTrigger.batch(selector, {
-    start: 'top 88%',
+    start: 'top 90%',
     once: true,
     onEnter: (batch: Element[]) => {
       gsap.from(batch, {
-        y: 28,
+        y: 12,
         opacity: 0,
-        duration: 0.65,
-        stagger: 0.08,
-        ease: 'power3.out',
+        duration: 0.45,
+        stagger: 0.05,
+        ease: 'power2.out',
         overwrite: true,
       });
     },

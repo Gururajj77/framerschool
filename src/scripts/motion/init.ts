@@ -8,8 +8,7 @@ import { initFeatures } from './features';
 import { initKnotcms } from './knotcms';
 import { initFaq, initCta, initFooter } from './faq';
 import { initHeader } from './header';
-import { initMarquee } from './marquee';
-import { initCursor } from './cursor';
+import { initSmoothScroll } from './smooth-scroll';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,6 +18,7 @@ const reduced = prefersReducedMotion();
 const cleanups: Array<(() => void) | void> = [];
 
 function boot() {
+  cleanups.push(initSmoothScroll());
   cleanups.push(initHeader(reduced));
   cleanups.push(initHero(reduced));
   cleanups.push(initProcess(reduced));
@@ -28,8 +28,6 @@ function boot() {
   cleanups.push(initFaq(reduced));
   cleanups.push(initCta(reduced));
   initFooter(reduced);
-  initMarquee(reduced);
-  cleanups.push(initCursor());
 
   ScrollTrigger.refresh();
 }

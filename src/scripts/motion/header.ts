@@ -1,11 +1,11 @@
 import { gsap } from './shared';
+import { getScrollY } from './smooth-scroll';
 
 export function initHeader(reduced: boolean): (() => void) | void {
   const topbar = document.querySelector('[data-topbar]');
   const toggle = document.querySelector('[data-nav-toggle]');
   const overlay = document.querySelector('[data-nav-overlay]');
-  const mobileLabel = document.querySelector('[data-nav-mobile-label]');
-  const indexLinks = gsap.utils.toArray<HTMLAnchorElement>('.pf-nav-index-link');
+  const navLinks = gsap.utils.toArray<HTMLAnchorElement>('.pf-topbar-link');
   const overlayLinks = gsap.utils.toArray<HTMLAnchorElement>('[data-nav-overlay-link]');
 
   if (!topbar) return;
@@ -26,10 +26,7 @@ export function initHeader(reduced: boolean): (() => void) | void {
     document.body.classList.add('nav-locked');
   };
 
-  const isDesktopNav = () => window.matchMedia('(min-width: 901px)').matches;
-
   toggle?.addEventListener('click', () => {
-    if (isDesktopNav()) return;
     if (topbar.classList.contains('nav-open')) closeMenu();
     else openMenu();
   });
@@ -42,7 +39,7 @@ export function initHeader(reduced: boolean): (() => void) | void {
     if (event.key === 'Escape') closeMenu();
   });
 
-  const sectionLinks = indexLinks
+  const sectionLinks = navLinks
     .map((link) => {
       const href = link.getAttribute('href') ?? '';
       const id = href.startsWith('#') ? href.slice(1) : null;
@@ -55,20 +52,43 @@ export function initHeader(reduced: boolean): (() => void) | void {
     section: HTMLElement;
   }>;
 
+  const findNavLinkForHref = (href: string) =>
+    navLinks.find((link) => link.getAttribute('href') === href) ?? null;
+
+  const getNavOffset = () => {
+    const raw = getComputedStyle(document.documentElement).getPropertyValue('--pf-topbar-height').trim();
+    const value = parseFloat(raw);
+    return (Number.isFinite(value) ? value : 72) + 8;
+  };
+
+  let lockedNavHref: string | null = null;
+
   const setActiveLink = (link: HTMLAnchorElement | null) => {
-    indexLinks.forEach((navLink) => {
+    navLinks.forEach((navLink) => {
       navLink.classList.remove('is-active');
       navLink.removeAttribute('aria-current');
     });
     if (!link) return;
     link.classList.add('is-active');
     link.setAttribute('aria-current', 'page');
-    const label = link.dataset.navLabel ?? link.querySelector('.pf-nav-index-label')?.textContent;
-    if (mobileLabel && label) mobileLabel.textContent = label;
+  };
+
+  const hasReachedSection = (href: string) => {
+    const section = document.querySelector<HTMLElement>(href);
+    if (!section) return true;
+    const offset = getNavOffset();
+    return Math.abs(section.getBoundingClientRect().top - offset) <= 12;
   };
 
   const setActiveNav = () => {
-    const offset = (topbar as HTMLElement).offsetHeight + 16;
+    if (lockedNavHref) {
+      const lockedLink = findNavLinkForHref(lockedNavHref);
+      if (lockedLink) setActiveLink(lockedLink);
+      if (hasReachedSection(lockedNavHref)) lockedNavHref = null;
+      return;
+    }
+
+    const offset = getNavOffset() + 16;
     let active: (typeof sectionLinks)[number] | null = null;
 
     for (const entry of sectionLinks) {
@@ -86,35 +106,46 @@ export function initHeader(reduced: boolean): (() => void) | void {
     }
 
     setActiveLink(active?.link ?? null);
-
-    if (!active && mobileLabel) {
-      mobileLabel.textContent = 'Home';
-    }
   };
 
   const onScroll = () => {
-    topbar.classList.toggle('is-scrolled', window.scrollY > 8);
+    topbar.classList.toggle('is-scrolled', getScrollY() > 8);
     setActiveNav();
   };
 
+  const onNavClick = (href: string) => {
+    if (!findNavLinkForHref(href)) return;
+    lockedNavHref = href;
+    setActiveLink(findNavLinkForHref(href));
+  };
+
   const onResize = () => {
-    if (isDesktopNav()) closeMenu();
+    closeMenu();
     setActiveNav();
   };
 
   setActiveNav();
+  document.addEventListener('pf-scroll', onScroll);
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onResize);
 
-  indexLinks.forEach((link) => {
+  navLinks.forEach((link) => {
     link.addEventListener('click', () => {
       closeMenu();
       const href = link.getAttribute('href') ?? '';
-      if (href.startsWith('#')) setActiveLink(link);
+      if (href.startsWith('#')) onNavClick(href);
+    });
+  });
+
+  overlayLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      const href = link.getAttribute('href') ?? '';
+      if (href.startsWith('#')) onNavClick(href);
     });
   });
 
   return () => {
+    document.removeEventListener('pf-scroll', onScroll);
     window.removeEventListener('scroll', onScroll);
     window.removeEventListener('resize', onResize);
   };

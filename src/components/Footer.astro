@@ -1,38 +1,49 @@
 ---
-import { KNOTCMS_URL } from '../config';
+import { KNOTCMS_URL, CONTACT_EMAIL } from '../config';
 import Wordmark from './Wordmark.astro';
 
-const links = [
+const pageLinks = [
+  { href: '#home', label: 'Home' },
   { href: '#process', label: 'Process' },
   { href: '#features', label: 'Programs' },
-  { href: '#approach', label: 'Approach' },
-  { href: '#knotcms', label: 'KnotCMS' },
   { href: '#faq', label: 'FAQ' },
   { href: '#contact', label: 'Contact' },
 ];
 
 const legalLinks = [
   { href: '/privacy-policy', label: 'Privacy Policy' },
-  { href: '/terms', label: 'Terms & Conditions' },
+  { href: '/terms', label: 'Terms' },
 ];
 ---
 
 <footer class="pf-footer">
   <div class="pf-container pf-footer-inner">
-    <Wordmark size="sm" />
+    <div class="pf-footer-brand">
+      <Wordmark size="sm" />
+      <p class="pf-footer-tagline">
+        FramerSchool teaches structure-first delivery for freelancers and agencies shipping client-ready sites.
+      </p>
+    </div>
 
-    <nav class="pf-footer-nav" aria-label="Footer">
-      {links.map((link) => (
-        <a href={link.href}>{link.label}</a>
-      ))}
-      <a href={KNOTCMS_URL} target="_blank" rel="noopener noreferrer">KnotCMS</a>
-    </nav>
+    <div class="pf-footer-col">
+      <p class="pf-footer-label">Pages</p>
+      <nav class="pf-footer-nav" aria-label="Footer pages">
+        {pageLinks.map((link) => (
+          <a href={link.href}>{link.label}</a>
+        ))}
+        <a href={KNOTCMS_URL} target="_blank" rel="noopener noreferrer">KnotCMS</a>
+      </nav>
+    </div>
 
-    <nav class="pf-footer-legal" aria-label="Legal">
-      {legalLinks.map((link) => (
-        <a href={link.href}>{link.label}</a>
-      ))}
-    </nav>
+    <div class="pf-footer-col">
+      <p class="pf-footer-label">Contact</p>
+      <a href={`mailto:${CONTACT_EMAIL}`} class="pf-footer-contact">{CONTACT_EMAIL}</a>
+      <nav class="pf-footer-legal" aria-label="Legal">
+        {legalLinks.map((link) => (
+          <a href={link.href}>{link.label}</a>
+        ))}
+      </nav>
+    </div>
 
     <p class="pf-footer-copy">&copy; 2026 FramerSchool. All rights reserved.</p>
   </div>
