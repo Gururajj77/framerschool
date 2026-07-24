@@ -4,20 +4,22 @@ import { batchReveal } from './shared';
 export function initFaq(reduced: boolean): (() => void) | void {
   const items = gsap.utils.toArray<HTMLElement>('[data-faq-item]');
 
-  batchReveal('[data-faq-item]', { start: 'top 92%' });
-
   if (items.length === 0) return;
+
+  // Reveal the FAQ block as a whole — avoid per-item transforms fighting the accordion.
+  batchReveal('#faq .fs-faq-intro, #faq .fs-faq-list', { start: 'top 92%' });
 
   const closeItem = (item: HTMLElement) => {
     const panel = item.querySelector<HTMLElement>('[data-faq-panel]');
-    const inner = item.querySelector<HTMLElement>('.fs-faq-panel-inner, .pf-faq-panel-inner');
+    const inner = item.querySelector<HTMLElement>('.fs-faq-panel-inner');
     const toggle = item.querySelector('[data-faq-toggle]');
 
     if (!panel || !inner) return;
 
+    gsap.killTweensOf(panel);
     gsap.to(panel, {
       height: 0,
-      duration: reduced ? 0 : 0.35,
+      duration: reduced ? 0 : 0.32,
       ease: 'power2.inOut',
       onComplete: () => {
         item.classList.remove('open');
@@ -28,19 +30,22 @@ export function initFaq(reduced: boolean): (() => void) | void {
 
   const openItem = (item: HTMLElement) => {
     const panel = item.querySelector<HTMLElement>('[data-faq-panel]');
-    const inner = item.querySelector<HTMLElement>('.fs-faq-panel-inner, .pf-faq-panel-inner');
+    const inner = item.querySelector<HTMLElement>('.fs-faq-panel-inner');
     const toggle = item.querySelector('[data-faq-toggle]');
 
     if (!panel || !inner) return;
 
+    gsap.killTweensOf(panel);
     item.classList.add('open');
     toggle?.setAttribute('aria-expanded', 'true');
-    gsap.set(panel, { height: 'auto' });
-    const height = inner.offsetHeight;
+
+    // Measure natural height, then animate from 0.
+    gsap.set(panel, { height: 'auto', overflow: 'hidden' });
+    const height = inner.getBoundingClientRect().height;
     gsap.fromTo(
       panel,
       { height: 0 },
-      { height, duration: reduced ? 0 : 0.4, ease: 'power2.out' },
+      { height, duration: reduced ? 0 : 0.38, ease: 'power2.out' },
     );
   };
 
@@ -49,7 +54,7 @@ export function initFaq(reduced: boolean): (() => void) | void {
     const toggle = item.querySelector('[data-faq-toggle]');
     if (!panel || !toggle) return;
 
-    gsap.set(panel, { height: 0 });
+    gsap.set(panel, { height: 0, overflow: 'hidden' });
 
     toggle.addEventListener('click', () => {
       const isOpen = item.classList.contains('open');

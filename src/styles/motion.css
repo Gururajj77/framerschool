@@ -9,6 +9,7 @@ html.lenis body {
     scroll-behavior: auto !important;
 }
 
+.fs-faq-panel,
 .pf-faq-panel {
     height: 0;
     overflow: hidden;
