@@ -1,44 +1,24 @@
 ---
-import SectionHead from './SectionHead.astro';
-
 const decisions = [
-  {
-    title: 'Why this section exists',
-    text: 'Every block has to earn its place for the business — not the template author.',
-  },
-  {
-    title: 'Why the CMS is structured this way',
-    text: 'Content models that stay maintainable when the client starts editing.',
-  },
-  {
-    title: 'Why components are reusable',
-    text: 'Systems that scale across pages without becoming a maintenance trap.',
-  },
-  {
-    title: 'Why naming matters',
-    text: 'Projects professionals can hand off, revise, and ship without guessing.',
-  },
+  'Why this section exists for the business — not the template author',
+  'Why the CMS is structured so clients can edit without breaking the site',
+  'Why components stay reusable across pages without becoming a trap',
+  'Why naming, folders, and handoff standards matter when you ship',
 ];
 ---
 
-<section id="philosophy" class="pf-section pf-section--muted">
-  <div class="pf-container">
-    <SectionHead
-      tag="PHILOSOPHY"
-      title="Teach decisions, not clicks"
-      lead="The why is the product. Framer is simply the tool."
-    />
+<section id="philosophy" class="fs-band fs-band--brand">
+  <div class="fs-wrap fs-philosophy">
+    <p class="fs-kicker fs-kicker--on-brand">Teaching philosophy</p>
+    <h2 class="fs-philosophy-quote" data-philosophy-quote>
+      Teach decisions,<br />not clicks.
+    </h2>
+    <p class="fs-philosophy-lead">The why is the product. Framer is simply the tool.</p>
 
-    <div class="pf-philosophy" data-philosophy>
-      {decisions.map((item, index) => (
-        <article class="pf-philosophy-item" data-philosophy-item>
-          <p class="pf-philosophy-num" aria-hidden="true">
-            <span>/</span>{String(index + 1).padStart(2, '0')}
-          </p>
-          <h3 class="pf-philosophy-title">{item.title}</h3>
-          <p class="pf-philosophy-text">{item.text}</p>
-        </article>
+    <ul class="fs-philosophy-list" data-philosophy>
+      {decisions.map((item) => (
+        <li data-philosophy-item>{item}</li>
       ))}
-    </div>
+    </ul>
   </div>
 </section>

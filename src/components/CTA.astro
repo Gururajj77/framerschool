@@ -1,21 +1,18 @@
 ---
 import { YOUTUBE_URL, CONTACT_EMAIL } from '../config';
-import SectionHead from './SectionHead.astro';
 ---
 
-<section id="watch" class="pf-section pf-section--cta">
-  <div class="pf-container pf-cta">
-    <SectionHead
-      tag="WATCH"
-      title="Watch the builds"
-      lead="See templates become production-ready client websites — with every important decision explained along the way."
-    />
-
-    <div class="pf-cta-actions" data-cta-panel>
-      <a href={YOUTUBE_URL} class="pf-btn pf-btn--primary pf-btn--lg" target="_blank" rel="noopener noreferrer">
+<section id="watch" class="fs-band fs-band--ink fs-cta">
+  <div class="fs-wrap">
+    <h2 class="fs-cta-title" data-cta-title>Watch the builds</h2>
+    <p class="fs-cta-lead" data-cta-panel>
+      See templates become production-ready client websites — with every important decision explained along the way.
+    </p>
+    <div class="fs-cta-actions">
+      <a href={YOUTUBE_URL} class="fs-btn fs-btn--brand" target="_blank" rel="noopener noreferrer">
         Open YouTube
       </a>
-      <a href={`mailto:${CONTACT_EMAIL}`} class="pf-btn pf-btn--outline pf-btn--lg">Email FramerSchool</a>
+      <a href={`mailto:${CONTACT_EMAIL}`} class="fs-btn fs-btn--ghost-dark">Email FramerSchool</a>
     </div>
   </div>
 </section>

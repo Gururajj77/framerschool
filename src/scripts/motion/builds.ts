@@ -1,27 +1,38 @@
-import { batchReveal, gsap, ScrollTrigger } from './shared';
+import { gsap } from './shared';
 
 export function initBuilds(reduced: boolean): void {
-  if (reduced) return;
+  const tabs = gsap.utils.toArray<HTMLButtonElement>('[data-build-tab]');
+  const panels = gsap.utils.toArray<HTMLElement>('[data-build-panel]');
 
-  batchReveal('#builds .pf-section-head');
+  if (tabs.length === 0 || panels.length === 0) return;
 
-  const items = gsap.utils.toArray<HTMLElement>('[data-build-item]');
-  if (items.length === 0) return;
+  const activate = (index: number) => {
+    tabs.forEach((tab, i) => {
+      const on = i === index;
+      tab.classList.toggle('is-active', on);
+      tab.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
 
-  gsap.set(items, { opacity: 0, y: 10 });
+    panels.forEach((panel, i) => {
+      const on = i === index;
+      panel.classList.toggle('is-active', on);
+      panel.hidden = !on;
+    });
 
-  ScrollTrigger.batch(items, {
-    start: 'top 92%',
-    once: true,
-    onEnter: (batch) => {
-      gsap.to(batch, {
-        opacity: 1,
-        y: 0,
-        duration: 0.4,
-        stagger: 0.06,
-        ease: 'power2.out',
-        overwrite: true,
-      });
-    },
+    const active = panels[index];
+    if (!reduced && active) {
+      gsap.fromTo(
+        active,
+        { opacity: 0, y: 10 },
+        { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' },
+      );
+    }
+  };
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const index = Number(tab.dataset.index ?? 0);
+      activate(index);
+    });
   });
 }

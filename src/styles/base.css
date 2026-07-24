@@ -30,8 +30,8 @@ strong {
 }
 
 ::selection {
-    background: var(--pf-accent-muted);
-    color: var(--pf-text);
+    background: var(--pf-brand);
+    color: #ffffff;
 }
 
 .pf-muted {

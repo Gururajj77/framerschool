@@ -1,23 +1,8 @@
-import { gsap, ScrollTrigger } from './shared';
+import { gsap } from './shared';
 import { batchReveal } from './shared';
 
 export function initFaq(reduced: boolean): (() => void) | void {
   const items = gsap.utils.toArray<HTMLElement>('[data-faq-item]');
-  const header = document.querySelector('#faq .pf-section-head');
-
-  if (header && !reduced) {
-    gsap.from(header, {
-      y: 10,
-      opacity: 0,
-      duration: 0.45,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: header,
-        start: 'top 88%',
-        once: true,
-      },
-    });
-  }
 
   batchReveal('[data-faq-item]', { start: 'top 92%' });
 
@@ -25,9 +10,8 @@ export function initFaq(reduced: boolean): (() => void) | void {
 
   const closeItem = (item: HTMLElement) => {
     const panel = item.querySelector<HTMLElement>('[data-faq-panel]');
-    const inner = item.querySelector<HTMLElement>('.pf-faq-panel-inner');
+    const inner = item.querySelector<HTMLElement>('.fs-faq-panel-inner, .pf-faq-panel-inner');
     const toggle = item.querySelector('[data-faq-toggle]');
-    const icon = item.querySelector('.pf-faq-icon svg');
 
     if (!panel || !inner) return;
 
@@ -40,14 +24,12 @@ export function initFaq(reduced: boolean): (() => void) | void {
         toggle?.setAttribute('aria-expanded', 'false');
       },
     });
-    if (icon) gsap.to(icon, { rotation: 0, duration: reduced ? 0 : 0.3 });
   };
 
   const openItem = (item: HTMLElement) => {
     const panel = item.querySelector<HTMLElement>('[data-faq-panel]');
-    const inner = item.querySelector<HTMLElement>('.pf-faq-panel-inner');
+    const inner = item.querySelector<HTMLElement>('.fs-faq-panel-inner, .pf-faq-panel-inner');
     const toggle = item.querySelector('[data-faq-toggle]');
-    const icon = item.querySelector('.pf-faq-icon svg');
 
     if (!panel || !inner) return;
 
@@ -60,74 +42,32 @@ export function initFaq(reduced: boolean): (() => void) | void {
       { height: 0 },
       { height, duration: reduced ? 0 : 0.4, ease: 'power2.out' },
     );
-    if (icon) gsap.to(icon, { rotation: 45, duration: reduced ? 0 : 0.3 });
-  };
-
-  const setOpen = (item: HTMLElement, open: boolean) => {
-    if (open) openItem(item);
-    else closeItem(item);
   };
 
   items.forEach((item) => {
     const panel = item.querySelector<HTMLElement>('[data-faq-panel]');
-    const inner = item.querySelector<HTMLElement>('.pf-faq-panel-inner');
     const toggle = item.querySelector('[data-faq-toggle]');
+    if (!panel || !toggle) return;
 
-    if (!panel || !inner || !toggle) return;
-
-    if (item.classList.contains('open')) {
-      gsap.set(panel, { height: inner.offsetHeight });
-      const icon = item.querySelector('.pf-faq-icon svg');
-      if (icon) gsap.set(icon, { rotation: 45 });
-    } else {
-      gsap.set(panel, { height: 0 });
-    }
+    gsap.set(panel, { height: 0 });
 
     toggle.addEventListener('click', () => {
       const isOpen = item.classList.contains('open');
       items.forEach((other) => {
         if (other !== item) closeItem(other);
       });
-      setOpen(item, !isOpen);
+      if (isOpen) closeItem(item);
+      else openItem(item);
     });
   });
-
-  return () => {
-    // listeners are on DOM nodes that persist
-  };
 }
 
 export function initCta(reduced: boolean): (() => void) | void {
-  const email = document.querySelector('[data-cta-panel]');
-
-  if (!email) return;
-
-  if (reduced) {
-    gsap.set(email, { clearProps: 'all', opacity: 1, y: 0 });
-    return;
-  }
-
-  gsap.set(email, { y: 10, opacity: 0 });
-
-  const st = gsap.to(email, {
-    y: 0,
-    opacity: 1,
-    duration: 0.45,
-    ease: 'power2.out',
-    scrollTrigger: {
-      trigger: email.closest('#watch') ?? email,
-      start: 'top 88%',
-      once: true,
-    },
-  });
-
-  return () => {
-    st.scrollTrigger?.kill();
-    st.kill();
-  };
+  if (reduced) return;
+  batchReveal('[data-cta-title], [data-cta-panel]');
 }
 
 export function initFooter(reduced: boolean): void {
   if (reduced) return;
-  batchReveal('.pf-footer-nav a, .pf-footer-legal a, .pf-footer-copy');
+  batchReveal('.fs-footer-nav a, .fs-footer-meta');
 }

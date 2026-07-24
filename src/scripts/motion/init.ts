@@ -2,11 +2,8 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { prefersReducedMotion } from './shared';
 import { initHero } from './hero';
-import { initContrast } from './contrast';
-import { initMethod } from './method';
-import { initPillars } from './pillars';
+import { initContrast, initMethod, initPillars, initPhilosophy } from './sections';
 import { initBuilds } from './builds';
-import { initPhilosophy } from './philosophy';
 import { initFaq, initCta, initFooter } from './faq';
 import { initHeader } from './header';
 import { initSmoothScroll } from './smooth-scroll';
@@ -24,8 +21,8 @@ function boot() {
   cleanups.push(initHero(reduced));
   initContrast(reduced);
   initMethod(reduced);
-  initPillars(reduced);
   initBuilds(reduced);
+  initPillars(reduced);
   initPhilosophy(reduced);
   cleanups.push(initFaq(reduced));
   cleanups.push(initCta(reduced));
@@ -41,13 +38,5 @@ if (document.readyState === 'loading') {
 }
 
 window.addEventListener('load', () => ScrollTrigger.refresh());
-
-const mm = gsap.matchMedia();
-
-mm.add('(prefers-reduced-motion: reduce)', () => {
-  return () => {
-    ScrollTrigger.getAll().forEach((st) => st.kill());
-  };
-});
 
 export {};

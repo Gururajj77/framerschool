@@ -1,6 +1,4 @@
 ---
-import SectionHead from './SectionHead.astro';
-
 const faqs = [
   {
     question: 'Is this for complete beginners?',
@@ -25,30 +23,26 @@ const faqs = [
 ];
 ---
 
-<section id="faq" class="pf-section">
-  <div class="pf-container">
-    <SectionHead
-      tag="FAQ"
-      title="Who this is for"
-      lead="Quick filters so you know if FramerSchool matches how you want to work."
-    />
+<section id="faq" class="fs-band">
+  <div class="fs-wrap fs-faq">
+    <div class="fs-faq-intro">
+      <h2 class="fs-display">Who this<br />is for</h2>
+      <p class="fs-lede">
+        Quick filters so you know if FramerSchool matches how you want to work.
+      </p>
+    </div>
 
-    <div class="pf-faq-list" role="list">
+    <div class="fs-faq-list" role="list">
       {faqs.map((faq) => (
-        <div class="pf-faq-item" data-faq-item role="listitem">
-          <h3 class="pf-faq-heading">
-            <button class="pf-faq-trigger" data-faq-toggle type="button" aria-expanded="false">
-              <span class="pf-faq-qmark" aria-hidden="true">/</span>
-              <span class="pf-faq-question-text">{faq.question}</span>
-              <span class="pf-faq-icon" aria-hidden="true">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <path d="M12 5v14M5 12h14" />
-                </svg>
-              </span>
+        <div class="fs-faq-item" data-faq-item role="listitem">
+          <h3 class="fs-faq-heading">
+            <button class="fs-faq-trigger" data-faq-toggle type="button" aria-expanded="false">
+              <span class="fs-faq-q">{faq.question}</span>
+              <span class="fs-faq-icon" aria-hidden="true"></span>
             </button>
           </h3>
-          <div class="pf-faq-panel" data-faq-panel>
-            <div class="pf-faq-panel-inner">
+          <div class="fs-faq-panel" data-faq-panel>
+            <div class="fs-faq-panel-inner pf-faq-panel-inner">
               <p>{faq.answer}</p>
             </div>
           </div>

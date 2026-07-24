@@ -2,10 +2,10 @@ import { gsap } from './shared';
 import { getScrollY } from './smooth-scroll';
 
 export function initHeader(reduced: boolean): (() => void) | void {
-  const topbar = document.querySelector('[data-topbar]');
+  const topbar = document.querySelector('[data-nav]');
   const toggle = document.querySelector('[data-nav-toggle]');
   const overlay = document.querySelector('[data-nav-overlay]');
-  const navLinks = gsap.utils.toArray<HTMLAnchorElement>('.pf-topbar-link');
+  const navLinks = gsap.utils.toArray<HTMLAnchorElement>('.fs-nav-link');
   const overlayLinks = gsap.utils.toArray<HTMLAnchorElement>('[data-nav-overlay-link]');
 
   if (!topbar) return;
@@ -52,71 +52,30 @@ export function initHeader(reduced: boolean): (() => void) | void {
     section: HTMLElement;
   }>;
 
-  const findNavLinkForHref = (href: string) =>
-    navLinks.find((link) => link.getAttribute('href') === href) ?? null;
-
-  const getNavOffset = () => {
-    const raw = getComputedStyle(document.documentElement).getPropertyValue('--pf-topbar-height').trim();
-    const value = parseFloat(raw);
-    return (Number.isFinite(value) ? value : 72) + 8;
-  };
-
-  let lockedNavHref: string | null = null;
-
   const setActiveLink = (link: HTMLAnchorElement | null) => {
     navLinks.forEach((navLink) => {
       navLink.classList.remove('is-active');
-      navLink.removeAttribute('aria-current');
     });
-    if (!link) return;
-    link.classList.add('is-active');
-    link.setAttribute('aria-current', 'page');
-  };
-
-  const hasReachedSection = (href: string) => {
-    const section = document.querySelector<HTMLElement>(href);
-    if (!section) return true;
-    const offset = getNavOffset();
-    return Math.abs(section.getBoundingClientRect().top - offset) <= 12;
+    link?.classList.add('is-active');
   };
 
   const setActiveNav = () => {
-    if (lockedNavHref) {
-      const lockedLink = findNavLinkForHref(lockedNavHref);
-      if (lockedLink) setActiveLink(lockedLink);
-      if (hasReachedSection(lockedNavHref)) lockedNavHref = null;
-      return;
-    }
-
-    const offset = getNavOffset() + 16;
+    const offset = 80;
     let active: (typeof sectionLinks)[number] | null = null;
 
     for (const entry of sectionLinks) {
-      const rect = entry.section.getBoundingClientRect();
-      if (rect.top <= offset && rect.bottom > offset) {
-        active = entry;
-        break;
-      }
-    }
-
-    if (!active) {
-      for (const entry of sectionLinks) {
-        if (entry.section.getBoundingClientRect().top <= offset) active = entry;
-      }
+      if (entry.section.getBoundingClientRect().top <= offset) active = entry;
     }
 
     setActiveLink(active?.link ?? null);
   };
 
   const onScroll = () => {
-    topbar.classList.toggle('is-scrolled', getScrollY() > 8);
+    const y = getScrollY();
+    const hero = document.querySelector('#home');
+    const heroBottom = hero ? hero.getBoundingClientRect().bottom : 0;
+    topbar.classList.toggle('is-scrolled', y > 12 && heroBottom < 48);
     setActiveNav();
-  };
-
-  const onNavClick = (href: string) => {
-    if (!findNavLinkForHref(href)) return;
-    lockedNavHref = href;
-    setActiveLink(findNavLinkForHref(href));
   };
 
   const onResize = () => {
@@ -125,23 +84,13 @@ export function initHeader(reduced: boolean): (() => void) | void {
   };
 
   setActiveNav();
+  onScroll();
   document.addEventListener('pf-scroll', onScroll);
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onResize);
 
   navLinks.forEach((link) => {
-    link.addEventListener('click', () => {
-      closeMenu();
-      const href = link.getAttribute('href') ?? '';
-      if (href.startsWith('#')) onNavClick(href);
-    });
-  });
-
-  overlayLinks.forEach((link) => {
-    link.addEventListener('click', () => {
-      const href = link.getAttribute('href') ?? '';
-      if (href.startsWith('#')) onNavClick(href);
-    });
+    link.addEventListener('click', closeMenu);
   });
 
   return () => {

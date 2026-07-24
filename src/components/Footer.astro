@@ -1,51 +1,45 @@
 ---
 import { YOUTUBE_URL, CONTACT_EMAIL } from '../config';
-import Wordmark from './Wordmark.astro';
 
 const pageLinks = [
-  { href: '#home', label: 'Home' },
   { href: '#method', label: 'Method' },
-  { href: '#pillars', label: 'Pillars' },
   { href: '#builds', label: 'Builds' },
+  { href: '#learn', label: 'Learn' },
   { href: '#faq', label: 'FAQ' },
+  { href: YOUTUBE_URL, label: 'YouTube', external: true },
 ];
 
 const legalLinks = [
-  { href: '/privacy-policy', label: 'Privacy Policy' },
+  { href: '/privacy-policy', label: 'Privacy' },
   { href: '/terms', label: 'Terms' },
 ];
 ---
 
-<footer class="pf-footer">
-  <div class="pf-container pf-footer-inner">
-    <div class="pf-footer-brand">
-      <Wordmark size="sm" />
-      <p class="pf-footer-tagline">
-        FramerSchool teaches developers, freelancers, and agencies how to turn Framer templates into
-        production-ready client websites.
+<footer class="fs-footer">
+  <div class="fs-wrap fs-footer-inner">
+    <div class="fs-footer-brand">
+      <p class="fs-footer-name">FramerSchool</p>
+      <p class="fs-footer-tag">
+        Turn Framer templates into production-ready client websites.
       </p>
     </div>
 
-    <div class="pf-footer-col">
-      <p class="pf-footer-label">Pages</p>
-      <nav class="pf-footer-nav" aria-label="Footer pages">
-        {pageLinks.map((link) => (
+    <nav class="fs-footer-nav" aria-label="Footer">
+      {pageLinks.map((link) =>
+        link.external ? (
+          <a href={link.href} target="_blank" rel="noopener noreferrer">{link.label}</a>
+        ) : (
           <a href={link.href}>{link.label}</a>
-        ))}
-        <a href={YOUTUBE_URL} target="_blank" rel="noopener noreferrer">YouTube</a>
-      </nav>
-    </div>
+        )
+      )}
+      {legalLinks.map((link) => (
+        <a href={link.href}>{link.label}</a>
+      ))}
+    </nav>
 
-    <div class="pf-footer-col">
-      <p class="pf-footer-label">Contact</p>
-      <a href={`mailto:${CONTACT_EMAIL}`} class="pf-footer-contact">{CONTACT_EMAIL}</a>
-      <nav class="pf-footer-legal" aria-label="Legal">
-        {legalLinks.map((link) => (
-          <a href={link.href}>{link.label}</a>
-        ))}
-      </nav>
+    <div class="fs-footer-meta">
+      <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+      <p>&copy; 2026 FramerSchool</p>
     </div>
-
-    <p class="pf-footer-copy">&copy; 2026 FramerSchool. All rights reserved.</p>
   </div>
 </footer>

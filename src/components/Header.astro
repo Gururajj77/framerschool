@@ -1,37 +1,31 @@
 ---
-import Wordmark from './Wordmark.astro';
 import { YOUTUBE_URL } from '../config';
 
 const links = [
   { href: '#method', label: 'Method' },
-  { href: '#pillars', label: 'Pillars' },
   { href: '#builds', label: 'Builds' },
-  { href: '#philosophy', label: 'Philosophy' },
+  { href: '#learn', label: 'Learn' },
   { href: '#faq', label: 'FAQ' },
 ];
 ---
 
-<header class="pf-topbar" data-topbar>
-  <div class="pf-container pf-topbar-inner">
-    <a href="#home" class="pf-topbar-brand" aria-label="FramerSchool home">
-      <Wordmark size="sm" />
+<header class="fs-nav" data-topbar data-nav>
+  <div class="fs-nav-inner">
+    <a href="#home" class="fs-nav-brand" aria-label="FramerSchool home">
+      <img src="/brand/fs-logo.svg" width="28" height="30" alt="" class="fs-nav-mark" decoding="async" />
+      <span class="fs-nav-name">FramerSchool</span>
     </a>
 
-    <nav class="pf-topbar-nav" id="site-nav" aria-label="Main" data-site-nav>
+    <nav class="fs-nav-links" aria-label="Main" data-site-nav>
       {links.map((link) => (
-        <a href={link.href} class="pf-topbar-link" data-nav-label={link.label}>
-          {link.label}
-        </a>
+        <a href={link.href} class="fs-nav-link pf-topbar-link">{link.label}</a>
       ))}
     </nav>
 
-    <div class="pf-topbar-actions">
-      <a href={YOUTUBE_URL} class="pf-topbar-mail" target="_blank" rel="noopener noreferrer">YouTube</a>
-      <a href={YOUTUBE_URL} class="pf-btn pf-btn--primary pf-btn--sm" target="_blank" rel="noopener noreferrer">
-        Watch builds
-      </a>
+    <div class="fs-nav-end">
+      <a href={YOUTUBE_URL} class="fs-nav-cta" target="_blank" rel="noopener noreferrer">Watch</a>
       <button
-        class="pf-topbar-toggle"
+        class="fs-nav-burger"
         data-nav-toggle
         type="button"
         aria-label="Open menu"
@@ -45,17 +39,11 @@ const links = [
   </div>
 </header>
 
-<div class="pf-nav-overlay" id="nav-overlay" data-nav-overlay aria-hidden="true">
-  <div class="pf-nav-overlay-inner">
-    <nav class="pf-nav-overlay-nav" aria-label="Mobile">
-      {links.map((link) => (
-        <a href={link.href} class="pf-nav-overlay-link" data-nav-overlay-link>
-          {link.label}
-        </a>
-      ))}
-      <a href={YOUTUBE_URL} class="pf-nav-overlay-link" data-nav-overlay-link target="_blank" rel="noopener noreferrer">
-        Watch builds
-      </a>
-    </nav>
-  </div>
+<div class="fs-nav-sheet" id="nav-overlay" data-nav-overlay aria-hidden="true">
+  <nav class="fs-nav-sheet-nav" aria-label="Mobile">
+    {links.map((link) => (
+      <a href={link.href} data-nav-overlay-link>{link.label}</a>
+    ))}
+    <a href={YOUTUBE_URL} data-nav-overlay-link target="_blank" rel="noopener noreferrer">Watch builds</a>
+  </nav>
 </div>

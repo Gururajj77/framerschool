@@ -1,74 +1,60 @@
 ---
 import { YOUTUBE_URL } from '../config';
-import Wordmark from './Wordmark.astro';
 ---
 
-<section id="home" class="pf-hero">
-  <div class="pf-hero-stage" aria-hidden="true">
-    <div class="pf-hero-stage-grid"></div>
-    <div class="pf-build-board" data-hero-board>
-      <div class="pf-build-board-bar">
-        <span class="pf-build-board-dot"></span>
-        <span class="pf-build-board-dot"></span>
-        <span class="pf-build-board-dot"></span>
-        <span class="pf-build-board-path">project / client-site</span>
+<section id="home" class="fs-hero" data-hero>
+  <div class="fs-hero-field">
+    <div class="fs-hero-copy">
+      <p class="fs-hero-brand" data-hero-brand>
+        <img src="/brand/fs-logo.svg" width="48" height="52" alt="" class="fs-hero-mark" decoding="async" />
+        <span>FramerSchool</span>
+      </p>
+
+      <h1 class="fs-hero-title" data-hero-title>
+        Turn templates into<br />production-ready<br />client websites
+      </h1>
+
+      <p class="fs-hero-lead" data-hero-lead>
+        Architecture, workflows, CMS, and professional delivery — not feature tours.
+      </p>
+
+      <div class="fs-hero-actions" data-hero-actions>
+        <a href={YOUTUBE_URL} class="fs-btn fs-btn--ink" target="_blank" rel="noopener noreferrer">
+          Watch builds
+        </a>
+        <a href="#method" class="fs-btn fs-btn--ghost-light">How it works</a>
       </div>
-      <div class="pf-build-board-body">
-        <aside class="pf-build-board-rail">
-          <p class="pf-build-board-label">Layers</p>
-          <ul>
-            <li class="is-active">Home</li>
-            <li>Services</li>
-            <li>About</li>
-            <li>CMS / Posts</li>
-            <li>Contact</li>
-          </ul>
-        </aside>
-        <div class="pf-build-board-canvas">
-          <div class="pf-build-strip" data-build-strip>
-            <div class="pf-build-pane pf-build-pane--from" data-build-from>
-              <p class="pf-build-pane-tag">Template</p>
-              <div class="pf-build-block pf-build-block--lg"></div>
-              <div class="pf-build-block pf-build-block--md"></div>
-              <div class="pf-build-row">
-                <div class="pf-build-block pf-build-block--sm"></div>
-                <div class="pf-build-block pf-build-block--sm"></div>
-                <div class="pf-build-block pf-build-block--sm"></div>
-              </div>
-            </div>
-            <div class="pf-build-arrow" aria-hidden="true">→</div>
-            <div class="pf-build-pane pf-build-pane--to" data-build-to>
-              <p class="pf-build-pane-tag">Law firm site</p>
-              <div class="pf-build-block pf-build-block--lg is-live"></div>
-              <div class="pf-build-block pf-build-block--md is-live"></div>
-              <div class="pf-build-row">
-                <div class="pf-build-block pf-build-block--sm is-live"></div>
-                <div class="pf-build-block pf-build-block--sm is-live"></div>
-              </div>
+    </div>
+
+    <div class="fs-hero-visual" aria-hidden="true" data-hero-board>
+      <div class="fs-hero-wire" data-hero-wire>
+        <div class="fs-wire-col">
+          <span class="fs-wire-label">Template</span>
+          <div class="fs-wire-frame">
+            <i class="fs-wire-bar"></i>
+            <i class="fs-wire-bar fs-wire-bar--mid"></i>
+            <i class="fs-wire-bar fs-wire-bar--short"></i>
+            <div class="fs-wire-cells">
+              <i></i><i></i><i></i>
             </div>
           </div>
-          <p class="pf-build-caption">Template → niche → production-ready delivery</p>
+        </div>
+        <div class="fs-wire-flow">
+          <span class="fs-wire-arrow"></span>
+        </div>
+        <div class="fs-wire-col fs-wire-col--live">
+          <span class="fs-wire-label" data-wire-niche>Law firm</span>
+          <div class="fs-wire-frame fs-wire-frame--live">
+            <i class="fs-wire-bar"></i>
+            <i class="fs-wire-bar fs-wire-bar--mid"></i>
+            <i class="fs-wire-bar fs-wire-bar--short"></i>
+            <div class="fs-wire-cells">
+              <i></i><i></i>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="pf-container pf-hero-inner">
-    <div class="pf-hero-brand" data-hero-brand>
-      <Wordmark size="lg" />
-    </div>
-    <h1 class="pf-hero-title" data-hero-title>
-      Turn templates into production-ready client websites
-    </h1>
-    <p class="pf-hero-lead" data-hero-lead>
-      Architecture, workflows, CMS design, and professional delivery — not feature tours.
-      Built for people who already know Framer and want to ship like professionals.
-    </p>
-    <div class="pf-hero-actions" data-hero-actions>
-      <a href={YOUTUBE_URL} class="pf-btn pf-btn--primary pf-btn--lg" target="_blank" rel="noopener noreferrer">
-        Watch builds
-      </a>
-      <a href="#method" class="pf-btn pf-btn--outline pf-btn--lg">See how it works</a>
+      <p class="fs-hero-caption">Template → niche → ship</p>
     </div>
   </div>
 </section>

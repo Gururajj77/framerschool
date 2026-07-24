@@ -1,33 +1,83 @@
 ---
-import SectionHead from './SectionHead.astro';
-
 const builds = [
-  { niche: 'Law firm', focus: 'Trust, services, case structure' },
-  { niche: 'Dentist', focus: 'Local SEO, offers, booking flow' },
-  { niche: 'Gym', focus: 'Memberships, coaches, schedules' },
-  { niche: 'Coffee shop', focus: 'Menu CMS, locations, brand' },
-  { niche: 'SaaS', focus: 'Landing system, pricing, docs' },
-  { niche: 'Agency', focus: 'Work archive, process, leads' },
-  { niche: 'Restaurant', focus: 'Menus, hours, reservations' },
+  {
+    niche: 'Law firm',
+    focus: 'Trust, services, case structure',
+    detail: 'Strip template fluff. Build authority hierarchy, service architecture, and a CMS that partners can maintain.',
+  },
+  {
+    niche: 'Dentist',
+    focus: 'Local SEO, offers, booking flow',
+    detail: 'Local intent first. Offers, providers, and booking as a system — not a decorative landing page.',
+  },
+  {
+    niche: 'Gym',
+    focus: 'Memberships, coaches, schedules',
+    detail: 'Membership types, coach bios, and class schedules modeled so content scales without redesign.',
+  },
+  {
+    niche: 'Coffee shop',
+    focus: 'Menu CMS, locations, brand',
+    detail: 'Menu as CMS. Locations as structure. Brand density without killing performance.',
+  },
+  {
+    niche: 'SaaS',
+    focus: 'Landing system, pricing, docs',
+    detail: 'Reusable landing modules, pricing logic, and a content path that survives product changes.',
+  },
+  {
+    niche: 'Agency',
+    focus: 'Work archive, process, leads',
+    detail: 'Case study architecture, process clarity, and a lead path that feels intentional — not templated.',
+  },
+  {
+    niche: 'Restaurant',
+    focus: 'Menus, hours, reservations',
+    detail: 'Menus that update cleanly. Hours and reservations as operational content, not static decoration.',
+  },
 ];
 ---
 
-<section id="builds" class="pf-section">
-  <div class="pf-container">
-    <SectionHead
-      tag="BUILDS"
-      title="Real niches. Real client scenarios."
-      lead="The value comes from adapting templates — not designing from a blank canvas."
-    />
+<section id="builds" class="fs-band">
+  <div class="fs-wrap">
+    <div class="fs-split-head">
+      <h2 class="fs-display">Real niches.<br />Real client work.</h2>
+      <p class="fs-lede">
+        The value comes from adapting templates — not designing from a blank canvas.
+      </p>
+    </div>
 
-    <ul class="pf-builds" data-builds>
-      {builds.map((build, index) => (
-        <li class="pf-build-item" data-build-item>
-          <span class="pf-build-index" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
-          <span class="pf-build-niche">{build.niche}</span>
-          <span class="pf-build-focus">{build.focus}</span>
-        </li>
-      ))}
-    </ul>
+    <div class="fs-builds" data-builds>
+      <div class="fs-builds-rail" role="tablist" aria-label="Build niches">
+        {builds.map((build, index) => (
+          <button
+            type="button"
+            class:list={['fs-builds-tab', index === 0 && 'is-active']}
+            role="tab"
+            aria-selected={index === 0 ? 'true' : 'false'}
+            data-build-tab
+            data-index={index}
+          >
+            {build.niche}
+          </button>
+        ))}
+      </div>
+
+      <div class="fs-builds-stage" data-build-stage>
+        {builds.map((build, index) => (
+          <div
+            class:list={['fs-builds-panel', index === 0 && 'is-active']}
+            role="tabpanel"
+            data-build-panel
+            data-index={index}
+            hidden={index !== 0}
+          >
+            <p class="fs-builds-focus">{build.focus}</p>
+            <h3 class="fs-builds-niche">{build.niche}</h3>
+            <p class="fs-builds-detail">{build.detail}</p>
+          </div>
+        ))}
+      </div>
+    </div>
   </div>
 </section>
