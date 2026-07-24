@@ -1,18 +1,74 @@
 ---
+import { YOUTUBE_URL } from '../config';
+import Wordmark from './Wordmark.astro';
 ---
 
 <section id="home" class="pf-hero">
+  <div class="pf-hero-stage" aria-hidden="true">
+    <div class="pf-hero-stage-grid"></div>
+    <div class="pf-build-board" data-hero-board>
+      <div class="pf-build-board-bar">
+        <span class="pf-build-board-dot"></span>
+        <span class="pf-build-board-dot"></span>
+        <span class="pf-build-board-dot"></span>
+        <span class="pf-build-board-path">project / client-site</span>
+      </div>
+      <div class="pf-build-board-body">
+        <aside class="pf-build-board-rail">
+          <p class="pf-build-board-label">Layers</p>
+          <ul>
+            <li class="is-active">Home</li>
+            <li>Services</li>
+            <li>About</li>
+            <li>CMS / Posts</li>
+            <li>Contact</li>
+          </ul>
+        </aside>
+        <div class="pf-build-board-canvas">
+          <div class="pf-build-strip" data-build-strip>
+            <div class="pf-build-pane pf-build-pane--from" data-build-from>
+              <p class="pf-build-pane-tag">Template</p>
+              <div class="pf-build-block pf-build-block--lg"></div>
+              <div class="pf-build-block pf-build-block--md"></div>
+              <div class="pf-build-row">
+                <div class="pf-build-block pf-build-block--sm"></div>
+                <div class="pf-build-block pf-build-block--sm"></div>
+                <div class="pf-build-block pf-build-block--sm"></div>
+              </div>
+            </div>
+            <div class="pf-build-arrow" aria-hidden="true">→</div>
+            <div class="pf-build-pane pf-build-pane--to" data-build-to>
+              <p class="pf-build-pane-tag">Law firm site</p>
+              <div class="pf-build-block pf-build-block--lg is-live"></div>
+              <div class="pf-build-block pf-build-block--md is-live"></div>
+              <div class="pf-build-row">
+                <div class="pf-build-block pf-build-block--sm is-live"></div>
+                <div class="pf-build-block pf-build-block--sm is-live"></div>
+              </div>
+            </div>
+          </div>
+          <p class="pf-build-caption">Template → niche → production-ready delivery</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="pf-container pf-hero-inner">
-    <p class="pf-hero-mark" aria-hidden="true">/</p>
-    <p class="pf-hero-eyebrow">Framer delivery experts</p>
-    <h1 class="pf-hero-title">Ship Framer sites clients pay for</h1>
-    <p class="pf-hero-lead">
-      We teach freelancers and agencies how to pick the right template, cut what does not fit,
-      and deliver client-ready Framer websites with judgment — not guesswork.
+    <div class="pf-hero-brand" data-hero-brand>
+      <Wordmark size="lg" />
+    </div>
+    <h1 class="pf-hero-title" data-hero-title>
+      Turn templates into production-ready client websites
+    </h1>
+    <p class="pf-hero-lead" data-hero-lead>
+      Architecture, workflows, CMS design, and professional delivery — not feature tours.
+      Built for people who already know Framer and want to ship like professionals.
     </p>
-    <div class="pf-hero-actions">
-      <a href="#contact" class="pf-btn pf-btn--primary pf-btn--lg">Get in touch</a>
-      <a href="#process" class="pf-btn pf-btn--outline pf-btn--lg">See the process</a>
+    <div class="pf-hero-actions" data-hero-actions>
+      <a href={YOUTUBE_URL} class="pf-btn pf-btn--primary pf-btn--lg" target="_blank" rel="noopener noreferrer">
+        Watch builds
+      </a>
+      <a href="#method" class="pf-btn pf-btn--outline pf-btn--lg">See how it works</a>
     </div>
   </div>
 </section>

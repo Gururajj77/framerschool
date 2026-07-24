@@ -1,0 +1,48 @@
+---
+import SectionHead from './SectionHead.astro';
+
+const steps = [
+  {
+    number: '01',
+    title: 'Pick a template',
+    text: 'Start with a layout that matches the business — not the flashiest file in the marketplace.',
+  },
+  {
+    number: '02',
+    title: 'Choose a real niche',
+    text: 'Law firm, dentist, gym, SaaS, restaurant. Real client work starts with a real business.',
+  },
+  {
+    number: '03',
+    title: 'Convert for production',
+    text: 'Cut what does not fit. Rebuild structure, components, CMS, assets, and performance.',
+  },
+  {
+    number: '04',
+    title: 'Explain every decision',
+    text: 'Why this section exists. Why the content model looks like this. Why naming matters.',
+  },
+];
+---
+
+<section id="method" class="pf-section">
+  <div class="pf-container">
+    <SectionHead
+      tag="METHOD"
+      title="How every build works"
+      lead="Every video follows the same pattern. That is what real client work looks like."
+    />
+
+    <ol class="pf-method" data-method>
+      {steps.map((step) => (
+        <li class="pf-method-step" data-method-step>
+          <p class="pf-method-num" aria-hidden="true">
+            <span>/</span>{step.number}
+          </p>
+          <h3 class="pf-method-title">{step.title}</h3>
+          <p class="pf-method-text">{step.text}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

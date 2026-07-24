@@ -1,8 +1,4 @@
-/** KnotCMS app — production dashboard URL. */
-export const KNOTCMS_URL = 'https://app.knotcms.com';
-
-export const KNOTCMS_DOCS_URL = 'https://docs.knotcms.com';
-
-export const KNOTCMS_WEBSITE_URL = 'https://knotcms.com';
+/** YouTube channel — update when the FramerSchool channel URL is final. */
+export const YOUTUBE_URL = 'https://www.youtube.com/@TheFramerSchool';
 
 export const CONTACT_EMAIL = 'framerskool@gmail.com';

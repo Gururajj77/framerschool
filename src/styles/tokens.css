@@ -1,30 +1,30 @@
 :root {
     color-scheme: dark;
 
-    /* Brand — FramerSchool red shield */
-    --pf-brand: #e01b24;
-    --pf-brand-hover: #f02830;
-    --pf-brand-muted: rgba(224, 27, 36, 0.14);
-    --pf-brand-subtle: rgba(224, 27, 36, 0.28);
+    /* Brand — logo exact (#DE1014 / black / white) */
+    --pf-brand: #de1014;
+    --pf-brand-hover: #f0181c;
+    --pf-brand-muted: rgba(222, 16, 20, 0.14);
+    --pf-brand-subtle: rgba(222, 16, 20, 0.32);
 
-    /* Canvas — soft dark (Material #121212 / Apple elevated gray), not pure black */
-    --pf-bg: #121214;
-    --pf-bg-elevated: #18181b;
-    --pf-bg-subtle: #141417;
-    --pf-bg-muted: #1f1f23;
-    --pf-surface: #1c1c1f;
-    --pf-surface-hover: #26262a;
-    --pf-surface-active: #2c2c31;
-    --pf-surface-raised: #232327;
+    /* Canvas — near-black matching logo shield */
+    --pf-bg: #0b0b0b;
+    --pf-bg-elevated: #111111;
+    --pf-bg-subtle: #0f0f0f;
+    --pf-bg-muted: #161616;
+    --pf-surface: #141414;
+    --pf-surface-hover: #1a1a1a;
+    --pf-surface-active: #202020;
+    --pf-surface-raised: #181818;
 
-    /* Ink — off-white primary, stepped secondary (reduces eye strain vs #fff on #000) */
-    --pf-text: #ececee;
-    --pf-text-secondary: #a0a0ab;
-    --pf-text-tertiary: #787882;
+    /* Ink */
+    --pf-text: #f5f5f5;
+    --pf-text-secondary: #a3a3a3;
+    --pf-text-tertiary: #737373;
 
-    /* Borders — low-contrast separation, not hard lines */
+    /* Borders */
     --pf-border: rgba(255, 255, 255, 0.1);
-    --pf-border-strong: rgba(255, 255, 255, 0.16);
+    --pf-border-strong: rgba(255, 255, 255, 0.18);
     --pf-border-subtle: rgba(255, 255, 255, 0.06);
 
     /* Accent */
@@ -32,25 +32,21 @@
     --pf-accent-hover: var(--pf-brand-hover);
     --pf-accent-muted: var(--pf-brand-muted);
     --pf-accent-subtle: var(--pf-brand-subtle);
-    --pf-accent-ring: rgba(224, 27, 36, 0.32);
+    --pf-accent-ring: rgba(222, 16, 20, 0.35);
 
-    /* Inverted surfaces (CTA band, stat cards) */
-    --pf-invert-bg: #e8e8ea;
-    --pf-invert-text: #18181b;
-    --pf-invert-text-muted: rgba(24, 24, 27, 0.68);
-    --pf-invert-eyebrow: rgba(24, 24, 27, 0.52);
-    --pf-invert-border: rgba(24, 24, 27, 0.14);
-    --pf-invert-btn-bg: #18181b;
-    --pf-invert-btn-text: #ececee;
-    --pf-invert-btn-hover: #26262a;
-
-    /* Product screenshot frames */
-    --pf-shot-bg: #ffffff;
-    --pf-shot-bg-dark: #1c1c1f;
+    /* Inverted surfaces */
+    --pf-invert-bg: #f5f5f5;
+    --pf-invert-text: #0b0b0b;
+    --pf-invert-text-muted: rgba(11, 11, 11, 0.68);
+    --pf-invert-eyebrow: rgba(11, 11, 11, 0.52);
+    --pf-invert-border: rgba(11, 11, 11, 0.14);
+    --pf-invert-btn-bg: #0b0b0b;
+    --pf-invert-btn-text: #f5f5f5;
+    --pf-invert-btn-hover: #1a1a1a;
 
     /* Topbar */
-    --pf-topbar-bg: rgba(18, 18, 20, 0.82);
-    --pf-topbar-bg-scrolled: rgba(18, 18, 20, 0.92);
+    --pf-topbar-bg: rgba(11, 11, 11, 0.86);
+    --pf-topbar-bg-scrolled: rgba(11, 11, 11, 0.94);
 
     /* Buttons */
     --pf-btn-primary-bg: var(--pf-brand);
@@ -71,7 +67,7 @@
     --pf-info-bg: rgba(96, 165, 250, 0.08);
     --pf-info-border: rgba(96, 165, 250, 0.18);
 
-    /* App shell (shared components) */
+    /* Layout */
     --pf-sidebar-width: 15rem;
     --pf-sidebar-bg: var(--pf-bg-elevated);
     --pf-sidebar-muted: var(--pf-text-tertiary);
@@ -79,106 +75,39 @@
     --pf-sidebar-text-hover: var(--pf-text);
     --pf-sidebar-active: var(--pf-bg-muted);
 
-    /* Layout */
     --pf-topbar-height: 72px;
-    --pf-shell-width: 1400px;
+    --pf-shell-width: 1280px;
     --pf-gutter: clamp(1.25rem, 4vw, 2.5rem);
-    --pf-section-y: clamp(3.25rem, 7vw, 5.5rem);
+    --pf-section-y: clamp(3.5rem, 8vw, 6rem);
 
-    --pf-radius-xs: 8px;
-    --pf-radius-sm: 12px;
-    --pf-radius-md: 16px;
-    --pf-radius-lg: 20px;
-    --pf-radius-xl: 24px;
-    --pf-radius-2xl: 32px;
+    --pf-radius-xs: 4px;
+    --pf-radius-sm: 8px;
+    --pf-radius-md: 12px;
+    --pf-radius-lg: 16px;
+    --pf-radius-xl: 20px;
+    --pf-radius-2xl: 28px;
 
-    /* Glass surfaces */
-    --pf-glass-bg: rgba(28, 28, 31, 0.55);
+    --pf-glass-bg: rgba(20, 20, 20, 0.55);
     --pf-glass-border: rgba(255, 255, 255, 0.1);
-    --pf-glass-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
+    --pf-glass-shadow: 0 24px 64px rgba(0, 0, 0, 0.4);
 
-    /* Elevation — lighter shadows on charcoal, not heavy black drops */
-    --pf-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.2);
-    --pf-shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.24);
-    --pf-shadow-md: 0 12px 32px rgba(0, 0, 0, 0.28);
-    --pf-shadow-lg: 0 24px 48px rgba(0, 0, 0, 0.32);
+    --pf-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.25);
+    --pf-shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.3);
+    --pf-shadow-md: 0 12px 32px rgba(0, 0, 0, 0.35);
+    --pf-shadow-lg: 0 24px 48px rgba(0, 0, 0, 0.4);
     --pf-shadow-ring: 0 0 0 1px rgba(255, 255, 255, 0.06);
 
-    /* Motion */
     --pf-ease: cubic-bezier(0.4, 0, 0.2, 1);
     --pf-duration: 150ms;
     --pf-motion-duration: 0.65s;
     --pf-motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
 
-    /* Structure grid */
-    --pf-grid-line: rgba(255, 255, 255, 0.04);
+    --pf-grid-line: rgba(255, 255, 255, 0.035);
 
-    /* Typography — Inter + Syne */
-    --pf-font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    /* Typography — Instrument Sans + Syne + JetBrains Mono */
+    --pf-font: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     --pf-font-display: "Syne", var(--pf-font);
     --pf-font-mono: "JetBrains Mono", ui-monospace, monospace;
-    --pf-tracking-tight: -0.02em;
+    --pf-tracking-tight: -0.03em;
     --pf-tracking-wide: 0.12em;
-}
-
-[data-theme="light"] {
-    color-scheme: light;
-
-    --pf-brand-muted: rgba(224, 27, 36, 0.08);
-    --pf-brand-subtle: rgba(224, 27, 36, 0.14);
-    --pf-accent-ring: rgba(224, 27, 36, 0.2);
-
-    --pf-bg: #ffffff;
-    --pf-bg-elevated: #fafafa;
-    --pf-bg-subtle: #f9fafb;
-    --pf-bg-muted: #f3f4f6;
-    --pf-surface: #ffffff;
-    --pf-surface-hover: #f9fafb;
-    --pf-surface-active: #f3f4f6;
-    --pf-surface-raised: #f4f4f5;
-
-    --pf-text: #111827;
-    --pf-text-secondary: #4b5563;
-    --pf-text-tertiary: #6b7280;
-
-    --pf-border: #e5e7eb;
-    --pf-border-strong: #d1d5db;
-    --pf-border-subtle: #f3f4f6;
-
-    --pf-invert-bg: #111827;
-    --pf-invert-text: #ffffff;
-    --pf-invert-text-muted: rgba(255, 255, 255, 0.72);
-    --pf-invert-eyebrow: rgba(255, 255, 255, 0.6);
-    --pf-invert-border: rgba(255, 255, 255, 0.24);
-    --pf-invert-btn-bg: #ffffff;
-    --pf-invert-btn-text: #111827;
-    --pf-invert-btn-hover: #f5f5f5;
-
-    --pf-topbar-bg: rgba(255, 255, 255, 0.88);
-    --pf-topbar-bg-scrolled: rgba(255, 255, 255, 0.96);
-
-    --pf-ok: #059669;
-    --pf-ok-bg: rgba(5, 150, 105, 0.08);
-    --pf-ok-border: rgba(5, 150, 105, 0.18);
-    --pf-err: #dc2626;
-    --pf-err-bg: rgba(220, 38, 38, 0.08);
-    --pf-err-border: rgba(220, 38, 38, 0.18);
-    --pf-warn: #d97706;
-    --pf-warn-bg: rgba(217, 119, 6, 0.08);
-    --pf-warn-border: rgba(217, 119, 6, 0.18);
-    --pf-warn-text: #b45309;
-    --pf-info-bg: rgba(59, 130, 246, 0.06);
-    --pf-info-border: rgba(59, 130, 246, 0.14);
-
-    --pf-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
-    --pf-shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.06);
-    --pf-shadow-md: 0 12px 32px rgba(0, 0, 0, 0.08);
-    --pf-shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.1);
-    --pf-shadow-ring: 0 0 0 1px rgba(0, 0, 0, 0.04);
-
-    --pf-grid-line: rgba(0, 0, 0, 0.05);
-
-    --pf-glass-bg: rgba(255, 255, 255, 0.72);
-    --pf-glass-border: rgba(0, 0, 0, 0.08);
-    --pf-glass-shadow: 0 24px 48px rgba(0, 0, 0, 0.08);
 }

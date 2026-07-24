@@ -115,7 +115,7 @@ export function initCta(reduced: boolean): (() => void) | void {
     duration: 0.45,
     ease: 'power2.out',
     scrollTrigger: {
-      trigger: email.closest('#contact') ?? email,
+      trigger: email.closest('#watch') ?? email,
       start: 'top 88%',
       once: true,
     },

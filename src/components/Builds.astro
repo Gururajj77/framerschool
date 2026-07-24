@@ -1,0 +1,33 @@
+---
+import SectionHead from './SectionHead.astro';
+
+const builds = [
+  { niche: 'Law firm', focus: 'Trust, services, case structure' },
+  { niche: 'Dentist', focus: 'Local SEO, offers, booking flow' },
+  { niche: 'Gym', focus: 'Memberships, coaches, schedules' },
+  { niche: 'Coffee shop', focus: 'Menu CMS, locations, brand' },
+  { niche: 'SaaS', focus: 'Landing system, pricing, docs' },
+  { niche: 'Agency', focus: 'Work archive, process, leads' },
+  { niche: 'Restaurant', focus: 'Menus, hours, reservations' },
+];
+---
+
+<section id="builds" class="pf-section">
+  <div class="pf-container">
+    <SectionHead
+      tag="BUILDS"
+      title="Real niches. Real client scenarios."
+      lead="The value comes from adapting templates — not designing from a blank canvas."
+    />
+
+    <ul class="pf-builds" data-builds>
+      {builds.map((build, index) => (
+        <li class="pf-build-item" data-build-item>
+          <span class="pf-build-index" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+          <span class="pf-build-niche">{build.niche}</span>
+          <span class="pf-build-focus">{build.focus}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

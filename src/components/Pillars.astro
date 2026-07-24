@@ -1,0 +1,51 @@
+---
+import SectionHead from './SectionHead.astro';
+
+const pillars = [
+  {
+    number: '01',
+    title: 'Website builds',
+    text: 'Turn templates into production-ready sites for real businesses — restaurant, gym, startup, dentist, and more.',
+  },
+  {
+    number: '02',
+    title: 'Architecture',
+    text: 'Project organization, component hierarchy, folder structure, design systems, and reusable systems.',
+  },
+  {
+    number: '03',
+    title: 'CMS',
+    text: 'Content modeling, collections, naming conventions, scaling content, and dynamic pages.',
+  },
+  {
+    number: '04',
+    title: 'Professional workflow',
+    text: 'Client handoff, asset organization, faster builds, fewer revisions, less maintenance.',
+  },
+  {
+    number: '05',
+    title: 'Performance',
+    text: 'Image optimization, lazy loading, SEO, accessibility, and faster page loads.',
+  },
+];
+---
+
+<section id="pillars" class="pf-section pf-section--muted">
+  <div class="pf-container">
+    <SectionHead
+      tag="PILLARS"
+      title="What you learn"
+      lead="Five content pillars. One focus: systems thinking over software features."
+    />
+
+    <div class="pf-pillars" data-pillars>
+      {pillars.map((pillar) => (
+        <article class="pf-pillar" data-pillar>
+          <p class="pf-pillar-num">/{pillar.number}</p>
+          <h3 class="pf-pillar-title">{pillar.title}</h3>
+          <p class="pf-pillar-text">{pillar.text}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

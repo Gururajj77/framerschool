@@ -1,14 +1,13 @@
 ---
 import Wordmark from './Wordmark.astro';
-import { CONTACT_EMAIL } from '../config';
+import { YOUTUBE_URL } from '../config';
 
 const links = [
-  { href: '#process', label: 'Process' },
-  { href: '#features', label: 'Programs' },
-  { href: '#approach', label: 'Approach' },
-  { href: '#knotcms', label: 'KnotCMS' },
+  { href: '#method', label: 'Method' },
+  { href: '#pillars', label: 'Pillars' },
+  { href: '#builds', label: 'Builds' },
+  { href: '#philosophy', label: 'Philosophy' },
   { href: '#faq', label: 'FAQ' },
-  { href: '#contact', label: 'Contact' },
 ];
 ---
 
@@ -27,8 +26,10 @@ const links = [
     </nav>
 
     <div class="pf-topbar-actions">
-      <a href={`mailto:${CONTACT_EMAIL}`} class="pf-topbar-mail">Email</a>
-      <a href="#contact" class="pf-btn pf-btn--primary pf-btn--sm">Get in touch</a>
+      <a href={YOUTUBE_URL} class="pf-topbar-mail" target="_blank" rel="noopener noreferrer">YouTube</a>
+      <a href={YOUTUBE_URL} class="pf-btn pf-btn--primary pf-btn--sm" target="_blank" rel="noopener noreferrer">
+        Watch builds
+      </a>
       <button
         class="pf-topbar-toggle"
         data-nav-toggle
@@ -52,7 +53,9 @@ const links = [
           {link.label}
         </a>
       ))}
-      <a href="#home" class="pf-nav-overlay-link" data-nav-overlay-link>Home</a>
+      <a href={YOUTUBE_URL} class="pf-nav-overlay-link" data-nav-overlay-link target="_blank" rel="noopener noreferrer">
+        Watch builds
+      </a>
     </nav>
   </div>
 </div>
