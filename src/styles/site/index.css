@@ -1,0 +1,9 @@
+@import './tokens.css';
+@import './base.css';
+@import './chrome.css';
+@import './home.css';
+
+/* Hide intro elements until the motion script has set their start state */
+.intro-pending [data-intro] {
+  opacity: 0;
+}

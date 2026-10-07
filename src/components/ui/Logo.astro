@@ -1,0 +1,12 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<a href="/" class:list={['logo', className]} aria-label="FramerSchool home">
+  <img src="/brand/fs-logo.svg" width="20" height="22" alt="" decoding="async" />
+  <span class="logo-word" aria-hidden="true">FramerSchool</span>
+</a>

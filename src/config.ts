@@ -2,3 +2,11 @@
 export const YOUTUBE_URL = 'https://www.youtube.com/@FramerSkool';
 
 export const CONTACT_EMAIL = 'framerskool@gmail.com';
+
+/** Home-page sections, linked from the header, mobile menu and footer. */
+export const NAV_LINKS = [
+  { href: '/#method', label: 'Method' },
+  { href: '/#builds', label: 'Builds' },
+  { href: '/#learn', label: 'Learn' },
+  { href: '/#faq', label: 'FAQ' },
+];

@@ -1,0 +1,42 @@
+---
+import { CONTACT_EMAIL, NAV_LINKS, YOUTUBE_URL } from '../../config';
+import NavLink from '../ui/NavLink.astro';
+
+const year = new Date().getFullYear();
+const footerLinks = [{ href: '/', label: 'Home' }, ...NAV_LINKS];
+---
+
+<footer class="site-footer">
+  <div class="container site-footer-inner" data-reveal>
+    <div class="site-footer-top">
+      <div class="site-footer-left">
+        <ul role="list" class="site-footer-social">
+          <li><NavLink href={YOUTUBE_URL} label="YouTube" external /></li>
+        </ul>
+
+        <div class="site-footer-contact t-label">
+          <a href={`mailto:${CONTACT_EMAIL}`} class="site-footer-email"><span class="sr-only">Email </span>{CONTACT_EMAIL}</a>
+          <p class="c-muted">Turn Framer templates into production-ready client websites.</p>
+        </div>
+      </div>
+
+      <nav class="site-footer-nav" aria-label="Footer">
+        <ul role="list">
+          {footerLinks.map((link) => (
+            <li>
+              <NavLink href={link.href} label={link.label} size="large" class="nav-link--bright" />
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+
+    <div class="site-footer-bottom t-label">
+      <p class="c-subtle">&copy; {year} <span class="c-fg">FramerSchool</span>. All rights reserved.</p>
+      <ul role="list" class="site-footer-legal">
+        <li><NavLink href="/privacy-policy" label="Privacy" /></li>
+        <li><NavLink href="/terms" label="Terms" /></li>
+      </ul>
+    </div>
+  </div>
+</footer>

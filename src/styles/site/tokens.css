@@ -1,0 +1,40 @@
+:root {
+  /* Color: X-AXIS palette with the FramerSchool red as the only accent */
+  --bg: #0d0d0d;
+  --fg: #ffffff;
+  --muted: #a6a6a6;
+  --subtle: #808080;
+  --line-1: #1a1a1a;
+  --line-2: #242424;
+  --surface: #141414;
+  --accent: #de1014;
+  --accent-deep: #5c0406;
+
+  /* Type */
+  --font-display: 'Oswald', 'Arial Narrow', sans-serif;
+  --font-body: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* Spacing: the only allowed values */
+  --s-8: 8px;
+  --s-12: 12px;
+  --s-16: 16px;
+  --s-32: 32px;
+  --s-64: 64px;
+  --s-120: 120px;
+
+  /* Layout */
+  --max: 1320px;
+  --gutter: var(--s-32);
+  --section-pad: var(--s-120);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur: 0.4s;
+}
+
+@media (max-width: 767.98px) {
+  :root {
+    --gutter: var(--s-16);
+    --section-pad: var(--s-64);
+  }
+}

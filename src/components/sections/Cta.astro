@@ -1,0 +1,32 @@
+---
+import { CONTACT_EMAIL, YOUTUBE_URL } from '../../config';
+import ArrowLink from '../ui/ArrowLink.astro';
+---
+
+<section id="watch" class="cta" aria-labelledby="cta-title" data-cta>
+  <div class="cta-stage container" data-cta-stage>
+    <div class="cta-content">
+      <h2 id="cta-title" class="t-h2">
+        <span class="cta-line">Watch</span>
+        <span class="sr-only"> </span>
+        <span class="cta-line cta-line--last">the builds</span>
+      </h2>
+
+      <div class="cta-row">
+        <div class="cta-media" aria-hidden="true">
+          <span class="cta-media-glow"></span>
+          <span class="cta-media-play"></span>
+          <span class="cta-media-label t-label">@FramerSkool</span>
+        </div>
+        <div class="cta-actions">
+          <p class="cta-copy t-body-m c-muted">
+            See templates become production-ready client websites, with every important decision
+            explained along the way.
+          </p>
+          <ArrowLink href={YOUTUBE_URL} label="Open YouTube" external />
+          <ArrowLink href={`mailto:${CONTACT_EMAIL}`} label="Email FramerSchool" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

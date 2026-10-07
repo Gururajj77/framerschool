@@ -1,30 +1,27 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Hero from '../components/Hero.astro';
-import Contrast from '../components/Contrast.astro';
-import Method from '../components/Method.astro';
-import Builds from '../components/Builds.astro';
-import Pillars from '../components/Pillars.astro';
-import Philosophy from '../components/Philosophy.astro';
-import FAQ from '../components/FAQ.astro';
-import CTA from '../components/CTA.astro';
-import Footer from '../components/Footer.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import Hero from '../components/sections/Hero.astro';
+import Method from '../components/sections/Method.astro';
+import Builds from '../components/sections/Builds.astro';
+import Learn from '../components/sections/Learn.astro';
+import Philosophy from '../components/sections/Philosophy.astro';
+import Faq from '../components/sections/Faq.astro';
+import Cta from '../components/sections/Cta.astro';
 ---
 
 <Layout>
-  <div class="fs-site">
-    <Header />
-    <main>
-      <Hero />
-      <Contrast />
-      <Method />
-      <Builds />
-      <Pillars />
-      <Philosophy />
-      <FAQ />
-      <CTA />
-    </main>
-    <Footer />
-  </div>
+  <Header overlay />
+  <main id="main">
+    <Hero />
+    <Method />
+    <Builds />
+    <Learn />
+    <Philosophy />
+    <Faq />
+  </main>
+  <!-- Outside <main> so it can stay pinned while the footer scrolls over it -->
+  <Cta />
+  <Footer />
 </Layout>

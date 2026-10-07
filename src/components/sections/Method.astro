@@ -1,0 +1,52 @@
+---
+const steps = [
+  {
+    number: '01',
+    title: 'Pick a template',
+    text: 'Start with a layout that matches the business, not the flashiest file in the marketplace.',
+  },
+  {
+    number: '02',
+    title: 'Choose a real niche',
+    text: 'Law firm, dentist, gym, SaaS, restaurant. Real client work starts with a real business.',
+  },
+  {
+    number: '03',
+    title: 'Convert for production',
+    text: 'Cut what does not fit. Rebuild structure, components, CMS, assets and performance.',
+  },
+  {
+    number: '04',
+    title: 'Explain every decision',
+    text: 'Why this section exists. Why the content model looks like this. Why naming matters.',
+  },
+];
+---
+
+<section id="method" class="section method" aria-labelledby="method-title">
+  <div class="container method-inner">
+    <div class="method-head">
+      <h2 id="method-title" class="method-statement t-h3" data-reveal>
+        Most creators teach features. FramerSchool teaches how professionals build websites.
+      </h2>
+      <p class="method-lede t-body-m c-muted" data-reveal>
+        Every build on the channel follows the same four steps. That is what real client work looks
+        like: templates adapted with intent, not blank-canvas demos.
+      </p>
+    </div>
+
+    <ol role="list" class="method-steps">
+      {steps.map((step) => (
+        <li class="method-step" data-reveal>
+          <span class="method-step-number t-stat" aria-hidden="true">{step.number}</span>
+          <div class="method-step-body">
+            <h3 class="t-body-xl">
+              <span class="sr-only">Step {step.number}: </span>{step.title}
+            </h3>
+            <p class="t-body-m c-muted">{step.text}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

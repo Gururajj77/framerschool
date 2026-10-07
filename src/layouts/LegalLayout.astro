@@ -1,5 +1,8 @@
 ---
 import Layout from './Layout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import ArrowLink from '../components/ui/ArrowLink.astro';
 
 interface Props {
   title: string;
@@ -9,16 +12,18 @@ interface Props {
 const { title, description } = Astro.props;
 ---
 
-<Layout title={`${title} — FramerSchool`} description={description}>
-  <div class="pf-site">
-    <main class="pf-legal-page">
-      <div class="pf-container pf-legal-page-inner">
-        <a href="/" class="pf-legal-back">&larr; Back to home</a>
-        <h1 class="pf-legal-title">{title}</h1>
-        <div class="pf-legal-content">
+<Layout title={`${title}: FramerSchool`} description={description}>
+  <Header />
+  <main id="main" class="legal">
+    <div class="container">
+      <div class="legal-inner">
+        <ArrowLink href="/" label="Back to home" />
+        <h1 class="legal-title t-h2">{title}</h1>
+        <div class="legal-content t-body-m">
           <slot />
         </div>
       </div>
-    </main>
-  </div>
+    </div>
+  </main>
+  <Footer />
 </Layout>

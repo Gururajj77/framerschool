@@ -1,5 +1,5 @@
 ---
-import '../styles/index.css';
+import '../styles/site/index.css';
 
 interface Props {
   title?: string;
@@ -7,9 +7,9 @@ interface Props {
 }
 
 const {
-  title = 'FramerSchool — Turn templates into production-ready client websites',
+  title = 'FramerSchool: turn templates into production-ready client websites',
   description =
-    'FramerSchool teaches developers, freelancers, and agencies how to turn Framer templates into production-ready client websites — architecture, workflows, CMS, and professional execution.',
+    'FramerSchool teaches developers, freelancers and agencies how to turn Framer templates into production-ready client websites: architecture, workflows, CMS and professional delivery.',
 } = Astro.props;
 ---
 
@@ -20,8 +20,8 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
-    <meta name="color-scheme" content="light" />
-    <meta name="theme-color" content="#de1014" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#0d0d0d" />
     <title>{title}</title>
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
@@ -33,15 +33,29 @@ const {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500;600&family=Syne:wght@500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Oswald:wght@500;600&display=swap"
       rel="stylesheet"
     />
+    <script is:inline>
+      (function () {
+        var root = document.documentElement;
+        root.classList.add('js');
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          root.classList.add('intro-pending');
+          // Never leave the intro hidden if the motion script fails to load
+          setTimeout(function () {
+            root.classList.remove('intro-pending');
+          }, 2500);
+        }
+      })();
+    </script>
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to content</a>
     <slot />
 
     <script>
-      import '../scripts/motion/init.ts';
+      import '../scripts/site/main.ts';
     </script>
   </body>
 </html>

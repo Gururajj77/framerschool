@@ -1,0 +1,66 @@
+---
+const decisions = [
+  'Why this section exists for the business, not the template author.',
+  'Why the CMS is structured so clients can edit without breaking the site.',
+  'Why components stay reusable across pages without becoming a trap.',
+  'Why naming, folders and handoff standards matter when you ship.',
+];
+const total = String(decisions.length).padStart(2, '0');
+---
+
+<section id="philosophy" class="section philosophy" aria-labelledby="philosophy-title">
+  <div class="container">
+    <div class="philosophy-inner" data-reveal>
+      <div class="philosophy-rings" aria-hidden="true">
+        <span></span>
+        <span></span>
+      </div>
+
+      <div class="philosophy-media" aria-hidden="true">
+        <img src="/brand/framerschool-logo.svg" width="138" height="168" alt="" decoding="async" />
+      </div>
+
+      <div class="philosophy-body">
+        <p class="philosophy-label t-label c-muted">Teaching philosophy</p>
+        <h2 id="philosophy-title" class="philosophy-quote t-h4">
+          Teach decisions, not clicks. The why is the product. Framer is simply the tool.
+        </h2>
+
+        <div class="philosophy-carousel" data-carousel>
+          <div class="philosophy-slides" aria-live="polite">
+            {decisions.map((decision, i) => (
+              <div
+                class:list={['philosophy-slide', i === 0 && 'is-active']}
+                data-slide
+                role="group"
+                aria-roledescription="slide"
+                aria-label={`${i + 1} of ${decisions.length}`}
+              >
+                <p class="t-h5">Every build explains</p>
+                <p class="t-body-s c-muted">{decision}</p>
+              </div>
+            ))}
+          </div>
+
+          <div class="philosophy-controls">
+            <p class="t-label c-subtle" aria-hidden="true">
+              <span data-carousel-current>01</span>/{total}
+            </p>
+            <button type="button" class="round-button" data-carousel-prev>
+              <span class="sr-only">Previous decision</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M8.5 3 4.5 7l4 4" stroke="currentColor" stroke-width="1.5" />
+              </svg>
+            </button>
+            <button type="button" class="round-button" data-carousel-next>
+              <span class="sr-only">Next decision</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="m5.5 3 4 4-4 4" stroke="currentColor" stroke-width="1.5" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
