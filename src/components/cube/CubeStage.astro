@@ -1,0 +1,35 @@
+---
+import Hero from '../sections/Hero.astro';
+import Method from '../sections/Method.astro';
+import Builds from '../sections/Builds.astro';
+import Learn from '../sections/Learn.astro';
+import Videos from '../sections/Videos.astro';
+import Contact from '../sections/Contact.astro';
+import Answers from '../sections/Faq.astro';
+
+/**
+ * The cube. Each section is one face; home.css puts them on the six sides
+ * and the cube script turns it. Without JavaScript the faces stack as a
+ * normal scrolling page.
+ */
+---
+
+<div class="stage" data-stage>
+  <p class="sr-only" aria-live="polite" data-cube-status></p>
+
+  <span class="cube-shadow" aria-hidden="true" data-cube-shadow></span>
+
+  <div class="cube-wrap" data-cube-wrap>
+    <div class="cube" data-cube>
+      <Hero />
+      <Method />
+      <Builds />
+      <Learn />
+      <Videos />
+      <Contact />
+    </div>
+  </div>
+</div>
+
+<!-- Opens over everything from the Contact face -->
+<Answers />

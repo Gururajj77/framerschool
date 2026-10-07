@@ -1,18 +1,48 @@
 :root {
-  /* Color: X-AXIS palette with the FramerSchool red as the only accent */
-  --bg: #0d0d0d;
-  --fg: #ffffff;
-  --muted: #a6a6a6;
-  --subtle: #808080;
-  --line-1: #1a1a1a;
-  --line-2: #242424;
-  --surface: #141414;
-  --accent: #de1014;
-  --accent-deep: #5c0406;
+  /* Neo-brutalism: cream paper, pure black ink, flat bright faces */
+  --paper: #fff4e0;
+  --white: #ffffff;
+  --ink: #000000;
+  --ink-soft: #2b2b2b;
+  --grid: rgb(0 0 0 / 0.07);
+
+  /* One colour per face (black text passes AA on all but red, which uses white) */
+  --red: #de1014;
+  --yellow: #ffd23f;
+  --blue: #6ec1ff;
+  --pink: #ff9ce0;
+  --purple: #a78bfa;
+  --lime: #b5f26b;
 
   /* Type */
-  --font-display: 'Oswald', 'Arial Narrow', sans-serif;
-  --font-body: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  /* One family: Bricolage Grotesque. Extra bold for display, condensed (wdth 75) for labels */
+  --font-display: 'Bricolage Grotesque', 'Arial Black', sans-serif;
+  --font-body: 'Bricolage Grotesque', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-label: 'Bricolage Grotesque', 'Arial Narrow', sans-serif;
+
+  /* Borders and hard shadows inside the faces (always black) */
+  --border: 3px solid var(--ink);
+  --border-thin: 2px solid var(--ink);
+  --shadow-s: 3px 3px 0 var(--ink);
+  --shadow: 5px 5px 0 var(--ink);
+  --shadow-l: 14px 14px 0 var(--ink);
+
+  /*
+   * The room around the cube: page, header, bottom bar, dialog, legal pages.
+   * Dark mode swaps only these. The faces keep their colours and black lines,
+   * so the cube is the same object with the lights off.
+   */
+  --room: var(--paper);
+  --room-text: var(--ink);
+  --room-line: var(--ink);
+  --room-surface: var(--white);
+  --room-hover: var(--paper);
+  --room-border: 3px solid var(--room-line);
+  --room-border-thin: 2px solid var(--room-line);
+  --room-shadow-s: 3px 3px 0 var(--room-line);
+  --room-shadow: 5px 5px 0 var(--room-line);
+  --room-shadow-l: 14px 14px 0 var(--room-line);
+  color-scheme: light;
 
   /* Spacing: the only allowed values */
   --s-8: 8px;
@@ -22,19 +52,59 @@
   --s-64: 64px;
   --s-120: 120px;
 
-  /* Layout */
-  --max: 1320px;
-  --gutter: var(--s-32);
-  --section-pad: var(--s-120);
+  /* Chrome */
+  --header-h: 72px;
+  --bar-h: 56px;
+  --avail-h: calc(100dvh - var(--header-h) - var(--bar-h));
+
+  /*
+   * The box. On desktop it is a true cube. On tablets and phones the sides
+   * grow taller than they are wide, so it becomes an upright box; the top
+   * and bottom stay square (width x width).
+   */
+  --cw: min(64vw, calc(var(--avail-h) - var(--s-64) - var(--s-16)), 720px);
+  --ch: var(--cw);
 
   /* Motion */
-  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  --dur: 0.4s;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur: 0.2s;
+}
+
+@media (max-width: 1199.98px) {
+  :root {
+    /* Logo row + scrolling face nav row */
+    --header-h: 112px;
+    --cw: min(calc(100vw - var(--s-64)), 640px);
+    --ch: min(calc(var(--avail-h) - var(--s-64)), calc(var(--cw) * 1.5));
+  }
 }
 
 @media (max-width: 767.98px) {
   :root {
-    --gutter: var(--s-16);
-    --section-pad: var(--s-64);
+    /* One header row: logo mark + scrolling face nav */
+    --header-h: 64px;
+    --bar-h: 56px;
+    --cw: calc(100vw - var(--s-32));
+    --ch: min(calc(var(--avail-h) - var(--s-32)), calc(var(--cw) * 2.2));
+    --shadow-l: 8px 8px 0 var(--ink);
+    --room-shadow-l: 8px 8px 0 var(--room-line);
+  }
+}
+
+/* Dark mode: lights off in the room. Cream lines keep the outlines and shadows visible. */
+:root[data-theme='dark'] {
+  --room: #121212;
+  --room-text: #fff4e0;
+  --room-line: #fff4e0;
+  --room-surface: #1f1f1f;
+  --room-hover: #2c2c2c;
+  --grid: rgb(255 255 255 / 0.06);
+  color-scheme: dark;
+}
+
+/* Short laptop screens: a slightly larger share of the width */
+@media (min-width: 1200px) and (max-height: 820px) {
+  :root {
+    --cw: min(64vw, calc(var(--avail-h) - var(--s-32)), 720px);
   }
 }

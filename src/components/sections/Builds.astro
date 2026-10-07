@@ -1,79 +1,37 @@
 ---
-import { YOUTUBE_URL } from '../../config';
-import ArrowLink from '../ui/ArrowLink.astro';
+import FaceTab from '../ui/FaceTab.astro';
 
-const builds = [
-  {
-    niche: 'Law firm',
-    focus: ['Trust', 'Services', 'Cases'],
-    detail: 'Strip template fluff. Build authority, service architecture and a CMS partners can maintain.',
-  },
-  {
-    niche: 'Dentist',
-    focus: ['Local SEO', 'Offers', 'Booking'],
-    detail: 'Local intent first. Offers, providers and booking as a system, not a decorative page.',
-  },
-  {
-    niche: 'Gym',
-    focus: ['Memberships', 'Coaches', 'Schedules'],
-    detail: 'Memberships, coach bios and class schedules modeled so content scales without redesign.',
-  },
-  {
-    niche: 'Coffee shop',
-    focus: ['Menu CMS', 'Locations', 'Brand'],
-    detail: 'Menu as CMS. Locations as structure. Brand density without killing performance.',
-  },
-  {
-    niche: 'SaaS',
-    focus: ['Landing system', 'Pricing', 'Docs'],
-    detail: 'Reusable landing modules, pricing logic and a content path that survives product changes.',
-  },
-  {
-    niche: 'Agency',
-    focus: ['Work archive', 'Process', 'Leads'],
-    detail: 'Case study architecture, process clarity and a lead path that feels intentional.',
-  },
-  {
-    niche: 'Restaurant',
-    focus: ['Menus', 'Hours', 'Reservations'],
-    detail: 'Menus that update cleanly. Hours and reservations as operational content.',
-  },
+const niches = [
+  { name: 'Law firm', detail: 'Authority, service architecture and a CMS partners can maintain.' },
+  { name: 'Dentist', detail: 'Local intent first. Offers, providers and booking as a system.' },
+  { name: 'Gym', detail: 'Memberships, coaches and schedules that scale without redesign.' },
+  { name: 'Coffee shop', detail: 'Menu as CMS. Locations as structure. Brand without the bloat.' },
+  { name: 'SaaS', detail: 'Reusable landing modules, pricing logic, a path that survives change.' },
+  { name: 'Agency', detail: 'Case study architecture, clear process, an intentional lead path.' },
+  { name: 'Restaurant', detail: 'Menus that update cleanly. Hours and reservations as content.' },
 ];
 ---
 
-<section id="builds" class="section builds" aria-labelledby="builds-title">
-  <div class="container index-section">
-    <div class="index-head">
-      <h2 id="builds-title" class="t-h2">
-        <span class="mask"><span data-reveal="mask">Real niches</span></span>
-      </h2>
-      <div class="index-aside" data-reveal>
-        <p class="t-label c-muted">
-          <span class="c-fg">Real client work.</span> The value comes from adapting templates, not
-          designing from a blank canvas.
-        </p>
-        <ArrowLink href={YOUTUBE_URL} label="Watch the builds" external />
-      </div>
-    </div>
+<section
+  class="face face--blue face--side face--niches"
+  id="niches"
+  data-face="niches"
+  data-face-label="Niches"
+  aria-labelledby="niches-title"
+  tabindex="-1"
+>
+  <FaceTab id="niches" />
 
-    <ol role="list" class="index niches">
-      {builds.map((build, i) => (
-        <li class="index-row" data-reveal>
-          <span class="t-label c-subtle" aria-hidden="true">
-            {String(i + 1).padStart(2, '0')}
-          </span>
-          <h3 class="t-h4-caps">{build.niche}</h3>
-          <p class="t-body-m c-muted">{build.detail}</p>
-          <p class="niche-focus t-label c-subtle">
-            <span class="sr-only">Focus: </span>
-            {build.focus.map((area, j) => (
-              <>
-                {j > 0 && <span class="sr-only">, </span>}
-                {j > 0 && <span aria-hidden="true"> // </span>}
-                {area}
-              </>
-            ))}
-          </p>
+  <div class="face-body">
+    <h2 class="face-title" id="niches-title">Real niches. Real client work.</h2>
+    <p class="face-lead">The value comes from adapting templates, not designing from a blank canvas.</p>
+
+    <ol role="list" class="table">
+      {niches.map((niche, i) => (
+        <li class="table-row">
+          <span class="table-number t-label" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+          <h3 class="table-title">{niche.name}</h3>
+          <p class="table-text">{niche.detail}</p>
         </li>
       ))}
     </ol>

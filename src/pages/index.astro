@@ -2,30 +2,13 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
-import Hero from '../components/sections/Hero.astro';
-import Method from '../components/sections/Method.astro';
-import Builds from '../components/sections/Builds.astro';
-import Learn from '../components/sections/Learn.astro';
-import Philosophy from '../components/sections/Philosophy.astro';
-import Videos from '../components/sections/Videos.astro';
-import Faq from '../components/sections/Faq.astro';
-import Contact from '../components/sections/Contact.astro';
-import Cta from '../components/sections/Cta.astro';
+import CubeStage from '../components/cube/CubeStage.astro';
 ---
 
-<Layout>
-  <Header overlay />
+<Layout variant="cube">
+  <Header />
   <main id="main">
-    <Hero />
-    <Method />
-    <Builds />
-    <Learn />
-    <Philosophy />
-    <Videos />
-    <Faq />
-    <Contact />
+    <CubeStage />
   </main>
-  <!-- Outside <main> so it can stay pinned while the footer scrolls over it -->
-  <Cta />
-  <Footer />
+  <Footer controls />
 </Layout>

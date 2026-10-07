@@ -1,23 +1,17 @@
 ---
+/** Underlined mono text link. */
 interface Props {
   href: string;
   label: string;
   external?: boolean;
-  size?: 'small' | 'large';
   class?: string;
 }
 
-const { href, label, external = false, size = 'small', class: className } = Astro.props;
+const { href, label, external = false, class: className } = Astro.props;
 const externalAttrs = external ? { target: '_blank', rel: 'noopener noreferrer' } : {};
 ---
 
-<a
-  href={href}
-  class:list={['nav-link', size === 'large' ? 't-h4-caps nav-link--large' : 't-label', className]}
-  {...externalAttrs}
->
-  <span class="nav-link-bracket" aria-hidden="true">[ </span>
-  <span>{label}</span>
-  <span class="nav-link-bracket" aria-hidden="true"> ]</span>
+<a href={href} class:list={['text-link', 't-label', className]} {...externalAttrs}>
+  {label}{external && <span aria-hidden="true"> ↗</span>}
   {external && <span class="sr-only"> (opens in a new tab)</span>}
 </a>

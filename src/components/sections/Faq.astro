@@ -1,4 +1,8 @@
 ---
+/**
+ * Quick answers. A modal dialog opened from the Contact face, so the cube
+ * faces stay short enough to never need scrolling.
+ */
 const faqs = [
   {
     question: 'Is this for complete beginners?',
@@ -23,44 +27,22 @@ const faqs = [
 ];
 ---
 
-<section id="faq" class="section faq" aria-labelledby="faq-title">
-  <div class="container faq-inner">
-    <div class="faq-intro">
-      <h2 id="faq-title" class="t-h2">
-        <span class="mask"><span data-reveal="mask">FAQ</span></span>
-      </h2>
-      <p class="t-body-m c-muted" data-reveal>Who this is for. Quick filters so you know if FramerSchool matches how you want to work.</p>
-    </div>
-
-    <ul role="list" class="faq-list" data-reveal>
-      {faqs.map((faq, i) => (
-        <li class="faq-item" data-faq-item>
-          <h3>
-            <button
-              type="button"
-              class="faq-trigger t-body-xl"
-              aria-expanded="false"
-              aria-controls={`faq-panel-${i}`}
-              id={`faq-trigger-${i}`}
-              data-faq-trigger
-            >
-              <span>{faq.question}</span>
-              <span class="faq-sign t-label c-subtle" aria-hidden="true"></span>
-            </button>
-          </h3>
-          <div
-            class="faq-panel"
-            id={`faq-panel-${i}`}
-            role="region"
-            aria-labelledby={`faq-trigger-${i}`}
-            data-faq-panel
-          >
-            <div class="faq-panel-inner">
-              <p class="t-body-m c-muted">{faq.answer}</p>
-            </div>
-          </div>
-        </li>
-      ))}
-    </ul>
+<dialog class="answers" aria-labelledby="answers-title" data-answers>
+  <div class="answers-head">
+    <h2 class="answers-title" id="answers-title">Quick answers</h2>
+    <button type="button" class="square-button" data-answers-close>
+      <span class="sr-only">Close</span>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="m3 3 10 10M13 3 3 13" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" />
+      </svg>
+    </button>
   </div>
-</section>
+  <dl class="answers-list">
+    {faqs.map((faq) => (
+      <div class="answers-item">
+        <dt class="answers-q">{faq.question}</dt>
+        <dd class="answers-a">{faq.answer}</dd>
+      </div>
+    ))}
+  </dl>
+</dialog>

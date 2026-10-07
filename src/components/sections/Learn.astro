@@ -1,53 +1,39 @@
 ---
+import FaceTab from '../ui/FaceTab.astro';
+
 const pillars = [
-  {
-    title: 'Website builds',
-    text: 'Turn templates into production-ready sites for real businesses: restaurant, gym, startup, dentist and more.',
-  },
-  {
-    title: 'Architecture',
-    text: 'Project organization, component hierarchy, folder structure, design systems and reusable systems.',
-  },
-  {
-    title: 'CMS',
-    text: 'Content modeling, collections, naming conventions, scaling content and dynamic pages.',
-  },
-  {
-    title: 'Professional workflow',
-    text: 'Client handoff, asset organization, faster builds, fewer revisions and less maintenance.',
-  },
-  {
-    title: 'Performance',
-    text: 'Image optimization, lazy loading, SEO, accessibility and faster page loads.',
-  },
+  { title: 'Website builds', text: 'Production-ready sites for real businesses: restaurant, gym, startup, dentist.' },
+  { title: 'Architecture', text: 'Project organization, component hierarchy, folders and design systems.' },
+  { title: 'CMS', text: 'Content modeling, collections, naming, scaling content and dynamic pages.' },
+  { title: 'Professional workflow', text: 'Client handoff, organized assets, faster builds and fewer revisions.' },
+  { title: 'Performance', text: 'Image optimization, lazy loading, SEO, accessibility and fast loads.' },
 ];
 ---
 
-<section id="learn" class="section learn" aria-labelledby="learn-title">
-  <div class="container index-section">
-    <div class="index-head">
-      <h2 id="learn-title" class="t-h2">
-        <span class="mask"><span data-reveal="mask">What you learn</span></span>
-      </h2>
-      <div class="index-aside" data-reveal>
-        <p class="t-label c-muted">
-          <span class="c-fg">Five pillars. One focus:</span> systems thinking over software features.
-        </p>
-        <p class="t-body-s c-muted">
-          Leave thinking “now I know why projects are structured this way”, not “I found the CMS
-          button.”
-        </p>
-      </div>
-    </div>
+<section
+  class="face face--pink face--side face--learn"
+  id="learn"
+  data-face="learn"
+  data-face-label="Learn"
+  aria-labelledby="learn-title"
+  tabindex="-1"
+>
+  <FaceTab id="learn" />
 
-    <ol role="list" class="index pillars">
+  <div class="face-body">
+    <h2 class="face-title" id="learn-title">What you learn.</h2>
+    <p class="face-lead">Five pillars, one focus: systems thinking over software features.</p>
+
+    <ol role="list" class="table">
       {pillars.map((pillar, i) => (
-        <li class="index-row" data-reveal>
-          <span class="pillar-tile" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
-          <h3 class="t-h4-caps">{pillar.title}</h3>
-          <p class="t-body-m c-muted">{pillar.text}</p>
+        <li class="table-row">
+          <span class="table-tile" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+          <h3 class="table-title">{pillar.title}</h3>
+          <p class="table-text">{pillar.text}</p>
         </li>
       ))}
     </ol>
+
+    <p class="face-stamp t-label">Leave knowing why, not where the button is.</p>
   </div>
 </section>

@@ -1,7 +1,8 @@
 ---
 import { YOUTUBE_URL } from '../../config';
 import { getLatestVideos } from '../../lib/youtube';
-import ArrowLink from '../ui/ArrowLink.astro';
+import FaceTab from '../ui/FaceTab.astro';
+import NavLink from '../ui/NavLink.astro';
 
 const videos = await getLatestVideos(3);
 
@@ -18,37 +19,41 @@ const formatDate = (date: Date) => {
 };
 ---
 
-{videos.length > 0 && (
-  <section id="videos" class="section videos" aria-labelledby="videos-title">
-    <div class="container videos-inner">
-      <div class="videos-head">
-        <h2 id="videos-title" class="t-h2">
-          <span class="mask"><span data-reveal="mask">Latest videos</span></span>
-        </h2>
-        <ArrowLink href={YOUTUBE_URL} label="All videos on YouTube" external />
-      </div>
+<section
+  class="face face--purple face--cap face--videos"
+  id="videos"
+  data-face="videos"
+  data-face-label="Videos"
+  aria-labelledby="videos-title"
+  tabindex="-1"
+>
+  <div class="face-top">
+    <FaceTab id="videos" />
+    <NavLink href={YOUTUBE_URL} label="All on YouTube" external />
+  </div>
 
-      <ul role="list" class="videos-list">
-        {videos.map((video) => (
-          <li class="video-card" data-reveal>
-            <div class="video-media" data-blinds>
-              {/* Plays inline with JavaScript; without it, the link opens the video on YouTube */}
-              <a class="video-play" href={video.url} data-video-id={video.id} data-video-title={video.title}>
-                <img src={video.thumbnail} width="1280" height="720" alt="" loading="lazy" decoding="async" />
-                <span class="video-play-icon" aria-hidden="true"></span>
-                <span class="sr-only">Play video: {video.title}</span>
-              </a>
-              <span class="blinds" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-            </div>
-            <div class="video-text">
-              <p class="t-body-s c-muted">
-                <time datetime={video.published.toISOString()}>{formatDate(video.published)}</time>
-              </p>
-              <h3 class="t-title">{video.title}</h3>
-            </div>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </section>
-)}
+  <div class="face-body">
+    <h2 class="face-title" id="videos-title">Latest videos.</h2>
+
+    <ul role="list" class="video-list">
+      {videos.map((video) => (
+        <li class="video-row" data-video-row>
+          <div class="video-media">
+            {/* Plays inline with JavaScript; without it, the link opens the video on YouTube */}
+            <a class="video-play" href={video.url} data-video-id={video.id} data-video-title={video.title}>
+              <img src={video.thumbnail} width="1280" height="720" alt="" loading="lazy" decoding="async" />
+              <span class="video-play-icon" aria-hidden="true"></span>
+              <span class="sr-only">Play video: {video.title}</span>
+            </a>
+          </div>
+          <div class="video-text">
+            <p class="t-label">
+              <time datetime={video.published.toISOString()}>{formatDate(video.published)}</time>
+            </p>
+            <h3 class="video-title">{video.title}</h3>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

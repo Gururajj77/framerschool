@@ -1,21 +1,23 @@
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+/** Quick answers dialog, opened from the Contact face. */
+export function initAnswers(): void {
+  const dialog = document.querySelector<HTMLDialogElement>('[data-answers]');
+  if (!dialog) return;
 
-/** One answer open at a time, like the template's FAQ. */
-export function initFaq(): void {
-  const items = Array.from(document.querySelectorAll<HTMLElement>('[data-faq-item]'));
+  let opener: HTMLElement | null = null;
 
-  const setOpen = (item: HTMLElement, open: boolean) => {
-    item.classList.toggle('is-open', open);
-    item.querySelector('[data-faq-trigger]')?.setAttribute('aria-expanded', String(open));
-  };
-
-  for (const item of items) {
-    item.querySelector('[data-faq-trigger]')?.addEventListener('click', () => {
-      const willOpen = !item.classList.contains('is-open');
-      for (const other of items) setOpen(other, false);
-      setOpen(item, willOpen);
-      // Page height changed: re-measure scroll-driven animations below the FAQ
-      window.setTimeout(() => ScrollTrigger.refresh(), 450);
+  for (const button of document.querySelectorAll<HTMLElement>('[data-answers-open]')) {
+    button.addEventListener('click', () => {
+      opener = button;
+      dialog.showModal();
     });
   }
+
+  dialog.querySelector('[data-answers-close]')?.addEventListener('click', () => dialog.close());
+
+  // Clicking the backdrop closes it
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+
+  dialog.addEventListener('close', () => opener?.focus());
 }
