@@ -4,6 +4,8 @@ import { initSmoothScroll } from './smooth-scroll';
 import { initMenu } from './menu';
 import { initFaq } from './faq';
 import { initCarousel } from './carousel';
+import { initVideos } from './videos';
+import { initCopy } from './copy';
 import { initMotion } from './motion';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -14,6 +16,8 @@ initSmoothScroll(reduced);
 initMenu();
 initFaq();
 initCarousel();
+initVideos();
+initCopy();
 initMotion(reduced);
 
 // Fonts and images change layout after load; re-measure scroll positions

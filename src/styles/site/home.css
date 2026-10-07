@@ -491,8 +491,8 @@
   left: 66%;
 }
 
-/* Four blinds cover the media and fold away when the card enters (template "Image Flip") */
-.build-media-blinds {
+/* Four blinds cover the media and fold away when it enters (template "Image Flip") */
+.blinds {
   position: absolute;
   inset: 0;
   display: flex;
@@ -500,31 +500,31 @@
   pointer-events: none;
 }
 
-.build-media-blinds i {
+.blinds i {
   flex: 1;
   background: var(--bg);
   transform: scaleY(0);
   transform-origin: 50% 100%;
 }
 
-.js .build-media-blinds i {
+.js .blinds i {
   transform: scaleY(1);
   transition: transform 0.8s var(--ease-out);
 }
 
-.js .build-media-blinds i:nth-child(2) {
+.js .blinds i:nth-child(2) {
   transition-delay: 0.1s;
 }
 
-.js .build-media-blinds i:nth-child(3) {
+.js .blinds i:nth-child(3) {
   transition-delay: 0.2s;
 }
 
-.js .build-media-blinds i:nth-child(4) {
+.js .blinds i:nth-child(4) {
   transition-delay: 0.3s;
 }
 
-.js .build-media.is-revealed .build-media-blinds i {
+.js .is-revealed > .blinds i {
   transform: scaleY(0);
 }
 
@@ -569,7 +569,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .js .build-media-blinds i {
+  .js .blinds i {
     transform: scaleY(0);
     transition: none;
   }
@@ -924,6 +924,157 @@
   }
 }
 
+/* ======================= Videos ======================= */
+
+.videos-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-120);
+}
+
+.videos-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-16);
+  text-align: center;
+}
+
+.videos-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: var(--s-32);
+}
+
+/* Staggered columns, as in the template's journal section */
+.video-card:nth-child(3n + 1) {
+  margin-top: var(--s-32);
+}
+
+.video-card:nth-child(3n + 2) {
+  margin-top: var(--s-120);
+}
+
+.video-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-32);
+}
+
+.video-media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--line-1);
+}
+
+.video-play {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.video-play:focus-visible {
+  outline-offset: -4px;
+}
+
+.video-play img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease-out);
+}
+
+/* Bottom-right corner keeps the play button clear of the thumbnail's own text */
+.video-play-icon {
+  position: absolute;
+  right: var(--s-16);
+  bottom: var(--s-16);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--accent);
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.video-play-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 54%;
+  border-style: solid;
+  border-width: 8px 0 8px 13px;
+  border-color: transparent transparent transparent var(--fg);
+  transform: translate(-50%, -50%);
+}
+
+@media (hover: hover) {
+  .video-play:hover img {
+    transform: scale(1.04);
+  }
+
+  .video-play:hover .video-play-icon {
+    transform: scale(1.1);
+  }
+}
+
+.video-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-8);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .video-play img,
+  .video-play-icon {
+    transition: none;
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .videos-inner {
+    gap: var(--s-64);
+  }
+
+  .videos-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: var(--s-64);
+  }
+
+  .video-card:nth-child(n) {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .videos-inner {
+    gap: var(--s-32);
+  }
+
+  .videos-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .video-card {
+    gap: var(--s-16);
+  }
+
+  .video-play-icon {
+    right: var(--s-12);
+    bottom: var(--s-12);
+  }
+}
+
 /* ======================= FAQ ======================= */
 
 .faq-inner {
@@ -1051,6 +1202,85 @@
 
   .faq-panel-inner p {
     padding-bottom: var(--s-16);
+  }
+}
+
+/* ======================= Contact ======================= */
+
+.contact-inner {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--s-64);
+}
+
+.contact-intro {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-16);
+}
+
+.contact-intro p {
+  max-width: 420px;
+}
+
+.contact-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--s-16);
+  max-width: 600px;
+}
+
+.contact-email {
+  max-width: 100%;
+  color: var(--fg);
+  overflow-wrap: anywhere;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--line-2);
+  text-underline-offset: 8px;
+  transition: text-decoration-color var(--dur) var(--ease-out);
+}
+
+@media (hover: hover) {
+  .contact-email:hover {
+    text-decoration-color: var(--fg);
+  }
+}
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: var(--s-32);
+}
+
+/* Copying needs JavaScript; without it the mail links still work */
+.copy-button {
+  display: none;
+}
+
+.js .copy-button {
+  display: inline-flex;
+}
+
+.contact-social {
+  display: flex;
+  gap: var(--s-32);
+  padding-top: var(--s-16);
+}
+
+@media (max-width: 1199.98px) {
+  .contact-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--s-32);
+  }
+
+  .contact-card {
+    max-width: none;
   }
 }
 

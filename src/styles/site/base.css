@@ -186,6 +186,13 @@ button {
   text-transform: uppercase;
 }
 
+.t-title {
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 36px;
+  letter-spacing: -0.02em;
+}
+
 .t-stat {
   font-family: var(--font-display);
   font-weight: 500;
@@ -260,7 +267,8 @@ button {
     line-height: 34px;
   }
 
-  .t-h4-caps {
+  .t-h4-caps,
+  .t-title {
     font-size: 22px;
     line-height: 30px;
   }
@@ -303,7 +311,8 @@ button {
   }
 
   .t-h4-caps,
-  .t-h5 {
+  .t-h5,
+  .t-title {
     font-size: 18px;
     line-height: 26px;
   }

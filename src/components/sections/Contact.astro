@@ -1,0 +1,43 @@
+---
+import { CONTACT_EMAIL, YOUTUBE_URL } from '../../config';
+import ArrowIcon from '../ui/ArrowIcon.astro';
+import ArrowLink from '../ui/ArrowLink.astro';
+import NavLink from '../ui/NavLink.astro';
+
+const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Hello FramerSchool')}`;
+---
+
+<section id="contact" class="section contact" aria-labelledby="contact-title">
+  <div class="container contact-inner">
+    <div class="contact-intro">
+      <h2 id="contact-title" class="t-h2">
+        <span class="mask"><span data-reveal="mask">Contact</span></span>
+      </h2>
+      <p class="t-body-m c-muted" data-reveal>
+        A question about a build, a topic you want covered, or a template you are adapting? Email
+        FramerSchool directly.
+      </p>
+    </div>
+
+    <div class="contact-card" data-reveal>
+      <p class="t-label c-muted" aria-hidden="true">[ Email ]</p>
+      <a class="contact-email t-h3" href={mailto}>
+        <span class="sr-only">Email </span>{CONTACT_EMAIL}
+      </a>
+
+      <div class="contact-actions">
+        <ArrowLink href={mailto} label="Send an email" />
+        <button type="button" class="arrow-link t-label copy-button" data-copy={CONTACT_EMAIL}>
+          <span class="arrow-link-icon arrow-link-icon--start"><ArrowIcon /></span>
+          <span data-copy-label>Copy address</span>
+          <span class="arrow-link-icon arrow-link-icon--end"><ArrowIcon /></span>
+        </button>
+        <span class="sr-only" aria-live="polite" data-copy-status></span>
+      </div>
+
+      <ul role="list" class="contact-social">
+        <li><NavLink href={YOUTUBE_URL} label="YouTube" external /></li>
+      </ul>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,54 @@
+---
+import { YOUTUBE_URL } from '../../config';
+import { getLatestVideos } from '../../lib/youtube';
+import ArrowLink from '../ui/ArrowLink.astro';
+
+const videos = await getLatestVideos(3);
+
+// "5 Oct 2026"
+const formatDate = (date: Date) => {
+  const parts = new Intl.DateTimeFormat('en-US', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+    timeZone: 'UTC',
+  }).formatToParts(date);
+  const part = (type: string) => parts.find((p) => p.type === type)?.value;
+  return `${part('day')} ${part('month')} ${part('year')}`;
+};
+---
+
+{videos.length > 0 && (
+  <section id="videos" class="section videos" aria-labelledby="videos-title">
+    <div class="container videos-inner">
+      <div class="videos-head">
+        <h2 id="videos-title" class="t-h2">
+          <span class="mask"><span data-reveal="mask">Latest videos</span></span>
+        </h2>
+        <ArrowLink href={YOUTUBE_URL} label="All videos on YouTube" external />
+      </div>
+
+      <ul role="list" class="videos-list">
+        {videos.map((video) => (
+          <li class="video-card" data-reveal>
+            <div class="video-media" data-blinds>
+              {/* Plays inline with JavaScript; without it, the link opens the video on YouTube */}
+              <a class="video-play" href={video.url} data-video-id={video.id} data-video-title={video.title}>
+                <img src={video.thumbnail} width="1280" height="720" alt="" loading="lazy" decoding="async" />
+                <span class="video-play-icon" aria-hidden="true"></span>
+                <span class="sr-only">Play video: {video.title}</span>
+              </a>
+              <span class="blinds" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+            </div>
+            <div class="video-text">
+              <p class="t-body-s c-muted">
+                <time datetime={video.published.toISOString()}>{formatDate(video.published)}</time>
+              </p>
+              <h3 class="t-title">{video.title}</h3>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}

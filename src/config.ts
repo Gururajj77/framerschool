@@ -8,5 +8,7 @@ export const NAV_LINKS = [
   { href: '/#method', label: 'Method' },
   { href: '/#builds', label: 'Builds' },
   { href: '/#learn', label: 'Learn' },
+  { href: '/#videos', label: 'Videos' },
   { href: '/#faq', label: 'FAQ' },
+  { href: '/#contact', label: 'Contact' },
 ];
