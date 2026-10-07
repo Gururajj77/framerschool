@@ -96,32 +96,6 @@ function scrollScenes(): void {
     });
   });
 
-  // Learn list: each pillar opens up as it crosses the middle of the screen
-  mm.add({ wide: '(min-width: 768px)', narrow: '(max-width: 767.98px)' }, (context) => {
-    const { wide } = context.conditions as { wide: boolean };
-    const shift = wide ? 48 : 12;
-    const grow = wide ? 1.4 : 1;
-
-    for (const item of all('[data-pillar]')) {
-      const before = item.querySelector('[data-pillar-before]');
-      const after = item.querySelector('[data-pillar-after]');
-      const tile = item.querySelector('[data-pillar-tile]');
-      if (!before || !after || !tile) continue;
-
-      const rest = { opacity: 0.4, scale: 1 };
-      gsap
-        .timeline({
-          scrollTrigger: { trigger: item, start: 'top 85%', end: 'bottom 15%', scrub: 0.5 },
-        })
-        .fromTo(before, { x: shift, ...rest }, { x: 0, opacity: 1, scale: grow, ease: 'power2.out' }, 0)
-        .fromTo(after, { x: -shift, ...rest }, { x: 0, opacity: 1, scale: grow, ease: 'power2.out' }, 0)
-        .fromTo(tile, { scale: 0 }, { scale: 1, ease: 'power2.out' }, 0)
-        .to(before, { x: shift, ...rest, ease: 'power2.in' }, 1.4)
-        .to(after, { x: -shift, ...rest, ease: 'power2.in' }, 1.4)
-        .to(tile, { scale: 0, ease: 'power2.in' }, 1.4);
-    }
-  });
-
   // CTA grows from half size as it arrives, then stays pinned under the footer
   mm.add('(min-width: 768px)', () => {
     const cta = document.querySelector<HTMLElement>('[data-cta]');

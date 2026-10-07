@@ -1,58 +1,51 @@
 ---
 const pillars = [
   {
-    before: 'Website',
-    after: 'Builds',
+    title: 'Website builds',
     text: 'Turn templates into production-ready sites for real businesses: restaurant, gym, startup, dentist and more.',
   },
   {
-    before: 'Project',
-    after: 'Architecture',
+    title: 'Architecture',
     text: 'Project organization, component hierarchy, folder structure, design systems and reusable systems.',
   },
   {
-    before: 'CMS',
-    after: 'Modeling',
+    title: 'CMS',
     text: 'Content modeling, collections, naming conventions, scaling content and dynamic pages.',
   },
   {
-    before: 'Client',
-    after: 'Workflow',
+    title: 'Professional workflow',
     text: 'Client handoff, asset organization, faster builds, fewer revisions and less maintenance.',
   },
   {
-    before: 'Site',
-    after: 'Performance',
+    title: 'Performance',
     text: 'Image optimization, lazy loading, SEO, accessibility and faster page loads.',
   },
 ];
 ---
 
 <section id="learn" class="section learn" aria-labelledby="learn-title">
-  <div class="container learn-inner">
-    <h2 id="learn-title" class="learn-title t-h2">
-      <span class="mask"><span data-reveal="mask">What you learn</span></span>
-    </h2>
-
-    <div class="learn-intro t-body-m">
-      <p data-reveal>Five pillars. One focus: systems thinking over software features.</p>
-      <p data-reveal>
-        Leave thinking “now I know why projects are structured this way”, not “I found the CMS
-        button.”
-      </p>
+  <div class="container index-section">
+    <div class="index-head">
+      <h2 id="learn-title" class="t-h2">
+        <span class="mask"><span data-reveal="mask">What you learn</span></span>
+      </h2>
+      <div class="index-aside" data-reveal>
+        <p class="t-label c-muted">
+          <span class="c-fg">Five pillars. One focus:</span> systems thinking over software features.
+        </p>
+        <p class="t-body-s c-muted">
+          Leave thinking “now I know why projects are structured this way”, not “I found the CMS
+          button.”
+        </p>
+      </div>
     </div>
 
-    <ol role="list" class="learn-list">
+    <ol role="list" class="index pillars">
       {pillars.map((pillar, i) => (
-        <li class="learn-item" data-pillar>
-          <h3 class="learn-row t-h3-light">
-            <span class="learn-word learn-word--before" data-pillar-before>{pillar.before}</span>
-            <span class="learn-tile" aria-hidden="true" data-pillar-tile>
-              {String(i + 1).padStart(2, '0')}
-            </span>
-            <span class="learn-word learn-word--after" data-pillar-after>{pillar.after}</span>
-          </h3>
-          <p class="learn-text t-body-s c-muted">{pillar.text}</p>
+        <li class="index-row" data-reveal>
+          <span class="pillar-tile" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+          <h3 class="t-h4-caps">{pillar.title}</h3>
+          <p class="t-body-m c-muted">{pillar.text}</p>
         </li>
       ))}
     </ol>

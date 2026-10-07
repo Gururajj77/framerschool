@@ -1,6 +1,6 @@
 ---
 import { YOUTUBE_URL } from '../../config';
-import ArrowIcon from '../ui/ArrowIcon.astro';
+import ArrowLink from '../ui/ArrowLink.astro';
 
 const builds = [
   {
@@ -39,77 +39,43 @@ const builds = [
     detail: 'Menus that update cleanly. Hours and reservations as operational content.',
   },
 ];
-
-// Staggered rows, as in the template: left, right, spread, right
-const rows = [
-  { align: 'start', items: builds.slice(0, 2) },
-  { align: 'end', items: builds.slice(2, 4) },
-  { align: 'spread', items: builds.slice(4, 6) },
-  { align: 'end', items: builds.slice(6) },
-];
-const total = String(builds.length).padStart(2, '0');
 ---
 
 <section id="builds" class="section builds" aria-labelledby="builds-title">
-  <div class="container builds-inner">
-    <div class="builds-head">
+  <div class="container index-section">
+    <div class="index-head">
       <h2 id="builds-title" class="t-h2">
-        <span class="mask"><span class="builds-title-line" data-reveal="mask">Real</span></span>
-        <span class="mask"><span class="builds-title-line" data-reveal="mask">niches</span></span>
+        <span class="mask"><span data-reveal="mask">Real niches</span></span>
       </h2>
-      <p class="builds-lede t-label c-muted" data-reveal>
-        <span class="c-fg">Real client work.</span> The value comes from adapting templates, not
-        designing from a blank canvas.
-      </p>
+      <div class="index-aside" data-reveal>
+        <p class="t-label c-muted">
+          <span class="c-fg">Real client work.</span> The value comes from adapting templates, not
+          designing from a blank canvas.
+        </p>
+        <ArrowLink href={YOUTUBE_URL} label="Watch the builds" external />
+      </div>
     </div>
 
-    <div class="builds-rows">
-      {rows.map((row, rowIndex) => (
-        <ul role="list" class:list={['builds-row', `builds-row--${row.align}`]}>
-          {row.items.map((build, i) => {
-            const index = String(rowIndex * 2 + i + 1).padStart(2, '0');
-            return (
-              <li class="build-card" data-reveal>
-                <div class="build-card-meta t-label c-subtle">
-                  <span>{build.focus.join(' // ')}</span>
-                  <span>{index}/{total}</span>
-                </div>
-
-                <div class="build-media" aria-hidden="true" data-blinds>
-                  <span class="build-media-site">
-                    <i class="bm-nav"></i>
-                    <i class="bm-nav"></i>
-                    <i class="bm-nav"></i>
-                    <span class="bm-headline">{build.niche}</span>
-                    <i class="bm-line bm-line--1"></i>
-                    <i class="bm-line bm-line--2"></i>
-                    <i class="bm-cell"></i>
-                    <i class="bm-cell"></i>
-                    <i class="bm-cell"></i>
-                  </span>
-                  <span class="blinds"><i></i><i></i><i></i><i></i></span>
-                </div>
-
-                <div class="build-card-foot">
-                  <div class="build-card-text">
-                    <h3 class="t-h5">{build.niche}</h3>
-                    <p class="t-body-s c-muted">{build.detail}</p>
-                  </div>
-                  <a
-                    class="build-card-link"
-                    href={YOUTUBE_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <ArrowIcon />
-                    <span class="sr-only">Watch the {build.niche.toLowerCase()} build on YouTube (opens in a new tab)</span>
-                  </a>
-                </div>
-              </li>
-            );
-          })}
-        </ul>
+    <ol role="list" class="index niches">
+      {builds.map((build, i) => (
+        <li class="index-row" data-reveal>
+          <span class="t-label c-subtle" aria-hidden="true">
+            {String(i + 1).padStart(2, '0')}
+          </span>
+          <h3 class="t-h4-caps">{build.niche}</h3>
+          <p class="t-body-m c-muted">{build.detail}</p>
+          <p class="niche-focus t-label c-subtle">
+            <span class="sr-only">Focus: </span>
+            {build.focus.map((area, j) => (
+              <>
+                {j > 0 && <span class="sr-only">, </span>}
+                {j > 0 && <span aria-hidden="true"> // </span>}
+                {area}
+              </>
+            ))}
+          </p>
+        </li>
       ))}
-    </div>
+    </ol>
   </div>
 </section>
