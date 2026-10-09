@@ -17,10 +17,7 @@ export function initVideos(): void {
     player.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
     player.allowFullscreen = true;
 
-    // The row widens so the player is not thumbnail-sized
-    link.closest('[data-video-row]')?.classList.add('is-playing');
     link.replaceWith(player);
     player.focus();
-    document.dispatchEvent(new CustomEvent('cube:content-changed'));
   });
 }

@@ -9,28 +9,30 @@ html {
   text-size-adjust: 100%;
 }
 
-body {
-  margin: 0;
-  min-height: 100dvh;
-  background-color: var(--room);
-  background-image:
-    linear-gradient(var(--grid) 2px, transparent 2px),
-    linear-gradient(90deg, var(--grid) 2px, transparent 2px);
-  background-size: 48px 48px;
-  background-position: center center;
-  color: var(--room-text);
-  font-family: var(--font-body);
-  font-size: 15px;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+html.lenis,
+html.lenis body {
+  height: auto;
 }
 
-/* The cube page never scrolls; the cube turns instead */
-.cube-mode body {
-  height: 100dvh;
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped,
+.menu-open {
   overflow: hidden;
-  overscroll-behavior: none;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 24px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
 }
 
 h1,
@@ -41,8 +43,7 @@ p,
 ul,
 ol,
 figure,
-dl,
-dd {
+blockquote {
   margin: 0;
 }
 
@@ -72,21 +73,19 @@ button {
   cursor: pointer;
 }
 
-/* Focus ring in the room colour; faces set their own (black, or white on red) */
 :focus-visible {
-  outline: 3px solid var(--focus, var(--room-text));
-  outline-offset: 3px;
+  outline: 2px solid var(--fg);
+  outline-offset: 4px;
 }
 
-/* Faces take focus after a turn or a #link; the turn itself shows where you are.
-   (Opening /#videos focuses the face, and Chrome treats that as focus-visible.) */
+/* Sections receive focus after in-page navigation; no ring needed there */
 [tabindex='-1']:focus {
   outline: none;
 }
 
 ::selection {
-  background: var(--ink);
-  color: var(--yellow);
+  background: var(--accent);
+  color: var(--fg);
 }
 
 .sr-only {
@@ -107,10 +106,9 @@ button {
   left: var(--s-8);
   z-index: 200;
   padding: var(--s-12) var(--s-16);
-  background: var(--yellow);
-  border: var(--border);
-  box-shadow: var(--shadow);
-  font-weight: 700;
+  background: var(--fg);
+  color: var(--bg);
+  font-weight: 500;
   transform: translateY(-200%);
 }
 
@@ -118,39 +116,215 @@ button {
   transform: none;
 }
 
-/* ---------- Type ---------- */
+.container {
+  width: 100%;
+  max-width: calc(var(--max) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
 
-.t-display {
+/* Masks hide text that slides up into place */
+.mask {
+  display: block;
+  overflow: hidden;
+}
+
+/* ---------- Type scale (Desktop ≥1200 / Tablet 768–1199 / Phone <768) ---------- */
+
+.t-h1 {
   font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 88px;
-  line-height: 0.92;
+  font-weight: 500;
+  font-size: 180px;
+  line-height: 170px;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+}
+
+.t-h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 140px;
+  line-height: 127px;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+}
+
+.t-h3 {
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.04em;
+}
+
+.t-h3-light {
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 46px;
+  letter-spacing: -0.04em;
+}
+
+.t-h4 {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 40px;
+  letter-spacing: -0.03em;
+}
+
+.t-h4-caps {
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 36px;
   letter-spacing: -0.02em;
   text-transform: uppercase;
 }
 
-.t-label {
-  font-family: var(--font-label);
-  font-stretch: 75%;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.15;
-  letter-spacing: 0.03em;
+.t-h5 {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
 }
 
+.t-title {
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 36px;
+  letter-spacing: -0.02em;
+}
+
+.t-stat {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 40px;
+  letter-spacing: -0.02em;
+}
+
+.t-body-xl {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.t-body-m {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.t-body-s {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.t-label {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  text-transform: uppercase;
+}
+
+.t-label-m {
+  font-size: 16px;
+  line-height: 24px;
+  text-transform: uppercase;
+}
+
+.c-fg {
+  color: var(--fg);
+}
+
+.c-muted {
+  color: var(--muted);
+}
+
+.c-subtle {
+  color: var(--subtle);
+}
+
 @media (max-width: 1199.98px) {
-  .t-display {
-    font-size: 64px;
+  .t-h1 {
+    font-size: 160px;
+    line-height: 152px;
+  }
+
+  .t-h2 {
+    font-size: 112px;
+    line-height: 106px;
+  }
+
+  .t-h3 {
+    font-size: 38px;
+    line-height: 44px;
+  }
+
+  .t-h3-light {
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .t-h4 {
+    font-size: 26px;
+    line-height: 34px;
+  }
+
+  .t-h4-caps,
+  .t-title {
+    font-size: 22px;
+    line-height: 30px;
+  }
+
+  .t-h5 {
+    font-size: 20px;
+    line-height: 32px;
+  }
+
+  .t-body-xl {
+    font-size: 18px;
+    line-height: 26px;
   }
 }
 
 @media (max-width: 767.98px) {
-  .t-display {
-    font-size: 44px;
+  .t-h1 {
+    font-size: 88px;
+    line-height: 80px;
   }
 
-  .t-label {
-    font-size: 13px;
+  .t-h2 {
+    font-size: 64px;
+    line-height: 62px;
+  }
+
+  .t-h3 {
+    font-size: 30px;
+    line-height: 38px;
+  }
+
+  .t-h3-light {
+    font-size: 25px;
+    line-height: 32px;
+  }
+
+  .t-h4 {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .t-h4-caps,
+  .t-h5,
+  .t-title {
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  .t-body-xl {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .t-body-m,
+  .t-label-m {
+    font-size: 14px;
+    line-height: 21px;
   }
 }

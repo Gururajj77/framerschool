@@ -1,8 +1,4 @@
 ---
-import { YOUTUBE_URL } from '../../config';
-import FaceTab from '../ui/FaceTab.astro';
-import Button from '../ui/Button.astro';
-
 const facts = [
   { value: '04', label: 'Steps per build' },
   { value: '07', label: 'Real niches' },
@@ -10,36 +6,66 @@ const facts = [
 ];
 ---
 
-<section
-  class="face face--red face--side face--index"
-  id="index"
-  data-face="index"
-  data-face-label="Index"
-  aria-labelledby="index-title"
-  tabindex="-1"
->
-  <FaceTab id="index" />
-  <p class="sticker sticker--corner t-label" aria-hidden="true">Not a feature tour</p>
-
-  <div class="face-body index-body">
-    <div class="index-copy">
-      <p class="face-kicker t-label">Learn to turn</p>
-      <h1 class="index-title" id="index-title">Templates into production-ready client websites.</h1>
-      <p class="face-lead">Architecture, workflows, CMS and professional delivery, explained one real build at a time.</p>
+<section class="hero" aria-labelledby="hero-title" data-hero>
+  <div class="hero-top">
+    <div class="hero-bg" aria-hidden="true" data-intro="bg">
+      <span class="hero-bg-line"></span>
+      <svg class="hero-bg-rings" viewBox="0 0 760 760" fill="none">
+        <circle cx="380" cy="380" r="379.5" stroke="currentColor" />
+        <circle cx="380" cy="380" r="288" stroke="currentColor" />
+        <path d="M92 380h576M380 92v576" stroke="currentColor" />
+      </svg>
     </div>
 
-    <div class="face-actions">
-      <Button href={YOUTUBE_URL} label="Watch builds" external />
-      <Button face="method" label="How it works" color="white" />
-    </div>
+    <div class="hero-stage container">
+      <div class="hero-center">
+        <h1 class="hero-title" id="hero-title">
+          <span class="mask hero-kicker-mask">
+            <span class="hero-kicker t-label-m" data-intro="kicker">Learn to turn</span>
+          </span>
+          <span class="mask">
+            <span class="hero-line t-h1" data-intro="line-1">Templates</span>
+          </span>
+          <span class="hero-media-wrap" aria-hidden="true" data-intro="media">
+            <span class="hero-media" data-hero-media>
+              <span class="hero-media-glow"></span>
+              <span class="hero-media-window">
+                <i class="hero-media-dot"></i>
+                <i class="hero-media-dot"></i>
+                <i class="hero-media-dot"></i>
+                <i class="hero-media-line hero-media-line--l"></i>
+                <i class="hero-media-line hero-media-line--m"></i>
+                <i class="hero-media-line hero-media-line--s"></i>
+                <i class="hero-media-cell"></i>
+                <i class="hero-media-cell"></i>
+                <i class="hero-media-cell"></i>
+              </span>
+            </span>
+          </span>
+          <span class="mask">
+            <span class="hero-line t-h1" data-intro="line-2">Into sites</span>
+          </span>
+          <span class="mask">
+            <span class="hero-caption t-label" data-intro="caption">For real client work</span>
+          </span>
+        </h1>
+      </div>
 
-    <ul role="list" class="index-facts">
-      {facts.map((fact) => (
-        <li class="index-fact">
-          <strong>{fact.value}</strong>
-          <span class="t-label">{fact.label}</span>
-        </li>
-      ))}
-    </ul>
+      <div class="hero-foot" data-intro="foot">
+        <ul role="list" class="hero-facts">
+          {facts.map((fact) => (
+            <li class="hero-fact t-label">
+              <span class="hero-fact-value">{fact.value}</span>
+              <span class="c-muted">{fact.label}</span>
+            </li>
+          ))}
+        </ul>
+        <p class="hero-note t-label c-muted">
+          <span class="c-fg">Architecture, workflows, CMS and professional delivery.</span> Not feature tours.
+        </p>
+      </div>
+    </div>
   </div>
+
+  <div class="hero-scroll" aria-hidden="true" data-hero-scroll></div>
 </section>

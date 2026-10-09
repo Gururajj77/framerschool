@@ -1,41 +1,43 @@
 ---
-import { CONTACT_EMAIL } from '../../config';
-import FaceTab from '../ui/FaceTab.astro';
-import Button from '../ui/Button.astro';
+import { CONTACT_EMAIL, YOUTUBE_URL } from '../../config';
+import ArrowIcon from '../ui/ArrowIcon.astro';
+import ArrowLink from '../ui/ArrowLink.astro';
+import NavLink from '../ui/NavLink.astro';
 
 const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Hello FramerSchool')}`;
 ---
 
-<section
-  class="face face--lime face--cap face--contact"
-  id="contact"
-  data-face="contact"
-  data-face-label="Contact"
-  aria-labelledby="contact-title"
-  tabindex="-1"
->
-  <FaceTab id="contact" />
-
-  <div class="face-body contact-body">
-    <h2 class="face-title" id="contact-title">Say hello.</h2>
-    <p class="face-lead">A question about a build, a topic to cover, or a template you are adapting?</p>
-
-    <div class="contact-field">
-      <a class="contact-email" href={mailto}><span class="sr-only">Email </span>{CONTACT_EMAIL}</a>
-      <button type="button" class="contact-copy t-label" data-copy={CONTACT_EMAIL}>
-        <span data-copy-label>Copy</span>
-      </button>
-      <span class="sr-only" aria-live="polite" data-copy-status></span>
+<section id="contact" class="section contact" aria-labelledby="contact-title">
+  <div class="container contact-inner">
+    <div class="contact-intro">
+      <h2 id="contact-title" class="t-h2">
+        <span class="mask"><span data-reveal="mask">Contact</span></span>
+      </h2>
+      <p class="t-body-m c-muted" data-reveal>
+        A question about a build, a topic you want covered, or a template you are adapting? Email
+        FramerSchool directly.
+      </p>
     </div>
 
-    <div class="face-actions">
-      <Button href={mailto} label="Send an email" color="ink" />
-      <button type="button" class="btn btn--white" data-answers-open aria-haspopup="dialog">
-        <span class="btn-label">Quick answers</span>
-        <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" />
-        </svg>
-      </button>
+    <div class="contact-card" data-reveal>
+      <p class="t-label c-muted" aria-hidden="true">[ Email ]</p>
+      <a class="contact-email t-h3" href={mailto}>
+        <span class="sr-only">Email </span>{CONTACT_EMAIL}
+      </a>
+
+      <div class="contact-actions">
+        <ArrowLink href={mailto} label="Send an email" />
+        <button type="button" class="arrow-link t-label copy-button" data-copy={CONTACT_EMAIL}>
+          <span class="arrow-link-icon arrow-link-icon--start"><ArrowIcon /></span>
+          <span data-copy-label>Copy address</span>
+          <span class="arrow-link-icon arrow-link-icon--end"><ArrowIcon /></span>
+        </button>
+        <span class="sr-only" aria-live="polite" data-copy-status></span>
+      </div>
+
+      <ul role="list" class="contact-social">
+        <li><NavLink href={YOUTUBE_URL} label="YouTube" external /></li>
+      </ul>
     </div>
   </div>
 </section>

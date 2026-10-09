@@ -1,52 +1,42 @@
 ---
-import { FACES } from '../../config';
+import { CONTACT_EMAIL, NAV_LINKS, YOUTUBE_URL } from '../../config';
+import NavLink from '../ui/NavLink.astro';
 
-/** Bottom bar. With `controls`, it also shows the cube's progress and turn buttons. */
-interface Props {
-  controls?: boolean;
-}
-
-const { controls = false } = Astro.props;
 const year = new Date().getFullYear();
+const footerLinks = [{ href: '/', label: 'Home' }, ...NAV_LINKS];
 ---
 
-<footer class="site-bar">
-  <div class="site-bar-inner">
-    <p class="site-bar-legal t-label">
-      <span class="site-bar-copy">&copy; {year} FramerSchool</span>
-      <a href="/privacy-policy">Privacy</a>
-      <a href="/terms">Terms</a>
-    </p>
+<footer class="site-footer">
+  <div class="container site-footer-inner" data-reveal>
+    <div class="site-footer-top">
+      <div class="site-footer-left">
+        <ul role="list" class="site-footer-social">
+          <li><NavLink href={YOUTUBE_URL} label="YouTube" external /></li>
+        </ul>
 
-    {controls && (
-      <>
-        <div class="site-bar-progress" aria-hidden="true">
-          <span class="site-bar-squares">
-            {FACES.map((face, i) => (
-              <i class:list={[i === 0 && 'is-active']} style={`--face-color: var(--${face.color})`} data-tick={face.id}></i>
-            ))}
-          </span>
-          <span class="site-bar-count t-label">
-            <span data-progress-current>01</span>/{String(FACES.length).padStart(2, '0')}
-          </span>
+        <div class="site-footer-contact t-label">
+          <a href={`mailto:${CONTACT_EMAIL}`} class="site-footer-email"><span class="sr-only">Email </span>{CONTACT_EMAIL}</a>
+          <p class="c-muted">Turn Framer templates into production-ready client websites.</p>
         </div>
+      </div>
 
-        <div class="site-bar-controls">
-          <p class="site-bar-hint t-label">Click, scroll or swipe to turn</p>
-          <button type="button" class="square-button" data-cube-prev>
-            <span class="sr-only">Previous face</span>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M14 8H3M7 4 3 8l4 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" />
-            </svg>
-          </button>
-          <button type="button" class="square-button square-button--next" data-cube-next>
-            <span class="sr-only">Next face</span>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" />
-            </svg>
-          </button>
-        </div>
-      </>
-    )}
+      <nav class="site-footer-nav" aria-label="Footer">
+        <ul role="list">
+          {footerLinks.map((link) => (
+            <li>
+              <NavLink href={link.href} label={link.label} size="large" class="nav-link--bright" />
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+
+    <div class="site-footer-bottom t-label">
+      <p class="c-subtle">&copy; {year} <span class="c-fg">FramerSchool</span>. All rights reserved.</p>
+      <ul role="list" class="site-footer-legal">
+        <li><NavLink href="/privacy-policy" label="Privacy" /></li>
+        <li><NavLink href="/terms" label="Terms" /></li>
+      </ul>
+    </div>
   </div>
 </footer>
